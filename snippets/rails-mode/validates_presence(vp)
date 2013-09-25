@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: vp
+# --
+validates :$0, presence: ${1:true}

@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: link
+# --
+<link rel="$1" href="$2" title="$3" type="$4" />

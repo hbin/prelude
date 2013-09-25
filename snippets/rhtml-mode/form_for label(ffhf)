@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: ffhf
+# --
+<%= f.hidden_field :${1:attribute} %>$0
