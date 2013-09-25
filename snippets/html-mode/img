@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: img
+# --
+<img src="$1" alt="$2" />

@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: ffta
+# --
+<%= f.text_area :${1:attribute} %>$0

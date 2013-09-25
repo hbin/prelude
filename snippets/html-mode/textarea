@@ -1,0 +1,4 @@
+# contributor: hbin <embrace.hbin@gmail.com>
+# key: textarea
+# --
+<textarea name="$1" id=${2:$1} rows="${3:8}" cols="${4:40}">$0</textarea>
