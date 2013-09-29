@@ -1,8 +1,19 @@
 ;;; hbin-misc --- miscellany
+;;
+;; Copyright (C) 2012-2013 Huang Bin
+;;
+;; Author: Huang Bin <embrace.hbin@gmail.com>
+;; Version: 1.0.0
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
+
 ;;; Code:
+
+;; Displays search information in the mode-line
+(prelude-require-package 'anzu)
+(global-anzu-mode +1)
 
 ;; Expand region
 (global-set-key (kbd "M-h") 'er/expand-region)
@@ -24,6 +35,10 @@
 (global-set-key (kbd "C-*") 'mc/mark-all-symbols-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
+
+;; Whole line or region
+(prelude-require-package 'whole-line-or-region)
+(whole-line-or-region-mode)
 
 ;; 使用英文拼写词库
 (setq ispell-dictionary "english")

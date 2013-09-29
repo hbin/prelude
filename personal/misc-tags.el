@@ -7,6 +7,7 @@
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
 ;; This file is a variant version of `etags-select` which created by
 ;; Scott Frazer.
 

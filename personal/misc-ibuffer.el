@@ -7,7 +7,8 @@
 
 ;;; Commentary:
 
-;;Configuration for Ibuffer
+;; This file is not part of GNU Emacs.
+;; configuration for ibuffer
 
 ;;; Code:
 

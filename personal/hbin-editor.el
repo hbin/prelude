@@ -5,7 +5,11 @@
 ;; Author: Huang Bin <embrace.hbin@gmail.com>
 ;; Version: 1.0.0
 
+;; This file is not part of GNU Emacs.
+
 ;;; Commentary:
+
+;; It's my handy Emacs.
 
 ;;; Code:
 (line-number-mode t)                     ; 显示行号

@@ -7,6 +7,7 @@
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
 ;; Git for Emacs - awesome extension!
 
 ;;; Code:

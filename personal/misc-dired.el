@@ -7,6 +7,8 @@
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
+
 ;;; Code:
 (custom-set-variables
  '(dired-dwim-target t)
