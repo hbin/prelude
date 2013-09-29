@@ -1,8 +1,15 @@
 ;;; hbin-kbds --- Personal kbds
+;;
+;; Copyright (C) 2012-2013 Huang Bin
+;;
+;; Author: Huang Bin <embrace.hbin@gmail.com>
+;; Version: 1.0.0
+
+;; This file is not part of GNU Emacs.
 
 ;;; Commentary:
 
-;; These are handy kbds for me.
+;; Key bindings.
 
 ;;; Code:
 

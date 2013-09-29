@@ -1,6 +1,13 @@
 ;;; hbin-modules --- customize modules
+;;
+;; Copyright (C) 2012-2013 Huang Bin
+;;
+;; Author: Huang Bin <embrace.hbin@gmail.com>
+;; Version: 1.0.0
 
 ;;; Commentary:
+
+;; This file is not part of GNU Emacs.
 
 ;;; Code:
 

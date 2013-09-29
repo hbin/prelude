@@ -1,7 +1,13 @@
 ;;; hbin-ui --- Personal themes
+;;
+;; Copyright (C) 2012-2013 Huang Bin
+;;
+;; Author: Huang Bin <embrace.hbin@gmail.com>
+;; Version: 1.0.0
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
 ;; Monaco: http://s.yunio.com/3FuQfa
 ;; Menlo: http://s.yunio.com/8XBaSx
 ;; YaHei Consolas Hybrid: http://s.yunio.com/ZFORNb

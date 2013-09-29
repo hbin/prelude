@@ -7,6 +7,7 @@
 
 ;;; Commentary:
 
+;; This file is not part of GNU Emacs.
 ;; Yasnippet - https://github.com/capitaomorte/yasnippet
 
 ;;; Code:

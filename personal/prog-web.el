@@ -7,9 +7,9 @@
 
 ;;; Commentary:
 
-;;; Code:
+;; This file is not part of GNU Emacs.
 
-;;; Indentation
+;;; Code:
 (custom-set-variables
  '(js-indent-level 2)
  '(js2-basic-offset 2)
