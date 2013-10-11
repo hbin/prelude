@@ -11,10 +11,6 @@
 
 ;;; Code:
 
-;; Displays search information in the mode-line
-(prelude-require-package 'anzu)
-(global-anzu-mode +1)
-
 ;; Expand region
 (global-set-key (kbd "M-h") 'er/expand-region)
 

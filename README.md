@@ -90,7 +90,13 @@ You'd do well to replace `~/.emacs.d` with the value of
 
 ## Updating Prelude
 
-The update procedure is fairly straightforward:
+The update procedure is fairly straightforward and consists of 3 steps:
+
+### Update all bundled packages
+
+Just run <kbd>M-x package-list-packages RET U x</kbd>. Unfortunately this step cannot be automated.
+
+### Update Prelude's code
 
 ```bash
 cd path/to/prelude/installation
@@ -102,7 +108,9 @@ on Unix systems).
 
 Alternatively you can run <kbd>M-x prelude-update</kbd> from Emacs itself.
 
-It's generally a good idea to stop Emacs before you do the update. The
+### Restart Prelude
+
+It's generally a good idea to stop Emacs after you do the update. The
 next time Prelude starts it will install any new dependencies (if
 there are such).
 
@@ -242,7 +250,10 @@ Keybinding         | Description
 <kbd>Super-x</kbd> | Expand region
 <kbd>Super-j</kbd> | Join lines
 <kbd>Super-k</kbd> | Kill whole line
-<kbd>Super-m</kbd> | Magit status
+<kbd>Super-m m</kbd> | Magit status
+<kbd>Super-m l</kbd> | Magit log
+<kbd>Super-m f</kbd> | Magit file log
+<kbd>Super-m b</kbd> | Magit blame mode
 <kbd>Super-o</kbd> | Open line above current line
 
 #### OSX modifier keys
@@ -413,6 +424,19 @@ If you're not fond of spellchecking on the fly:
 ```
 
 ## Caveats & Pitfalls
+
+### Updating bundled packages
+
+Currently there is no Emacs Lisp API for updating packages, so you'll
+have to update manually the packages that came with Prelude from time
+to time.
+
+`M-x package-list-packages RET U x`
+
+Generally it's a good idea to do a package update before running
+`prelude-update`, since the latest Prelude code might depend on newer
+versions of the bundled packages than you would currently have
+installed.
 
 ### Problems with flyspell-mode
 
