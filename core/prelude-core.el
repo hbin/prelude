@@ -126,7 +126,7 @@ With a prefix ARG open line above the current line."
 (defun prelude-kill-whole-line (&optional arg)
   "A simple wrapper around command `kill-whole-line' that respects indentation.
 Passes ARG to command `kill-whole-line' when provided."
-  (interactive "P")
+  (interactive "p")
   (kill-whole-line arg)
   (back-to-indentation))
 
@@ -532,6 +532,21 @@ This follows freedesktop standards, should work in X servers."
       (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                              '(2 "_NET_WM_STATE_FULLSCREEN" 0))
     (error "Only X server is supported")))
+
+(defun prelude-find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window user-init-file))
+
+(defun prelude-find-shell-init-file ()
+  "Edit the shell init file in another window."
+  (interactive)
+  (let* ((shell (car (reverse (s-split "/" (getenv "SHELL")))))
+         (shell-init-file (cond
+                           ((s-equals? "zsh" shell) ".zshrc")
+                           ((s-equals? "bash" shell) ".bashrc")
+                           (t (error "Unknown shell")))))
+    (find-file-other-window (expand-file-name shell-init-file (getenv "HOME")))))
 
 (provide 'prelude-core)
 ;;; prelude-core.el ends here

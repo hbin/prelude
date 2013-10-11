@@ -41,7 +41,7 @@
 (package-initialize)
 
 (defvar prelude-packages
-  '(ace-jump-mode ack-and-a-half dash diminish elisp-slime-nav
+  '(ace-jump-mode ack-and-a-half anzu dash diminish elisp-slime-nav
     expand-region flx-ido flycheck gist
     git-commit-mode gitconfig-mode gitignore-mode grizzl
     guru-mode helm helm-projectile ido-ubiquitous
@@ -56,6 +56,8 @@
 
 (defun prelude-require-package (package)
   "Install PACKAGE unless already installed."
+  (unless (memq package prelude-packages)
+    (add-to-list 'prelude-packages package))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -76,7 +78,18 @@ Missing packages are installed automatically."
     ;; install the missing packages
     (prelude-require-packages prelude-packages)))
 
+;; run package installation
 (prelude-install-packages)
+
+(defun prelude-list-foreign-packages ()
+  "Browse third-party packages not bundled with Prelude.
+
+Behaves similarly to `package-list-packages', but shows only the packages that
+are installed and are not in `prelude-packages'.  Useful for
+removing unwanted packages."
+  (interactive)
+  (package-show-package-list
+   (set-difference package-activated-list prelude-packages)))
 
 (defmacro prelude-auto-install (extension package mode)
   "When file with EXTENSION is opened triggers auto-install of PACKAGE.

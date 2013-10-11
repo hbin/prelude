@@ -58,9 +58,7 @@
 (eval-after-load 'ruby-mode
   '(progn
      (defun prelude-ruby-mode-defaults ()
-       (inf-ruby-setup-keybindings)
-       ;; turn off the annoying input echo in irb
-       (setq comint-process-echoes t)
+       (inf-ruby-minor-mode +1)
        (ruby-tools-mode +1)
        ;; CamelCase aware editing operations
        (subword-mode +1))

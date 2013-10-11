@@ -24,10 +24,6 @@
 (global-linum-mode -1)                   ; 不显示 Linum 行号
 (global-hl-line-mode -1)                 ; 不高亮当前行
 
-(show-paren-mode t)                      ; 显示匹配括号
-(setq show-paren-delay 0)                ; 匹配无延时
-(setq show-paren-style 'parenthesis)     ; 只高亮显示匹配的括号
-
 (toggle-indicate-empty-lines 1)
 
 (mouse-avoidance-mode 'exile)            ; 鼠标自动移动到右上角，以免挡住视线
