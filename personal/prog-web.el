@@ -10,12 +10,14 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
+
 (custom-set-variables
  '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-bounce-indent-p t)
  '(css-indent-offset 2)
- '(coffee-tab-width 2))
+ '(coffee-tab-width 2)
+ '(zencoding-indentation 2))
 
 ;;; web mode
 (eval-after-load 'web-mode
@@ -30,6 +32,14 @@
        (setq web-mode-block-padding 0)
        (setq web-mode-comment-style 2)
 
+       ;; Zencoding
+       (prelude-require-package 'zencoding-mode)
+       (require 'zencoding-mode)
+       (define-key zencoding-mode-keymap (kbd "C-j") nil)
+       (define-key zencoding-mode-keymap (kbd "<C-return>") nil)
+       (define-key zencoding-mode-keymap (kbd "C-c C-j") 'zencoding-expand-line)
+       (zencoding-mode 1)
+
        ;; erb
        (ruby-tools-mode +1)
        (modify-syntax-entry ?$ "w")
@@ -43,7 +53,6 @@
                                 (run-hooks 'hbin-web-mode-hook)))))
 
 ;;; CSS
-(prelude-require-package 'rainbow-mode)
 (eval-after-load 'css-mode
   '(progn
      (defun hbin-css-mode-defaults ()
@@ -54,9 +63,6 @@
                                 (run-hooks 'hbin-css-mode-hook)))))
 
 ;;; Slim-mode
-(prelude-require-package 'slim-mode)
-(add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
-
 (eval-after-load 'slim-mode
   '(progn
      (defun hbin-slim-mode-defaults ()
@@ -68,9 +74,6 @@
                                  (run-hook 'hbin-slim-mode-hook)))))
 
 ;;; Scss-mode
-(prelude-require-package 'scss-mode)
-(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
-
 (eval-after-load 'scss-mode
   '(progn
      (defun hbin-scss-mode-defaults ()
