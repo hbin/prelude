@@ -16,9 +16,6 @@
   "Common settings for programming."
   (rainbow-delimiters-mode 1)
 
-  ;; Enable auto-filling for comments in the current buffer.
-  (set (make-local-variable 'comment-auto-fill-only-comments) t)
-
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
   (local-set-key (kbd "C-c C-c") 'whole-line-or-region-comment-dwim-2))
