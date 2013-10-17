@@ -28,6 +28,7 @@
 (setq ac-use-menu-map t)                                ; 当补全列表展开时...
 (define-key ac-menu-map (kbd "C-n") 'ac-next)           ; ...可以使用 C-n....
 (define-key ac-menu-map (kbd "C-p") 'ac-previous)       ; 和 C-p 上下移动待选项
+(define-key ac-menu-map (kbd "M-/") 'ac-next)           ; ...可以使用 C-n....
 (define-key ac-mode-map (kbd "M-/") 'ac-start)          ; 按 M-/ 触发补全提示 (ac-start)
 (setq ac-trigger-key "TAB")                             ; 按 TAB 仅补全，但不触发补全提示
 
@@ -62,6 +63,7 @@
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
   (add-hook 'css-mode-hook 'ac-css-mode-setup)
+  (add-hook 'web-mode-hook 'ac-css-mode-setup)
   (add-hook 'scss-mode-hook 'ac-css-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
   (global-auto-complete-mode t))

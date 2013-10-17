@@ -32,6 +32,9 @@
        (setq web-mode-block-padding 0)
        (setq web-mode-comment-style 2)
 
+       ;; Auto complete
+       (auto-complete-mode +1)
+
        ;; Zencoding
        (prelude-require-package 'zencoding-mode)
        (require 'zencoding-mode)
