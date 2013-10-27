@@ -13,6 +13,13 @@
 
 ;;; Code:
 
+;; Swap the mapping of Meta and Super if Mac OSX
+(when (string= system-type "darwin")
+  (if (eq mac-command-modifier 'super)
+      (progn
+        (setq mac-command-modifier 'meta)
+        (setq mac-option-modifier 'super))))
+
 ;; define my own keymap
 (defvar hbin-map (make-sparse-keymap))
 (global-set-key (kbd "M-z") hbin-map)
