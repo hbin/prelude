@@ -38,8 +38,7 @@
 (setq require-final-newline t)           ; 存盘的时候，要求最后一个是换行符
 
 (setq delete-by-moving-to-trash t)       ; 删除的文件放到回收站
-(setq dired-recursive-deletes t)         ; 允许删除非空文件夹
-(setq dired-recursive-copies t)          ; 允许复制非空文件夹
+(setq ring-bell-function #'ignore)       ; No beep
 
 ;; Scroll
 (setq scroll-margin 0
