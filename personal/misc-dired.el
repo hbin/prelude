@@ -10,6 +10,9 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
+
+(prelude-require-packages '(dired+ dired-details dired-details+))
+
 (custom-set-variables
  '(dired-dwim-target t)
  '(dired-recursive-copies (quote top))
@@ -43,13 +46,10 @@
 (eval-after-load "dired" '(hbin-dired-mode-setup))
 (add-hook 'dired-mode-hook 'hbin-dired-mode-init)
 
-;;; Directory Explorer
-(prelude-require-package 'direx)
-(require 'direx)
-(require 'direx-project)
-(push '(direx:direx-mode :position left :width 40 :dedicated t)
-      popwin:special-display-config)
-(global-set-key (kbd "C-x C-j") 'direx-project:jump-to-project-root-other-window)
+;; Project explorer tree
+(prelude-require-package 'project-explorer)
+(require 'project-explorer)
+(global-set-key (kbd "C-x C-j") 'project-explorer-open)
 
 (provide 'misc-dired)
 ;;; misc-dired.el ends here
