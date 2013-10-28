@@ -19,15 +19,11 @@
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(defcustom hbin-frame-font "Monaco:pixelsize=20" "Default font.")
-(defcustom hbin-frame-font-chinese "YaHei Consolas Hybrid:pixelsize=18" "Chinese font.")
-
 (defun hbin-frame-init (frame)
   "Custom behaviours for FRAME."
-  (set-frame-font hbin-frame-font)
-  (set-fontset-font "fontset-default" 'chinese-gbk hbin-frame-font-chinese)
-  (add-to-list 'default-frame-alist
-               (cons 'font hbin-frame-font))
+  (set-frame-font "Monaco:pixelsize=18")
+  (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=18")
+
   ;; UI
   (tooltip-mode -1)            ; 不要 tooltip
   (menu-bar-mode -1)           ; 不要菜单栏
@@ -57,10 +53,6 @@
 
 ;; Add themes to load path
 (add-subfolders-to-theme-load-path preldue-themes-dir)
-
-;; Use molokai as default theme
-(setq molokai-theme-kit t)
-(load-theme 'molokai t)
 
 (provide 'hbin-ui)
 ;;; hbin-ui.el ends here
