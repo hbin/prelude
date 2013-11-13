@@ -11,6 +11,10 @@
 
 ;;; Code:
 
+"Prevent Emacs from adding coding shebang automatically."
+(custom-set-variables
+ '(ruby-insert-encoding-magic-comment nil))
+
 (defun hbin-ruby-mode-setup ()
   "Font lock for new hash style."
   (font-lock-add-keywords
@@ -18,9 +22,6 @@
    '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face)))))
 
 (defun hbin-ruby-mode-init ()
-  "Prevent Emacs from adding coding shebang automatically."
-  (setq ruby-insert-encoding-magic-comment nil)
-
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?$ "w")
@@ -40,6 +41,14 @@
   (delete-horizontal-space t)
   (insert " => "))
 (global-set-key (kbd "C-.") 'insert-arrow)
+
+;; Programming Rails App.
+(prelude-require-package 'rinari)
+(require 'rinari)
+(define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
+(define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
+(define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
+(global-rinari-mode)
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
