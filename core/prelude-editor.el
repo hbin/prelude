@@ -294,20 +294,6 @@ The body of the advice is in BODY."
 (diminish 'anzu-mode)
 (global-anzu-mode)
 
-(require 'helm-misc)
-(require 'helm-projectile)
-
-(defun helm-prelude ()
-  "Preconfigured `helm'."
-  (interactive)
-  (condition-case nil
-    (if (projectile-project-root)
-        (helm-projectile)
-      ;; otherwise fallback to helm-mini
-      (helm-mini))
-    ;; fall back to helm mini if an error occurs (usually in projectile-project-root)
-    (error (helm-mini))))
-
 ;; shorter aliases for ack-and-a-half commands
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)
@@ -364,14 +350,14 @@ indent yanked text (with prefix arg don't indent)."
     (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defadvice yank-pop (after yank-pop-indent activate)
-  "If current mode is one of 'yank-indent-modes,
+  "If current mode is one of `yank-indent-modes',
 indent yanked text (with prefix arg don't indent)."
-  (if (and (not (ad-get-arg 0))
-           (not (member major-mode yank-indent-blacklisted-modes))
-           (or (derived-mode-p 'prog-mode)
-               (member major-mode yank-indent-modes)))
+  (when (and (not (ad-get-arg 0))
+             (not (member major-mode yank-indent-blacklisted-modes))
+             (or (derived-mode-p 'prog-mode)
+                 (member major-mode yank-indent-modes)))
     (let ((transient-mark-mode nil))
-    (yank-advised-indent-function (region-beginning) (region-end)))))
+      (yank-advised-indent-function (region-beginning) (region-end)))))
 
 ;; abbrev config
 (add-hook 'text-mode-hook 'abbrev-mode)

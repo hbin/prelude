@@ -405,7 +405,6 @@ Doesn't mess with special buffers."
     "Press <jj> quickly to jump to the beginning of a visible word."
     "Press <jk> quickly to jump to a visible character."
     "Press <jl> quickly to jump to a visible line."
-    "Press <C-c h> to navigate a project in Helm."
     "Press <C-c g> to search in Google."
     "Press <C-c G> to search in GitHub."
     "Press <C-c y> to search in YouTube."
@@ -424,7 +423,7 @@ Doesn't mess with special buffers."
     "Press <f12> to toggle the menu bar."
     "Explore the Tools->Prelude menu to find out about some of Prelude extensions to Emacs."
     "Access the official Emacs manual by pressing <C-h r>."
-    "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."))
+    "Visit the EmacsWiki at http://emacswiki.org to find out even more about Emacs."))
 
 (defun prelude-tip-of-the-day ()
   "Display a random entry from `prelude-tips'."

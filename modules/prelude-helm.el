@@ -1,4 +1,4 @@
-;;; prelude-scala.el --- Emacs Prelude: scala-mode configuration.
+;;; prelude-helm.el --- Helm setup
 ;;
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 
-;; Some basic support for the Scala programming language
+;; Some config for Helm.
 
 ;;; License:
 
@@ -32,16 +32,27 @@
 
 ;;; Code:
 
-(require 'prelude-programming)
-(prelude-require-packages '(scala-mode2))
+(prelude-require-packages '(helm helm-projectile))
 
-(defun prelude-scala-mode-defaults ()
-  (subword-mode +1))
+(require 'helm-misc)
+(require 'helm-projectile)
 
-(setq prelude-scala-mode-hook 'prelude-scala-mode-defaults)
+(defun helm-prelude ()
+  "Preconfigured `helm'."
+  (interactive)
+  (condition-case nil
+      (if (projectile-project-root)
+          (helm-projectile)
+        ;; otherwise fallback to `helm-mini'
+        (helm-mini))
+    ;; fall back to helm mini if an error occurs (usually in `projectile-project-root')
+    (error (helm-mini))))
 
-(add-hook 'scala-mode-hook (lambda ()
-                             (run-hooks 'prelude-scala-mode-hook)))
-(provide 'prelude-scala)
+(eval-after-load 'prelude-mode
+  '(define-key prelude-mode-map (kbd "C-c h") 'helm-prelude))
 
-;;; prelude-scala.el ends here
+(push "Press <C-c h> to navigate a project in Helm." prelude-tips)
+
+(provide 'prelude-helm)
+
+;;; prelude-helm.el ends here

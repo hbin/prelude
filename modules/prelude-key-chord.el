@@ -1,4 +1,4 @@
-;;; prelude-scala.el --- Emacs Prelude: scala-mode configuration.
+;;; prelude-key-chord.el --- Key chord setup
 ;;
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 
-;; Some basic support for the Scala programming language
+;; Configure key-chord key bindings.
 
 ;;; License:
 
@@ -32,16 +32,18 @@
 
 ;;; Code:
 
-(require 'prelude-programming)
-(prelude-require-packages '(scala-mode2))
+;; key chords
+(prelude-require-package 'key-chord)
+(require 'key-chord)
 
-(defun prelude-scala-mode-defaults ()
-  (subword-mode +1))
+(key-chord-define-global "jj" 'ace-jump-word-mode)
+(key-chord-define-global "jl" 'ace-jump-line-mode)
+(key-chord-define-global "jk" 'ace-jump-char-mode)
+(key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
+(key-chord-define-global "uu" 'undo-tree-visualize)
 
-(setq prelude-scala-mode-hook 'prelude-scala-mode-defaults)
+(key-chord-mode +1)
 
-(add-hook 'scala-mode-hook (lambda ()
-                             (run-hooks 'prelude-scala-mode-hook)))
-(provide 'prelude-scala)
+(provide 'prelude-key-chord)
 
-;;; prelude-scala.el ends here
+;;; prelude-key-chord.el ends here
