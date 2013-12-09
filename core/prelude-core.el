@@ -463,6 +463,19 @@ Doesn't mess with special buffers."
     (prelude-recompile-init)
     (message "Update finished. Restart Emacs to complete the process.")))
 
+(defun prelude-update-packages (&optional arg)
+  "Update Prelude's packages.
+This includes package installed via `prelude-require-package'.
+
+With a prefix ARG updates all installed packages."
+  (interactive "P")
+  (when (y-or-n-p "Do you want to update Prelude's packages? ")
+    (if arg
+        (epl-upgrade)
+      (epl-upgrade (-filter (lambda (p) (memq (epl-package-name p) prelude-packages))
+                            (epl-installed-packages))))
+    (message "Update finished. Restart Emacs to complete the process.")))
+
 (defun thing-at-point-goto-end-of-integer ()
   "Go to end of integer at point."
   (let ((inhibit-changing-match-data t))
@@ -550,6 +563,12 @@ This follows freedesktop standards, should work in X servers."
                            ((s-equals? "bash" shell) ".bashrc")
                            (t (error "Unknown shell")))))
     (find-file-other-window (expand-file-name shell-init-file (getenv "HOME")))))
+
+(defun prelude-wrap-with (s)
+  "Create a wrapper function for smartparens using S."
+  `(lambda (&optional arg)
+     (interactive "P")
+     (sp-wrap-with-pair ,s)))
 
 (provide 'prelude-core)
 ;;; prelude-core.el ends here
