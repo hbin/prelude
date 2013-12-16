@@ -11,11 +11,20 @@
 
 ;;; Code:
 
+;; Miscellaneous Packages
+(prelude-require-packages
+ '(popwin highlight-symbol textmate multiple-cursors whole-line-or-region))
+
 ;; Expand region
+(require 'expand-region)
 (global-set-key (kbd "M-h") 'er/expand-region)
 
+;; Textmate
+(require 'textmate)
+(setq textmate-use-file-cache nil)
+
 ;; Highlight symbols
-(prelude-require-package 'highlight-symbol)
+(require 'highlight-symbol)
 (global-set-key (kbd "M-m") 'highlight-symbol-at-point)
 (global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
@@ -24,7 +33,7 @@
 (global-set-key (kbd "M-P") 'highlight-symbol-prev-in-defun)
 
 ;; Multiple Cursors
-(prelude-require-package 'multiple-cursors)
+(require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "S-<down>") 'mc/mark-next-lines)
 (global-set-key (kbd "S-<up>") 'mc/mark-previous-lines)
@@ -33,7 +42,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
 
 ;; Whole line or region
-(prelude-require-package 'whole-line-or-region)
+(require 'whole-line-or-region)
 (whole-line-or-region-mode)
 
 ;; 使用英文拼写词库
@@ -47,7 +56,6 @@
 ;; (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 ;; Popwin
-(prelude-require-package 'popwin)
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
