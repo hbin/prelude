@@ -48,6 +48,7 @@
 
 ;; Project explorer tree
 (prelude-require-package 'project-explorer)
+(custom-set-variables '(pe/width 30))
 (require 'project-explorer)
 (global-set-key (kbd "C-x C-j") 'project-explorer-open)
 
