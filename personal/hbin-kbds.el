@@ -73,5 +73,9 @@
 (global-set-key (kbd "C-x <left>") 'winner-undo)
 (global-set-key (kbd "C-x <right>") 'winner-redo)
 
+;;; Textmate
+(global-set-key (kbd "M-t") 'textmate-goto-file)
+(global-set-key (kbd "M-T") 'textmate-goto-symbol)
+
 (provide 'hbin-kbds)
 ;;; hbin-kbds.el ends here
