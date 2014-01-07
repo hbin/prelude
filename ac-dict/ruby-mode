@@ -2116,6 +2116,26 @@ assert_throws
 fixtures
 test
 
+####################
+##  Rails config  ##
+####################
+config.after_initialize
+config.asset_host
+config.autoload_once_paths
+config.autoload_paths
+config.cache_classes
+config.action_view.cache_template_loading
+config.cache_store
+memory_store
+file_store
+mem_cache_store
+null_store
+config.colorize_logging
+config.consider_all_requests_local
+local_request?
+config.console
+config.dependency_loading
+
 #############
 ##  Rspec  ##
 #############
@@ -2151,6 +2171,10 @@ should_not
 specify
 to
 visit
+stub
+should_receive
+any_instance
+and_return
 
 failure_message_for_should
 failure_message_for_should_not

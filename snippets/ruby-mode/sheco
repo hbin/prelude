@@ -2,5 +2,5 @@
 # name: shebang and coding comments
 # key: sheco
 # --
-#!/usr/bin/ruby
+#!/usr/bin/env ruby -w
 # -*- coding: utf-8 -*-
