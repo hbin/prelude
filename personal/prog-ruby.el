@@ -11,6 +11,11 @@
 
 ;;; Code:
 
+(prelude-require-package 'rbenv)
+(require 'rbenv)
+(setq rbenv-show-active-ruby-in-modeline nil)
+(global-rbenv-mode)
+
 "Prevent Emacs from adding coding shebang automatically."
 (custom-set-variables
  '(ruby-insert-encoding-magic-comment nil))
