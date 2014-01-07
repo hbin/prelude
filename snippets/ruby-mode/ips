@@ -1,0 +1,7 @@
+# name : Benchmark.ips do ... end
+# key: ips
+# --
+Benchmark.ips do |x|
+  x.report '$0' do
+  end
+end
