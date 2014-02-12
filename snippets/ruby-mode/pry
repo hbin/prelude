@@ -2,4 +2,4 @@
 # name : binding.pry
 # key: pry
 # --
-binding.pry
+require 'pry'; binding.pry
