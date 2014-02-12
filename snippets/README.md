@@ -69,7 +69,7 @@ Hi, my name is
 [Huang Bin](http://www.google.com.hk/#hl=en&newwindow=1&safe=strict&q=i+want+an+aston+martin&oq=I+want+an+aston+martin&aq=0&aqi=g1&aql=&gs_sm=1&gs_upl=17485l20618l17l22771l3l3l0l0l0l0l106l315l0.3l3l0&gs_l=serp.1.0.0.17485l20618l17l22771l3l3l0l0l0l0l106l315l0j3l3l0.frgbld.&bav=on.2,or.r_gc.r_pw.,cf.osb&fp=a292937e2003130a&biw=1310&bih=682). I
 am a programmer lives in Beijin China. I am a big fans of Emacs and
 I am very interesting in Ruby on Rails and FP.<br> If you're interesting in hire me,
-[tell me about it](mailto:embrace.hbin@gmail.com).
+[tell me about it](mailto:huangbin88@foxmail.com).
 
 ## At Last
 Refactor Done, cheer up!

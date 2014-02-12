@@ -1,4 +1,3 @@
-# contributor: hbin <embrace.hbin@gmail.com>
 # key: form
 # --
 <form action="$1" method="$2" accept-charset="utf-8">

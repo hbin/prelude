@@ -1,8 +1,8 @@
 ;; misc-yas.el --- Configuration for Yasnippet
 ;;
-;; Copyright (C) 2012-2013 Huang Bin
+;; Copyright (C) 2012-2014 Huang Bin
 ;;
-;; Author: Huang Bin <embrace.hbin@gmail.com>
+;; Author: Huang Bin <huangbin88@foxmail.com>
 ;; Version: 1.0.0
 
 ;;; Commentary:
