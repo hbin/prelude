@@ -1,6 +1,6 @@
 ;;; hbin-kbds --- Personal kbds
 ;;
-;; Copyright (C) 2012-2013 Huang Bin
+;; Copyright (C) 2012-2014 Huang Bin
 ;;
 ;; Author: Huang Bin <huangbin88@foxmail.com>
 ;; Version: 1.0.0
@@ -76,6 +76,8 @@
 ;;; Textmate
 (global-set-key (kbd "M-t") 'textmate-goto-file)
 (global-set-key (kbd "M-T") 'textmate-goto-symbol)
+(global-set-key (kbd "M-]") 'textmate-shift-right)
+(global-set-key (kbd "M-[") 'textmate-shift-left)
 
 (provide 'hbin-kbds)
 ;;; hbin-kbds.el ends here
