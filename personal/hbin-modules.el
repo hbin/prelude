@@ -13,7 +13,7 @@
 ;; (require 'prelude-erlang)
 ;; (require 'prelude-haskell)
 (require 'prelude-js)
-(require 'prelude-key-chord)
+;; (require 'prelude-key-chord)
 ;; (require 'prelude-latex)
 ;; (require 'prelude-lisp)
 ;; (require 'prelude-mediawiki)

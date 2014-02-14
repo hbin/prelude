@@ -1,6 +1,6 @@
 ;;; hbin-misc --- miscellany
 ;;
-;; Copyright (C) 2012-2013 Huang Bin
+;; Copyright (C) 2012-2014 Huang Bin
 ;;
 ;; Author: Huang Bin <huangbin88@foxmail.com>
 ;; Version: 1.0.0
@@ -13,17 +13,25 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin highlight-symbol textmate multiple-cursors whole-line-or-region))
+ '(popwin highlight-symbol textmate multiple-cursors whole-line-or-region key-chord))
+
+;;; Disable guru-mode completely
+(require 'guru-mode)
+(setq prelude-guru nil)
 
 ;; Expand region
 (require 'expand-region)
 (global-set-key (kbd "M-h") 'er/expand-region)
 
-;; Textmate
+;;; Textmate
 (require 'textmate)
 (setq textmate-use-file-cache nil)
+(global-set-key (kbd "M-t") 'textmate-goto-file)
+(global-set-key (kbd "M-T") 'textmate-goto-symbol)
+(global-set-key (kbd "M-]") 'textmate-shift-right)
+(global-set-key (kbd "M-[") 'textmate-shift-left)
 
-;; Highlight symbols
+;;; Highlight symbols
 (require 'highlight-symbol)
 (global-set-key (kbd "M-m") 'highlight-symbol-at-point)
 (global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
@@ -32,7 +40,7 @@
 (global-set-key (kbd "M-N") 'highlight-symbol-next-in-defun)
 (global-set-key (kbd "M-P") 'highlight-symbol-prev-in-defun)
 
-;; Multiple Cursors
+;;; Multiple Cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "S-<down>") 'mc/mark-next-lines)
@@ -41,25 +49,32 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
 
-;; Whole line or region
+;;; Whole line or region
 (require 'whole-line-or-region)
 (whole-line-or-region-mode)
 
-;; 使用英文拼写词库
+;;; iSpell
+(require 'ispell)
 (setq ispell-dictionary "english")
-
-;; 使用 aspell 做拼写检查，会突出错误拼写，而不是像 ispell 在 minibuffer 中显示
 (setq ispell-program-name "aspell"
       ispell-extra-args '("--sug-mode=ultra"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (add-hook 'message-mode-hook 'turn-on-flyspell)
 ;; (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-;; Popwin
+;;; Popwin
 (require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
+;; (setq display-buffer-function 'popwin:display-buffer)
 
-;; Ignore '/'
+;;; key chord mode
+(require 'key-chord)
+(key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
+(key-chord-define-global "uu" 'undo-tree-visualize)
+(key-chord-define-global "xx" 'execute-extended-command)
+(key-chord-define-global "yy" 'browse-kill-ring)
+(key-chord-mode +1)
+
+;;; Ignore '/'
 (require 'ffap)
 (defvar ffap-c-commment-regexp "^/\\*+"
   "Matches an opening C-style comment, like \"/***\".")

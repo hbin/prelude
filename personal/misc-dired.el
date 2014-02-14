@@ -40,16 +40,33 @@
                  ))))
 
 (defun hbin-dired-mode-init ()
-  (hl-line-mode)
+  (hl-line-mode 1)
   (dired-omit-mode 1))
 
 (eval-after-load "dired" '(hbin-dired-mode-setup))
 (add-hook 'dired-mode-hook 'hbin-dired-mode-init)
 
-;; Project explorer tree
+;;; Project explorer tree
 (prelude-require-package 'project-explorer)
 (custom-set-variables '(pe/width 30))
 (require 'project-explorer)
+
+(defun pe/return (&optional arg)
+  "ARG stands for file on the cursor."
+  (interactive)
+  (if (file-directory-p (pe/user-get-filename))
+      (pe/tab arg)
+    (pe/find-file arg)))
+
+(custom-set-variables '(pe/width 30)
+                      '(pe/omit-regex "^\\.\\|^#\\|~$\\|\\.elc$"))
+
+(define-key project-explorer-mode-map (kbd "I") 'pe/toggle-omit)
+(define-key project-explorer-mode-map (kbd "C") 'pe/change-directory)
+(define-key project-explorer-mode-map (kbd "o") 'pe/return)
+(define-key project-explorer-mode-map (kbd "m a") 'pe/create-file)
+(define-key project-explorer-mode-map (kbd "m d ") 'pe/delete-file)
+(define-key project-explorer-mode-map (kbd "m c") 'pe/copy-file)
 (global-set-key (kbd "C-x C-j") 'project-explorer-open)
 
 (provide 'misc-dired)
