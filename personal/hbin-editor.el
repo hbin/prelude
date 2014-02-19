@@ -40,6 +40,8 @@
 (setq delete-by-moving-to-trash t)       ; 删除的文件放到回收站
 (setq ring-bell-function #'ignore)       ; No beep
 
+(setq default-directory "~/")
+
 ;; Scroll
 (setq scroll-margin 0
       scroll-conservatively 100000
