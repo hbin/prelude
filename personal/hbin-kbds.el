@@ -20,6 +20,13 @@
         (setq mac-command-modifier 'meta)
         (setq mac-option-modifier 'super))))
 
+;; disable several ido kbds
+(add-hook 'ido-setup-hook 'ido-my-keys)
+(defun ido-my-keys ()
+  "Add my keybindings for ido."
+  (define-key ido-file-dir-completion-map "\C-x\C-f" nil)
+  (define-key ido-common-completion-map "\C-f" 'forward-char))
+
 ;; define my own keymap
 (defvar hbin-map (make-sparse-keymap))
 (global-set-key (kbd "M-z") hbin-map)
