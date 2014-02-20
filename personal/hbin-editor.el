@@ -51,8 +51,8 @@
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 5) ((control) . nil)))
 
 ;; Sweet window-splits
-(defadvice split-window-right (after balance activate) (balance-windows))
-(defadvice delete-window (after balance activate) (balance-windows))
+;; (defadvice split-window-right (after balance activate) (balance-windows))
+;; (defadvice delete-window (after balance activate) (balance-windows))
 
 ;; File encoding
 (require 'un-define "un-define" t)
