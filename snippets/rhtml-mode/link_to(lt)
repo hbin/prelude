@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: link_to
 # key: lt
 # --
 <%= link_to "$1", $0 %>

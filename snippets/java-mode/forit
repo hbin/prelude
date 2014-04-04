@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: for iterator
 # key: fori
 # --
 for (Iterator ${1:it} = $2.iterator(); $1.hasNext(); ) {

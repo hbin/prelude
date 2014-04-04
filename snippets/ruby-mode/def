@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: def ... end
 # key: def
 # --
 def ${1:${2:method_name}(${3:args})}

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: click
 # key: click
 # --
 ${1:obj}.click(function () {

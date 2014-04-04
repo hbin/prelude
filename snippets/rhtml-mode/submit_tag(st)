@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: submit_tag
 # key: st
 # --
 <%= submit_tag("$0") %>

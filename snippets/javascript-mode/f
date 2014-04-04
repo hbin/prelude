@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: function
 # key: f
 # --
 function($1) {$0}

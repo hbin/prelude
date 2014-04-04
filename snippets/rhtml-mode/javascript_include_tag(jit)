@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: javascript_include_tag
 # key: jit
 # --
 <%= javascript_include_tag $0 %>

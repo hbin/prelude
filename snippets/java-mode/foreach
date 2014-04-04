@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: for each
 # key: fore
 # --
 for (${1:String} ${2:name} : ${4:iterable}) {

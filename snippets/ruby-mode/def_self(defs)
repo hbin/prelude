@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: def self ... end
 # key: defs
 # --
 def self.${1:class_method_name}

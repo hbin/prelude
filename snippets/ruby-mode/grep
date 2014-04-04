@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: grep
 # key: grep
 # --
 grep(${1:/${2:pattern}/}) { |${3:match}| $0 }

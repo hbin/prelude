@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: form_for
 # key: ff
 # --
 <%= form_for ${1:@model} do |f| %>

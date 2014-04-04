@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: RSpec describe
 # key: describe
 # --
 describe '$1' do

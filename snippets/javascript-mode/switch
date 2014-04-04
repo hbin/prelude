@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: switch
 # key: switch
 # --
 switch(${1:expression}) {

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: if ... end
 # key: if
 # --
 <% if ${1:condition} %>

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: max
 # key: max
 # --
 max { |a, b| $0 }

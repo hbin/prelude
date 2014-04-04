@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: radio_button
 # key: rb
 # --
 <%= radio_button($0) %>

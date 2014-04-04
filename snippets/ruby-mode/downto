@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: downto
 # key: downto
 # --
 downto(${1:0}) { |$2| $0 }

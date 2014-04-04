@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: transaction
 # key: trans
 # --
 transaction${1} { $0 }

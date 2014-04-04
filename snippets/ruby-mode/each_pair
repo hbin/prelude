@@ -1,4 +1,3 @@
-# contributor: hbin <embrace.hbin@gmail.com>
 # name: each_pair { |name, value| ... }
 # key: each_pair
 # --

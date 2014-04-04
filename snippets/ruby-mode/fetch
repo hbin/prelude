@@ -1,4 +1,4 @@
-# This was cloned from a TextMate bundle for yasnippet.
+# name: fetch
 # key: fetch
 # --
 fetch(${1:name}) { |${2}| $0 }

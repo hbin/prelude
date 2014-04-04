@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: JSON.stringify
 # key: jsons
 # --
 JSON.stringify(${1:object});

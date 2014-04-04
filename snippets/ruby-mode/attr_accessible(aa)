@@ -1,5 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
-# name : attr_accessible :...
+# name : attr_accessible
 # key: aa
 # --
 attr_accessible :

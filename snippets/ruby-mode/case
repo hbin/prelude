@@ -1,5 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
-# name : case ... end
+# name : case ... when ... end
 # key: case
 # --
 case ${1:object}

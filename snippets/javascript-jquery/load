@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: load
 # key: load
 # --
 ${1:obj}.load(function () {
