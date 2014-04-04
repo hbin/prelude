@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: belongs_to
 # key: bt
 # --
 belongs_to :$0

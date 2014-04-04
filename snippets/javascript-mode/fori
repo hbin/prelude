@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: for in
 # key: fori
 # --
 for (var ${1:prop} in ${2:Things}) {

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: each
 # key: each
 # --
 ${1:obj}.each(function (index) {

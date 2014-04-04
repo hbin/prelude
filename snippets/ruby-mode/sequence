@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: sequence
 # key: sequence
 # --
 sequence(:$1) { $0 }

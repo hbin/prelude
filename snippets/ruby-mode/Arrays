@@ -1,4 +1,3 @@
-# contributor: hbin <embrace.hbin@gmail.com>
 # name: Array.new(10) { |i| ... }
 # key: Arrays
 # --

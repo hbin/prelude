@@ -1,4 +1,3 @@
-# contributor: hbin <embrace.hbin@gmail.com>
 # name: each_line { |line| ... }
 # key: each_line
 # --

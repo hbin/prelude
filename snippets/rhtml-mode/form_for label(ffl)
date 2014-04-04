@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: form_for lable
 # key: ffl
 # --
 <%= f.label :${1:attribute}${2:, "${3:Attribute}"} %>$0

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: check_box
 # key: cb
 # --
 <%= check_box($0) %>

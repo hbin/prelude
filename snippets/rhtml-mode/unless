@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: unless
 # key: unless
 # --
 <% unless ${1:condition} %>

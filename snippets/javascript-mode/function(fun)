@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: function
 # key: fun
 # --
 function ${1:function_name}(${2:argument}) {

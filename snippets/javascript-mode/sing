@@ -1,4 +1,3 @@
-# contributor: hbin <embrace.hbin@gmail.com>
 # key: sing
 # --
 function ${1:Singleton} (${2:argument}) {

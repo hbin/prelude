@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: def initialize ... end
 # key: defi
 # --
 def initialize(${1:params})

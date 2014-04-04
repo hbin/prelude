@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: min
 # key: min
 # --
 min { |a, b| $0 }

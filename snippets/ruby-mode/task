@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: task ... end
 # key: task
 # --
 task ${1:taks_name} => :${2:environment} do

@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: do ... end
 # key: d
 # --
 <% ${1:method} do %>

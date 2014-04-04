@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: System.out.println
 # key: syso
 # --
 System.out.println($0);

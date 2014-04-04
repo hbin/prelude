@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: def coerce ... end
 # key: defc
 # --
 def coerce(other)

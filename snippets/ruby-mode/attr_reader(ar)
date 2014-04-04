@@ -1,4 +1,4 @@
-# contributor: hbin <embrace.hbin@gmail.com>
+# name: attr_reader
 # key: ar
 # --
 attr_reader :
