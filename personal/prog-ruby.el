@@ -40,13 +40,6 @@
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
 
-(defun insert-arrow ()
-  "Insert arrow and put cursor at the right position."
-  (interactive)
-  (delete-horizontal-space t)
-  (insert " => "))
-(global-set-key (kbd "C-.") 'insert-arrow)
-
 ;; Programming Rails App.
 (prelude-require-package 'rinari)
 (require 'rinari)
