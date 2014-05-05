@@ -11,22 +11,35 @@
 
 ;;; Code:
 
+"Prevent Emacs from adding coding shebang automatically."
+(custom-set-variables
+ '(ruby-insert-encoding-magic-comment nil))
+
+(prelude-require-package 'ruby-hash-syntax)
+(require 'ruby-hash-syntax)
+
 (prelude-require-package 'rbenv)
 (require 'rbenv)
 (setq rbenv-show-active-ruby-in-modeline nil)
 (global-rbenv-mode)
 
-"Prevent Emacs from adding coding shebang automatically."
-(custom-set-variables
- '(ruby-insert-encoding-magic-comment nil))
+;; Programming Rails App.
+(prelude-require-package 'rinari)
+(require 'rinari)
+(define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
+(define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
+(define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
 
 (defun hbin-ruby-mode-setup ()
   "Font lock for new hash style."
   (font-lock-add-keywords
    'ruby-mode
-   '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face)))))
+   '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
+
+  (define-key ruby-mode-map (kbd "C-.") 'ruby-toggle-hash-syntax))
 
 (defun hbin-ruby-mode-init ()
+  "Modify the Ruby syntax."
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?$ "w")
@@ -35,18 +48,11 @@
   (modify-syntax-entry ?! "w")
   (modify-syntax-entry ?: ".")
 
+  (rinari-minor-mode 1)
   (flycheck-mode 1))
 
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
-
-;; Programming Rails App.
-(prelude-require-package 'rinari)
-(require 'rinari)
-(define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
-(define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
-(define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
-(global-rinari-mode)
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
