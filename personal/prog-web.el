@@ -43,6 +43,9 @@
        (define-key zencoding-mode-keymap (kbd "C-c C-j") 'zencoding-expand-line)
        (zencoding-mode 1)
 
+       ;; Rinari
+       (rinari-minor-mode +1)
+
        ;; erb
        (ruby-tools-mode +1)
        (modify-syntax-entry ?$ "w")
