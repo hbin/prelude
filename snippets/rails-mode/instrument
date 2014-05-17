@@ -1,0 +1,7 @@
+# name: Notifications.instrument
+# key: instrument
+# --
+# Simply call instrument with a name, payload and a block.
+ActiveSupport::Notifications.instrument("my.custom.event", this: :data) do
+  # do your custom stuff here
+end
