@@ -23,13 +23,6 @@
 (setq rbenv-show-active-ruby-in-modeline nil)
 (global-rbenv-mode)
 
-;; Programming Rails App.
-(prelude-require-package 'rinari)
-(require 'rinari)
-(define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
-(define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
-(define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
-
 (defun hbin-ruby-mode-setup ()
   "Font lock for new hash style."
   (font-lock-add-keywords
@@ -53,6 +46,27 @@
 
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
+
+;; Programming Rails App.
+(prelude-require-package 'rinari)
+(require 'rinari)
+
+(defun rinari-mode-setup ()
+  "Setup for rinari."
+  (define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
+  (define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
+  (define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
+
+  (setq rinari-controller-keywords
+        (append rinari-controller-keywords
+                '("include" "extend" "before_action" "after_action"
+                  "respond_to")))
+
+  (setq rinari-model-keywords
+        (append rinari-model-keywords
+                '("include" "extend" "delegate"))))
+
+(eval-after-load 'rinari '(rinari-mode-setup))
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
