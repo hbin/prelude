@@ -8,14 +8,11 @@ module ${1:`(let ((fn (capitalize (file-name-nondirectory
            (cond
              ((string-match "_" fn) (replace-match "" nil nil fn))
               (t fn)))`}
-  module ClassMethods
-  end
-
-  module InstanceMethods
-  end
 
   def self.included(base)
     base.extend         ClassMethods
-    base.send :include, InstanceMethods
+  end
+
+  module ClassMethods
   end
 end

@@ -1825,6 +1825,7 @@ redirect_to
 render
 request
 respond_to
+respond_with
 root
 rescue_from
 session
@@ -2235,8 +2236,9 @@ coffee-rails
 cucumber
 cucumber-rails
 
-database_cleaner
+devise
 
+database_cleaner
 factory_girl
 factory_girl_rails
 
@@ -2254,6 +2256,9 @@ first_page?
 last_page?
 max_per_page
 
+mongoid
+
+multi_json
 meta_request
 
 quiet_assets
@@ -2272,7 +2277,39 @@ pry
 pry-debugger
 total_entries
 
+rack-throttle
 rack-mini-profiler
 rspec-rails
+jazz_hands
+seedbank
+
+ffaker
+
+Faker::Internet.email
+Faker::Internet.http_url
+
+Faker::Name.name
+Faker::Name.first_name
+Faker::Name.last_name
+Faker::NameCN.name
+Faker::NameCN.first_name
+Faker::NameCN.last_name
+
+Faker::Lorem.characters
+Faker::Lorem.word
+Faker::Lorem.words
+Faker::Lorem.sentence
+Faker::Lorem.sentences
+Faker::Lorem.paragraph
+Faker::Lorem.paragraphs
+Faker::Lorem.characters
+Faker::LoremCN.word
+Faker::LoremCN.words
+Faker::LoremCN.sentence
+Faker::LoremCN.sentences
+Faker::LoremCN.paragraph
+Faker::LoremCN.paragraphs
+
+
 
 ;;;;; Rails dictionary }}}
