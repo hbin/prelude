@@ -21,8 +21,8 @@
 
 (defun hbin-frame-init (frame)
   "Custom behaviours for FRAME."
-  (set-frame-font "Monaco:pixelsize=18")
-  (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=18")
+  (set-frame-font "Monaco:pixelsize=16")
+  (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=16")
 
   ;; UI
   (tooltip-mode -1)            ; 不要 tooltip
@@ -53,6 +53,8 @@
 
 ;; Add themes to load path
 (add-subfolders-to-theme-load-path preldue-themes-dir)
+
+(load-theme 'molokai)
 
 (provide 'hbin-ui)
 ;;; hbin-ui.el ends here
