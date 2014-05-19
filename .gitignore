@@ -19,5 +19,6 @@ savefile/
 projectile-bookmarks.eld
 session*
 .cask
+tramp
 .mc-lists.el
 ac-comphist.dat
