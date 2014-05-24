@@ -26,7 +26,7 @@
 
   ;; UI
   (tooltip-mode -1)            ; 不要 tooltip
-  (menu-bar-mode -1)           ; 不要菜单栏
+  (menu-bar-mode 1)            ; 需要菜单栏
   (tool-bar-mode -1)           ; 不需要工具栏
   (scroll-bar-mode -1)         ; 不需要滚动条
   (set-fringe-mode '(1 . 1))   ; 小的 fringe 边距

@@ -43,7 +43,7 @@
 (global-set-key (kbd "C-x \\") 'align-regexp)
 
 ;; Help command
-(global-set-key (kbd "M-?") 'help-command)
+(global-set-key (kbd "<f1>") 'help-command)
 
 ;; Back killing
 (global-set-key (kbd "C-h") 'delete-backward-char)
