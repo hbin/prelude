@@ -72,8 +72,41 @@
 (global-set-key (kbd "C-M-%") 'query-replace)
 (global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
 
-;; Ack
-(define-key hbin-map (kbd "a") 'ack)
+(prelude-require-packages
+ '(expand-region highlight-symbol multiple-cursors projectile))
+
+;; Expand region
+(require 'expand-region)
+(global-set-key (kbd "M-h") 'er/expand-region)
+
+;;; Highlight symbols
+(require 'highlight-symbol)
+(global-set-key (kbd "M-m") 'highlight-symbol-at-point)
+(global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
+(global-set-key (kbd "M-n") 'highlight-symbol-next)
+(global-set-key (kbd "M-p") 'highlight-symbol-prev)
+(global-set-key (kbd "M-N") 'highlight-symbol-next-in-defun)
+(global-set-key (kbd "M-P") 'highlight-symbol-prev-in-defun)
+
+;;; Multiple Cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "S-<down>") 'mc/mark-next-lines)
+(global-set-key (kbd "S-<up>") 'mc/mark-previous-lines)
+(global-set-key (kbd "C-*") 'mc/mark-all-symbols-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
+
+;;; Projectile
+(require 'projectile)
+(define-key projectile-mode-map (kbd "M-t") 'projectile-find-file)
+(define-key projectile-mode-map (kbd "M-T") 'projectile-find-file-other-window)
+(define-key projectile-mode-map (kbd "M-F") 'projectile-grep)
+(define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
+(define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
+(define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
+(define-key projectile-mode-map (kbd "C-x C-i") 'projectile-find-tag)
+(define-key projectile-mode-map (kbd "C-x C-p") 'projectile-switch-project)
 
 ;;; Winner Mode
 (winner-mode 1)
