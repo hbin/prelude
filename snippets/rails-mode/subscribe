@@ -10,12 +10,13 @@
 #   - An unique ID for this event
 #   - The payload (described in previous sections)
 #
-ActiveSupport::Notifications.subscribe "process_action.action_controller" do |*args|
+ActiveSupport::Notifications.subscribe "${1:process_action.action_controller}" do |*args|
   event = ActiveSupport::Notifications::Event.new(*args)
 
   event.name      # => "process_action.action_controller"
   event.duration  # => 10 (in milliseconds)
   event.payload   # => {:extra=>information}
 
-  Rails.logger.info "#{event} Received!"
+  # do your custom stuff here
+  $0
 end
