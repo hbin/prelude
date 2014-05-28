@@ -1,8 +1,8 @@
 # name: Rails::Railtie#initializer
 # key: initializer
 # --
-initializer "initializer name" do |_app|
-  ActiveSupport.on_load :active_reload do
-    # include ...
+initializer "${1:initializer name}" do
+  ActiveSupport.on_load :${2:active_reload} do
+    $0
   end
 end
