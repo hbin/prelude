@@ -20,16 +20,17 @@
         (setq mac-command-modifier 'meta)
         (setq mac-option-modifier 'super))))
 
-;; disable several ido kbds
-(add-hook 'ido-setup-hook 'ido-my-keys)
+;; Define my own keymap
+(defvar hbin-map (make-sparse-keymap))
+(global-set-key (kbd "M-z") hbin-map)
+
+;; Disable several ido kbds
+(require'ido)
 (defun ido-my-keys ()
   "Add my keybindings for ido."
   (define-key ido-file-dir-completion-map "\C-x\C-f" nil)
   (define-key ido-common-completion-map "\C-f" 'forward-char))
-
-;; define my own keymap
-(defvar hbin-map (make-sparse-keymap))
-(global-set-key (kbd "M-z") hbin-map)
+(add-hook 'ido-setup-hook 'ido-my-keys)
 
 ;;; Unbinding keys
 (global-unset-key (kbd "C-x C-p"))      ; used to mark page
@@ -101,7 +102,7 @@
 (require 'projectile)
 (define-key projectile-mode-map (kbd "M-t") 'projectile-find-file)
 (define-key projectile-mode-map (kbd "M-T") 'projectile-find-file-other-window)
-(define-key projectile-mode-map (kbd "M-F") 'projectile-grep)
+(define-key projectile-mode-map (kbd "M-g") 'projectile-grep)
 (define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
 (define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
 (define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
