@@ -39,6 +39,7 @@
 ;;; key chord mode
 (require 'key-chord)
 (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
+(key-chord-define-global "GG" 'goto-line)
 (key-chord-mode +1)
 
 ;;; Ignore '/'
