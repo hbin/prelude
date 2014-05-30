@@ -49,6 +49,7 @@
     anzu
     browse-kill-ring
     dash
+    discover-my-major
     diff-hl
     diminish
     easy-kill
@@ -61,6 +62,7 @@
     gitignore-mode
     grizzl
     guru-mode
+    ov
     projectile
     magit
     move-text
@@ -153,7 +155,8 @@ PACKAGE is installed only if not already present.  The file is opened in MODE."
     ("\\.scss\\'" scss-mode scss-mode)
     ("\\.slim\\'" slim-mode slim-mode)
     ("\\.textile\\'" textile-mode textile-mode)
-    ("\\.yml\\'" yaml-mode yaml-mode)))
+    ("\\.yml\\'" yaml-mode yaml-mode)
+    ("Dockerfile\\'" dockerfile-mode dockerfile-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
 ;; so we add them manually if it's already installed
