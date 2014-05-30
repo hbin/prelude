@@ -13,9 +13,13 @@
 
 ;;; Code:
 (prelude-require-package 'eproject)
+
 (require 'eproject)
 (require 'custom)
 (require 'etags)
+
+;; reread TAGS without querying if it has changed.
+(setq tags-revert-without-query t)
 
 ;;; Custom stuff
 
@@ -207,9 +211,9 @@ found, don't open the selection window."
       (setq buffer-read-only nil)
       (erase-buffer)
       (insert "Finding tag: " tagname "\n")
-      (mapcar (lambda (tag-file)
-                (setq tag-count (etags-select-insert-matches tagname tag-file tag-count)))
-              tag-files)
+      (mapc (lambda (tag-file)
+              (setq tag-count (etags-select-insert-matches tagname tag-file tag-count)))
+            tag-files)
       (cond ((= tag-count 0)
              (message (concat "No matches for tag \"" tagname "\""))
              (ding))
