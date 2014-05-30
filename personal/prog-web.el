@@ -58,16 +58,6 @@
      (add-hook 'web-mode-hook (lambda ()
                                 (run-hooks 'hbin-web-mode-hook)))))
 
-;;; CSS
-(eval-after-load 'css-mode
-  '(progn
-     (defun hbin-css-mode-defaults ()
-       (rainbow-mode 1))
-
-     (setq hbin-css-mode-hook 'hbin-css-mode-defaults)
-     (add-hook 'css-mode-hook (lambda ()
-                                (run-hooks 'hbin-css-mode-hook)))))
-
 ;;; Slim-mode
 (eval-after-load 'slim-mode
   '(progn
@@ -77,18 +67,7 @@
 
      (setq hbin-slim-mode-hook 'hbin-slim-mode-defaults)
      (add-hook 'slim-mode-hook (lambda ()
-                                 (run-hook 'hbin-slim-mode-hook)))))
-
-;;; Scss-mode
-(eval-after-load 'scss-mode
-  '(progn
-     (defun hbin-scss-mode-defaults ()
-       (rainbow-mode 1)
-       (setq scss-compile-at-save nil))
-
-     (setq hbin-scss-mode-hook 'hbin-scss-mode-defaults)
-     (add-hook 'scss-mode-hook (lambda ()
-                                 (run-hook 'hbin-scss-mode-hook)))))
+                                 (run-hooks 'hbin-slim-mode-hook)))))
 
 (provide 'prog-web)
 ;;; prog-web.el ends here
