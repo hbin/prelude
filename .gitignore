@@ -1,3 +1,5 @@
+.mc-lists.el
+ac-comphist.dat
 *~
 *.elc
 auto-save-list
@@ -20,5 +22,4 @@ projectile-bookmarks.eld
 session*
 .cask
 tramp
-.mc-lists.el
-ac-comphist.dat
+/var/pcache
