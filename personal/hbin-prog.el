@@ -21,7 +21,8 @@
   (local-set-key (kbd "C-c C-c") 'whole-line-or-region-comment-dwim-2))
 
 (add-hook 'prog-mode-hook 'hbin-prog-mode-init)
-(add-hook 'yaml-mode-hook 'hbin-prog-mode-init)
+(add-hook 'scss-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+(add-hook 'yaml-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
 (define-key 'help-command (kbd "D") 'dash-at-point)
 
