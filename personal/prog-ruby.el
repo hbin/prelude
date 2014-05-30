@@ -29,7 +29,7 @@
    'ruby-mode
    '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
 
-  (define-key ruby-mode-map (kbd "C-.") 'ruby-toggle-hash-syntax))
+  (define-key ruby-mode-map (kbd "C-c }") 'ruby-toggle-hash-syntax))
 
 (defun hbin-ruby-mode-init ()
   "Modify the Ruby syntax."
@@ -53,9 +53,13 @@
 
 (defun rinari-mode-setup ()
   "Setup for rinari."
-  (define-key rinari-minor-mode-map (kbd "C-c m") 'rinari-find-model)
-  (define-key rinari-minor-mode-map (kbd "C-c v") 'rinari-find-view)
-  (define-key rinari-minor-mode-map (kbd "C-c c") 'rinari-find-controller)
+  (define-key rinari-minor-mode-map (kbd "C-c ; m") 'rinari-find-model)
+  (define-key rinari-minor-mode-map (kbd "C-c ; v") 'rinari-find-view)
+  (define-key rinari-minor-mode-map (kbd "C-c ; c") 'rinari-find-controller)
+  (define-key rinari-minor-mode-map (kbd "C-c ; h") 'rinari-find-helper)
+  (define-key rinari-minor-mode-map (kbd "C-c ; r") 'rinari-find-rspec)
+  (define-key rinari-minor-mode-map (kbd "C-c ; p") 'rinari-goto-partial)
+  (define-key rinari-minor-mode-map (kbd "C-c ; x") 'rinari-extract-partial)
 
   (setq rinari-controller-keywords
         (append rinari-controller-keywords
@@ -67,6 +71,21 @@
                 '("include" "extend" "delegate"))))
 
 (eval-after-load 'rinari '(rinari-mode-setup))
+
+;; RSpec.
+(prelude-require-package 'rspec-mode)
+(require 'rspec-mode)
+
+(setq rspec-use-spring-when-possible nil
+      rspec-use-zeus-when-possible nil
+      rspec-use-opts-file-when-available nil)
+
+(defadvice rspec-compile (around rspec-compile-around)
+  "Use BASH shell for running the specs because of ZSH issues."
+  (let ((shell-file-name "/bin/bash"))
+    ad-do-it))
+
+(ad-activate 'rspec-compile)
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
