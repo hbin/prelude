@@ -74,7 +74,7 @@
 (global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
 
 (prelude-require-packages
- '(expand-region highlight-symbol multiple-cursors projectile))
+ '(expand-region highlight-symbol multiple-cursors))
 
 ;; Expand region
 (require 'expand-region)
@@ -97,17 +97,6 @@
 (global-set-key (kbd "C-*") 'mc/mark-all-symbols-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
-
-;;; Projectile
-(require 'projectile)
-(define-key projectile-mode-map (kbd "M-t") 'projectile-find-file)
-(define-key projectile-mode-map (kbd "M-T") 'projectile-find-file-other-window)
-(define-key projectile-mode-map (kbd "M-g") 'projectile-grep)
-(define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
-(define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
-(define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
-(define-key projectile-mode-map (kbd "C-x C-i") 'projectile-find-tag)
-(define-key projectile-mode-map (kbd "C-x C-p") 'projectile-switch-project)
 
 ;;; Winner Mode
 (winner-mode 1)
