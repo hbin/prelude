@@ -27,12 +27,14 @@
   "Font lock for new hash style."
   (font-lock-add-keywords
    'ruby-mode
-   '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
+   '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))
+     ("\\(^\\|[^_:.@$]\\|\\.\\.\\)\\b\\(include\\|extend\\|require\\|autoload\\)" . font-lock-function-name-face)))
 
   (define-key ruby-mode-map (kbd "C-c }") 'ruby-toggle-hash-syntax))
 
 (defun hbin-ruby-mode-init ()
   "Modify the Ruby syntax."
+
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?$ "w")
@@ -41,8 +43,8 @@
   (modify-syntax-entry ?! "w")
   (modify-syntax-entry ?: ".")
 
-  (rinari-minor-mode 1)
-  (flycheck-mode 1))
+  ;; Launch rinari if in a rails project
+  (rinari-launch))
 
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
@@ -63,12 +65,11 @@
 
   (setq rinari-controller-keywords
         (append rinari-controller-keywords
-                '("include" "extend" "before_action" "after_action"
-                  "respond_to")))
+                '("before_action" "after_action" "respond_to" "cookies")))
 
   (setq rinari-model-keywords
         (append rinari-model-keywords
-                '("include" "extend" "delegate"))))
+                '("delegate"))))
 
 (eval-after-load 'rinari '(rinari-mode-setup))
 
