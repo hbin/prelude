@@ -43,31 +43,39 @@
        (define-key zencoding-mode-keymap (kbd "C-c C-j") 'zencoding-expand-line)
        (zencoding-mode 1)
 
-       ;; Rinari
-       (rinari-minor-mode +1)
-
        ;; erb
        (ruby-tools-mode +1)
        (modify-syntax-entry ?$ "w")
        (modify-syntax-entry ?@ "w")
        (modify-syntax-entry ?? "w")
        (modify-syntax-entry ?! "w")
-       (modify-syntax-entry ?: "."))
+       (modify-syntax-entry ?: ".")
+
+       ;; launch rinari if in a rails project.
+       (rinari-launch))
 
      (setq hbin-web-mode-hook 'hbin-web-mode-defaults)
-     (add-hook 'web-mode-hook (lambda ()
-                                (run-hooks 'hbin-web-mode-hook)))))
+     (add-hook 'web-mode-hook (lambda () (run-hooks 'hbin-web-mode-hook)))))
 
 ;;; Slim-mode
 (eval-after-load 'slim-mode
   '(progn
      (defun hbin-slim-mode-defaults ()
        (modify-syntax-entry ?? "w")
-       (modify-syntax-entry ?! "w"))
+       (modify-syntax-entry ?! "w")
+       (rinari-launch))
 
      (setq hbin-slim-mode-hook 'hbin-slim-mode-defaults)
-     (add-hook 'slim-mode-hook (lambda ()
-                                 (run-hooks 'hbin-slim-mode-hook)))))
+     (add-hook 'slim-mode-hook (lambda () (run-hooks 'hbin-slim-mode-hook)))))
+
+(eval-after-load 'scss-mode
+  '(progn
+     (defun hbin-scss-mode-defaults ()
+       (flycheck-mode -1)
+       (rinari-launch))
+
+     (setq hbin-scss-mode-hook 'hbin-scss-mode-defaults)
+     (add-hook 'scss-mode-hook (lambda () (run-hooks 'hbin-scss-mode-hook)))))
 
 (provide 'prog-web)
 ;;; prog-web.el ends here
