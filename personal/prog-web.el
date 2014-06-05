@@ -49,10 +49,7 @@
        (modify-syntax-entry ?@ "w")
        (modify-syntax-entry ?? "w")
        (modify-syntax-entry ?! "w")
-       (modify-syntax-entry ?: ".")
-
-       ;; launch rinari if in a rails project.
-       (rinari-launch))
+       (modify-syntax-entry ?: "."))
 
      (setq hbin-web-mode-hook 'hbin-web-mode-defaults)
      (add-hook 'web-mode-hook (lambda () (run-hooks 'hbin-web-mode-hook)))))
@@ -62,8 +59,7 @@
   '(progn
      (defun hbin-slim-mode-defaults ()
        (modify-syntax-entry ?? "w")
-       (modify-syntax-entry ?! "w")
-       (rinari-launch))
+       (modify-syntax-entry ?! "w"))
 
      (setq hbin-slim-mode-hook 'hbin-slim-mode-defaults)
      (add-hook 'slim-mode-hook (lambda () (run-hooks 'hbin-slim-mode-hook)))))
@@ -71,8 +67,7 @@
 (eval-after-load 'scss-mode
   '(progn
      (defun hbin-scss-mode-defaults ()
-       (flycheck-mode -1)
-       (rinari-launch))
+       (flycheck-mode -1))
 
      (setq hbin-scss-mode-hook 'hbin-scss-mode-defaults)
      (add-hook 'scss-mode-hook (lambda () (run-hooks 'hbin-scss-mode-hook)))))
