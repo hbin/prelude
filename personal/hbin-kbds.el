@@ -74,7 +74,7 @@
 (global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
 
 (prelude-require-packages
- '(expand-region highlight-symbol multiple-cursors))
+ '(expand-region highlight-symbol multiple-cursors smart-shift))
 
 ;; Expand region
 (require 'expand-region)
@@ -97,6 +97,10 @@
 (global-set-key (kbd "C-*") 'mc/mark-all-symbols-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-symbol-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
+
+(require 'smart-shift)
+(global-set-key (kbd "M-[") 'smart-shift-left)
+(global-set-key (kbd "M-]") 'smart-shift-right)
 
 ;; Goto line
 (global-set-key (kbd "s-g") 'goto-line)

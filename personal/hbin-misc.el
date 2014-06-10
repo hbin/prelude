@@ -43,8 +43,6 @@
 ;;; key chord mode
 (require 'key-chord)
 (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
-(key-chord-define-global "<<" 'smart-shift-left)
-(key-chord-define-global ">>" 'smart-shift-right)
 (key-chord-mode +1)
 
 ;;; Ignore '/'
