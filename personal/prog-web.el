@@ -17,7 +17,9 @@
  '(js2-bounce-indent-p t)
  '(css-indent-offset 2)
  '(coffee-tab-width 2)
- '(zencoding-indentation 2))
+ '(zencoding-indentation 2)
+ '(zencoding-preview-default nil)
+ '(zencoding-insert-flash-time 0.2))
 
 ;;; web mode
 (eval-after-load 'web-mode
