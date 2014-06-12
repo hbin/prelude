@@ -1697,7 +1697,7 @@ validates_with
 acceptance
 allow_blank
 allow_nil
-case_sensitve
+case_sensitive
 confirmation
 exclusion
 foreign_key
