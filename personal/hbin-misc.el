@@ -13,7 +13,7 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin whole-line-or-region key-chord))
+ '(popwin whole-line-or-region key-chord projectile))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
@@ -44,6 +44,10 @@
 (require 'key-chord)
 (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
 (key-chord-mode +1)
+
+;; Projectile
+(require 'projectile)
+(setq projectile-ignored-projects '("/usr/local"))
 
 ;;; Ignore '/'
 (require 'ffap)

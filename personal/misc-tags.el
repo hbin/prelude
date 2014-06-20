@@ -18,8 +18,8 @@
 (require 'custom)
 (require 'etags)
 
-;; reread TAGS without querying if it has changed.
-(setq tags-revert-without-query t)
+(setq tags-revert-without-query t) ; reread TAGS without querying
+(setq tags-add-tables t)           ; Add a new tags without prompt
 
 ;;; Custom stuff
 
