@@ -1,4 +1,4 @@
 # name: form_for submit
 # key: ffs
 # --
-<%= f.submit "${1:Submit}"${2:, :disable_with => 'Submiting...'} %>$0
+<%= f.submit '${1:Submit}' %>$0

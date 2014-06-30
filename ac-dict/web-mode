@@ -98,4 +98,17 @@ stylesheets
 ################
 # 3rd part gem #
 ################
+paginate
+total_pages
+num_pages
+current_page
+first_page?
+last_page?
+max_per_page
+
 will_paginate
+page
+paginate
+per_page
+total_entries
+

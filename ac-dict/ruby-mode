@@ -755,6 +755,7 @@ loop
 method
 method_missing
 methods
+module_function
 nil?
 object_id
 open
@@ -1027,6 +1028,7 @@ union
 
 #############
 
+Digest::SHA1::hexdigest
 Digest::MD5::hexdigest
 SecureRandom
 SecureRandom.hex
@@ -2249,6 +2251,7 @@ jbuilder
 jquery-rails
 
 kaminari
+paginate
 total_pages
 num_pages
 current_page
@@ -2311,5 +2314,11 @@ Faker::LoremCN.paragraph
 Faker::LoremCN.paragraphs
 
 
-
 ;;;;; Rails dictionary }}}
+
+
+;;;;; Rack dictionary {{{
+
+Rack::Session::Cookie::Base64::Marshal.new.decode
+
+;;;;; Rack dictionary }}}
