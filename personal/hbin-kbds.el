@@ -28,7 +28,12 @@
 (require'ido)
 (defun ido-my-keys ()
   "Add my keybindings for ido."
+  (define-key ido-file-dir-completion-map [(meta ?b)] 'backward-word)
+  (define-key ido-file-dir-completion-map [(meta ?d)] 'kill-word)
+  (define-key ido-file-dir-completion-map [(meta ?f)] 'forward-word)
   (define-key ido-file-dir-completion-map "\C-x\C-f" nil)
+  (define-key ido-common-completion-map "\C-a" 'move-beginning-of-line)
+  (define-key ido-common-completion-map "\C-e" 'move-end-of-line)
   (define-key ido-common-completion-map "\C-f" 'forward-char))
 (add-hook 'ido-setup-hook 'ido-my-keys)
 
