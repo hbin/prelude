@@ -45,9 +45,13 @@
 (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
 (key-chord-mode +1)
 
-;; Projectile
+;;; Projectile
 (require 'projectile)
 (setq projectile-ignored-projects '("/usr/local"))
+
+;;; Smartparens
+(require 'smartparens)
+(setq sp-highlight-pair-overlay nil)     ; Do not highlight autoinserted pairs
 
 ;;; Ignore '/'
 (require 'ffap)
