@@ -34,7 +34,7 @@
 
 (require 'prelude-programming)
 
-(prelude-require-packages '(ruby-tools inf-ruby yari))
+(prelude-require-packages '(ruby-tools inf-ruby))
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
@@ -56,8 +56,6 @@
 
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
-
-(define-key 'help-command (kbd "R") 'yari)
 
 (eval-after-load 'ruby-mode
   '(progn
