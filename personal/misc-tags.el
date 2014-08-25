@@ -12,14 +12,12 @@
 ;; Scott Frazer.
 
 ;;; Code:
-(prelude-require-package 'eproject)
-
-(require 'eproject)
+(require 'projectile)
 (require 'custom)
 (require 'etags)
 
 (setq tags-revert-without-query t) ; reread TAGS without querying
-(setq tags-add-tables t)           ; Add a new tags without prompt
+(setq tags-add-tables nil)         ; Add a new tags without prompt
 
 ;;; Custom stuff
 
@@ -53,25 +51,12 @@
   :group 'etags-select-mode)
 
 ;;;###autoload
-(defcustom etags-select-use-short-name-completion nil
-  "*Use short tag names during completion.  For example, say you
-have a function named foobar in several classes and you invoke
-`etags-select-find-tag'.  If this variable is nil, you would have
-to type ClassA::foo<TAB> to start completion.  Since avoiding
-knowing which class a function is in is the basic idea of this
-package, if you set this to t you can just type foo<TAB>.
-
-Only works with GNU Emacs."
-  :group 'etags-select-mode
-  :type 'boolean)
-
-;;;###autoload
 (defcustom etags-select-go-if-unambiguous nil
   "*If non-nil, jump by tag number if it is unambiguous."
   :group 'etags-select-mode
   :type 'boolean)
 
- ;;; Variables
+;;; Variables
 
 (defvar etags-select-buffer-name "*etags-select*"
   "etags-select buffer name.")
@@ -122,8 +107,7 @@ Only works with GNU Emacs."
           (setq filename (etags-select-match-string 1))
           (unless (file-name-absolute-p filename)
             (setq filename (concat tag-file-path filename))))
-        (save-excursion
-          (set-buffer etags-select-buffer-name)
+        (with-current-buffer etags-select-buffer-name
           (when (not (string= filename current-filename))
             (insert "\nIn: " filename "\n")
             (setq current-filename filename))
@@ -136,40 +120,6 @@ Only works with GNU Emacs."
   (visit-tags-table-buffer tag-file)
   (get-file-buffer tag-file))
 
-;;;###autoload
-(defun etags-select-find-tag-at-point ()
-  "Do a find-tag-at-point, and display all exact matches.  If only one match is
-found, don't open the selection window."
-  (interactive)
-  (etags-select-find (find-tag-default)))
-
-;;;###autoload
-(defun etags-select-find-tag ()
-  "Do a find-tag, and display all exact matches.  If only one match is
-found, don't open the selection window."
-  (interactive)
-  (let* ((default (find-tag-default))
-         (tagname (completing-read
-                   (format "Find tag (default %s): " default)
-                   (lambda (string predicate what)
-                     (etags-select-complete-tag string predicate what (buffer-name)))
-                   nil nil nil 'find-tag-history default)))
-    (etags-select-find tagname)))
-
-(defun etags-select-complete-tag (string predicate what buffer)
-  "Tag completion."
-  (etags-select-build-completion-table buffer)
-  (if (eq what t)
-      (all-completions string (etags-select-get-completion-table) predicate)
-    (try-completion string (etags-select-get-completion-table) predicate)))
-
-(defun etags-select-build-completion-table (buffer)
-  "Build tag completion table."
-  (save-excursion
-    (set-buffer buffer)
-    (let ((tag-files (etags-select-get-tag-files)))
-      (mapcar (lambda (tag-file) (etags-select-get-tag-table-buffer tag-file)) tag-files))))
-
 (defun etags-select-get-tag-files ()
   "Get tag files."
   (mapcar 'tags-expand-table-name tags-table-list))
@@ -178,30 +128,8 @@ found, don't open the selection window."
   "Get the tag completion table."
   (tags-completion-table))
 
-(defun etags-select-tags-completion-table-function ()
-  "Short tag name completion."
-  (let ((table (make-vector 16383 0))
-        (tag-regex "^.*?\\(\^?\\(.+\\)\^A\\|\\<\\(.+\\)[ \f\t()=,;]*\^?[0-9,]\\)")
-        (progress-reporter
-         (make-progress-reporter
-          (format "Making tags completion table for %s..." buffer-file-name)
-          (point-min) (point-max))))
-    (save-excursion
-      (goto-char (point-min))
-      (while (not (eobp))
-        (when (looking-at tag-regex)
-          (intern (replace-regexp-in-string ".*[:.']" "" (or (match-string 2) (match-string 3))) table))
-        (forward-line 1)
-        (progress-reporter-update progress-reporter (point))))
-    table))
-
-(defadvice etags-recognize-tags-table (after etags-select-short-name-completion activate)
-  "Turn on short tag name completion (maybe)"
-  (when etags-select-use-short-name-completion
-    (setq tags-completion-table-function 'etags-select-tags-completion-table-function)))
-
 (defun etags-select-find (tagname)
-  "Finding TAGNAME finding function."
+  "Finding the TAGNAME."
   (when tagname
     (let ((tag-files (etags-select-get-tag-files))
           (tag-count 0))
@@ -270,7 +198,8 @@ found, don't open the selection window."
     (re-search-forward tagname)
     (goto-char (match-beginning 0))
     (when etags-select-highlight-tag-after-jump
-      (etags-select-highlight (match-beginning 0) (match-end 0)))))
+      (etags-select-highlight (match-beginning 0) (match-end 0)))
+    (kill-buffer etags-select-buffer-name)))
 
 (defun etags-select-highlight (beg end)
   "Highlight a region temporarily."
@@ -287,7 +216,6 @@ found, don't open the selection window."
 (defun etags-select-next-tag ()
   "Move to next tag in buffer."
   (interactive)
-  (beginning-of-line)
   (when (not (eobp))
     (forward-line))
   (while (and (looking-at etags-select-non-tag-regexp) (not (eobp)))
@@ -298,7 +226,6 @@ found, don't open the selection window."
 (defun etags-select-previous-tag ()
   "Move to previous tag in buffer."
   (interactive)
-  (beginning-of-line)
   (when (not (bobp))
     (forward-line -1))
   (while (and (looking-at etags-select-non-tag-regexp) (not (bobp)))
@@ -309,12 +236,13 @@ found, don't open the selection window."
 (defun etags-select-quit ()
   "Quit etags-select buffer."
   (interactive)
-  (kill-buffer nil))
+  (kill-buffer etags-select-buffer-name))
 
 (defun etags-select-by-tag-number (number)
   "Select a tag by NUMBER."
   (let ((current-point (point)) tag-num)
-    (if (and etags-select-go-if-unambiguous (not (re-search-forward (concat "^" number) nil t 2)))
+    (if (and etags-select-go-if-unambiguous
+             (not (re-search-forward (concat "^" number) nil t 2)))
         (setq tag-num number)
       (setq tag-num (read-from-minibuffer "Tag number? " number)))
     (goto-char (point-min))
@@ -362,6 +290,8 @@ found, don't open the selection window."
   (setq overlay-arrow-position nil)
   (run-hooks 'etags-select-mode-hook))
 
+(add-hook 'etags-select-mode-hook 'hl-line-mode)
+
 (defun thing-after-point ()
   "Things after point, including current symbol."
   (if (thing-at-point 'symbol)
@@ -373,14 +303,15 @@ found, don't open the selection window."
 
 (defun ruby-thing-at-point ()
   "Get ruby thing at point.
-   1. thing at 'current_user'   get current_user;
-   2. thing at '!current_user'  get current_user;
-   3. thing at 'current_user!'  get current_user!;
-   4. thing at 'current_user='  get current_user=;
-   5. thing at 'current_user =' get current_user=;
-   6. thing at 'current_user ==' get current_user;
-   7. thing at 'current_user ||=' get current_user=;
-   Otherwise, get `find-tag-default symbol."
+
+1. thing at 'current_user'   get current_user;
+2. thing at '!current_user'  get current_user;
+3. thing at 'current_user!'  get current_user!;
+4. thing at 'current_user='  get current_user=;
+5. thing at 'current_user =' get current_user=;
+6. thing at 'current_user ==' get current_user;
+7. thing at 'current_user ||=' get current_user=;
+Otherwise, get `find-tag-default symbol."
   (if (member (symbol-name major-mode)
               '("ruby-mode" "rhtml-mode" "haml-mode" "slim-mode"))
       (let ((symbol (thing-at-point 'symbol))
@@ -396,14 +327,14 @@ found, don't open the selection window."
 
 (defun visit-project-tags ()
   "Visit the TAGS file in the project root."
-  (let ((tags-file (concat (eproject-root) "TAGS")))
+  (let ((tags-file (concat (projectile-project-root) "TAGS")))
     (visit-tags-table tags-file)
     (message (concat "Loaded " tags-file))))
 
 (defun hbin-build-ctags ()
   "Build ctags file at the root of current project."
   (interactive)
-  (let ((root (eproject-root)))
+  (let ((root (projectile-project-root)))
     (shell-command
      (concat "ctags -e -R --extra=+fq "
              "--exclude=db --exclude=doc --exclude=log --exclude=tmp --exclude=.git --exclude=public "
@@ -414,7 +345,7 @@ found, don't open the selection window."
 (defun hbin-etags-find-tag ()
   "Borrow from http://mattbriggs.net/blog/2012/03/18/awesome-emacs-plugins-ctags."
   (interactive)
-  (if (file-exists-p (concat (eproject-root) "TAGS"))
+  (if (file-exists-p (concat (projectile-project-root) "TAGS"))
       (visit-project-tags)
     (hbin-build-ctags))
   (etags-select-find (ruby-thing-at-point)))
