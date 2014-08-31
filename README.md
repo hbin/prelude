@@ -258,6 +258,7 @@ Keybinding         | Description
 <kbd>C-x m</kbd>   | Start `eshell`.
 <kbd>C-x M-m</kbd> | Start your default shell.
 <kbd>C-x C-m</kbd> | Alias for `M-x`.
+<kbd>M-X</kbd>     | Like `M-x` but limited to commands that are relevant to the active major mode.
 <kbd>C-h A</kbd>   | Run `apropos` (search in all Emacs symbols).
 <kbd>C-h C-m</kbd> | Display key bindings of current major mode and descriptions of every binding.
 <kbd>M-/</kbd>     | Run `hippie-expand` (a replacement for the default `dabbrev-expand`).
@@ -295,7 +296,6 @@ Keybinding         | Description
 <kbd>C-c t</kbd> | Open a terminal emulator (`ansi-term`).
 <kbd>C-c k</kbd> | Kill all open buffers except the one you're currently in.
 <kbd>C-c TAB</kbd> | Indent and copy region to clipboard
-<kbd>C-c h</kbd> | Open Helm (available if you've enabled the `prelude-helm` module).
 <kbd>C-c I</kbd> | Open user's init file.
 <kbd>C-c S</kbd> | Open shell's init file.
 <kbd>C-c . +</kbd> | Increment integer at point. Default is +1.
@@ -309,8 +309,8 @@ Keybinding         | Description
 <kbd>C-c . #</kbd> | Convert integer at point to specified base. Default is 10.
 <kbd>C-c . %</kbd> | Replace integer at point with another specified integer.
 <kbd>C-c . '</kbd> | Perform arithmetic operations on integer at point. User specifies the operator.
+<kbd>Super-g</kbd> | Toggle between God mode and non-God mode
 <kbd>Super-r</kbd> | Recent files
-<kbd>Super-x</kbd> | Expand region
 <kbd>Super-j</kbd> | Join lines
 <kbd>Super-k</kbd> | Kill whole line
 <kbd>Super-m m</kbd> | Magit status
@@ -343,7 +343,8 @@ Keybinding         | Description
 <kbd>C-c p f</kbd> | Display a list of all files in the project. With a prefix argument it will clear the cache first.
 <kbd>C-c p d</kbd> | Display a list of all directories in the project. With a prefix argument it will clear the cache first.
 <kbd>C-c p T</kbd> | Display a list of all test files(specs, features, etc) in the project.
-<kbd>C-c p g</kbd> | Run grep on the files in the project.
+<kbd>C-c p s g</kbd> | Run grep on the files in the project.
+<kbd>M-- C-c p s g</kbd> | Run grep on `projectile-grep-default-files` in the project.
 <kbd>C-c p b</kbd> | Display a list of all project buffers currently open.
 <kbd>C-c p o</kbd> | Runs `multi-occur` on all project buffers currently open.
 <kbd>C-c p r</kbd> | Runs interactive query-replace on all files in the projects.
@@ -352,11 +353,13 @@ Keybinding         | Description
 <kbd>C-c p k</kbd> | Kills all project buffers.
 <kbd>C-c p D</kbd> | Opens the root of the project in `dired`.
 <kbd>C-c p e</kbd> | Shows a list of recently visited project files.
+<kbd>C-c p s a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
+<kbd>C-c p s s</kbd> | Runs `ag` on the project. Requires the presence of `ag.el`.
 <kbd>C-c p a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
 <kbd>C-c p c</kbd> | Runs a standard compilation command for your type of project.
 <kbd>C-c p p</kbd> | Runs a standard test command for your type of project.
 <kbd>C-c p z</kbd> | Adds the currently visited to the cache.
-<kbd>C-c p s</kbd> | Display a list of known projects you can switch to.
+<kbd>C-c p p</kbd> | Display a list of known projects you can switch to.
 
 Prelude adds an extra keymap prefix `S-p` (`S` stands for
 `Super`), so you can use `S-p` instead of `C-c p`.
@@ -364,6 +367,40 @@ Prelude adds an extra keymap prefix `S-p` (`S` stands for
 If you ever forget any of Projectile's keybindings just do a:
 
 <kbd>C-c p C-h</kbd>
+
+#### Helm
+
+Helm is setup according to this guide: [A Package in a league of its own: Helm](http://tuhdo.github.io/helm-intro.html).
+
+You can learn Helm usage and key bindings following the guide. <kbd>C-c h</kbd> is Prelude's default prefix key for Helm.
+If you don't remember any key binding, append <kbd>C-h</kbd> after <kbd>C-c h</kbd> for a list of key bindings in Helm.
+
+By default, Helm won't activate these global key bindings, so you can use Helm along with Ido and Prelude's default commands:
+
+Key binding        | Description
+-------------------|----------------------------------------------
+<kbd>M-x</kbd>     | Run [helm-M-x](http://tuhdo.github.io/helm-intro.html#sec-3), an interactive version of <kbd>M-x</kdb>.
+<kbd>M-y</kbd>     | Run [helm-show-kill-ring](http://tuhdo.github.io/helm-intro.html#sec-4), shows the content of `kill-ring`.
+<kbd>C-x b </kbd>  | Run [helm-mini](http://tuhdo.github.io/helm-intro.html#sec-5), an interactive version of `C-x b` with more features.
+<kbd>C-x C-f</kbd> | Run [helm-find-files](http://tuhdo.github.io/helm-intro.html#sec-6), an interactive version of `find-file` with more features.
+<kbd>C-h C-f </kbd>| Run [helm-apropos](http://tuhdo.github.io/helm-intro.html#sec-13), an interactive version of `apropos-command`.
+<kbd>C-h r</kbd>   | Run [helm-info-emacs](http://tuhdo.github.io/helm-intro.html#sec-14), an interactive version of `info-emacs-manual`.
+<kbd>C-h C-l </kbd>| Run `helm-locate-library` that can search for locations of any file loaded into Emacs.
+
+This key binding won't be activated in `shell-mode`:
+
+Key Binding        | Description
+-------------------|----------------------------------------------
+<kbd>M-l</kbd>     | Run `helm-comint-input-ring` that shows `shell` history using Helm interface.
+
+These key bindings won't be activated in `eshell-mode`:
+
+Key Binding        | Description
+-------------------|----------------------------------------------
+<kbd>M-l</kbd>     | Run `helm-eshell-history` that shows `eshell` history using Helm interface.
+
+You can use above key bindings by putting `(prelude-global-helm-global-mode +1)` right after `(require 'prelude-helm)`. If you enable
+these key bindings, you should not enable `prelude-ido`.
 
 #### Key-chords
 
