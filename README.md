@@ -360,7 +360,7 @@ Keybinding         | Description
 <kbd>C-c p s s</kbd> | Runs `ag` on the project. Requires the presence of `ag.el`.
 <kbd>C-c p a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
 <kbd>C-c p c</kbd> | Runs a standard compilation command for your type of project.
-<kbd>C-c p p</kbd> | Runs a standard test command for your type of project.
+<kbd>C-c p P</kbd> | Runs a standard test command for your type of project.
 <kbd>C-c p z</kbd> | Adds the currently visited to the cache.
 <kbd>C-c p p</kbd> | Display a list of known projects you can switch to.
 
@@ -587,19 +587,17 @@ If you get some http connection error related to the MELPA repo
 just do a manual `M-x package-refresh-contents` and restart Emacs
 afterwards.
 
-### No arrow navigation in editor buffers
+### Warnings on arrow navigation in editor buffers
 
 This is not a bug - it's a feature! I firmly believe that the one true
 way to use Emacs is by using it the way it was intended to be used (as
-far as navigation is concerned at least). That's why I've disabled all
-movement commands with arrows (and keys like page up, page down,
-etc) - to prevent you from being tempted to use them.
+far as navigation is concerned at least).
 
-If you'd like to be able to use the arrow keys (but still be reminded of
-the alternatives) put this in your personal config:
+If you'd like to be take this a step further and disable the arrow key navigation
+completely put this in your personal config:
 
 ```lisp
-(setq guru-warn-only t)
+(setq guru-warn-only nil)
 ```
 
 To disable `guru-mode` completely add the following snippet to your
