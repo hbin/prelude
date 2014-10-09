@@ -15,16 +15,6 @@
 (prelude-require-packages '(projectile))
 (require 'projectile)
 
-(defun projectile-regenerate-tags-maybe ()
-  "Generate tags if in the project."
-  (when (projectile-project-p)
-    (projectile-regenerate-tags)
-    (ac-etags-clear-cache)))
-
-(add-hook 'after-save-hook 'projectile-regenerate-tags-maybe)
-(add-hook 'pe/before-tree-lookup-hook 'projectile-regenerate-tags-maybe)
-;; (add-hook 'find-file-hook 'projectile-regenerate-tags-maybe)
-
 ;;; Keybindings
 (define-key prelude-mode-map [?\s-d] nil)
 (define-key prelude-mode-map [?\s-p] nil)

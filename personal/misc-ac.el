@@ -13,14 +13,8 @@
 ;; Auto Completion - http://cx4a.org/software/auto-complete/manual.html#Introduction
 
 ;;; Code:
-(prelude-require-packages '(auto-complete ac-etags))
+(prelude-require-packages '(auto-complete))
 (require 'auto-complete-config)
-
-;; Setup auto-complete etags source
-(require 'ac-etags)
-(setq ac-etags-requires 1)
-(eval-after-load "etags"
-  '(progn (ac-etags-setup)))
 
 ;; ac-dictionaries for major modes
 (add-to-list 'ac-dictionary-directories (concat user-emacs-directory "ac-dict"))
@@ -58,7 +52,6 @@
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 
 (defun ac-ruby-mode-setup ()
-  (ac-etags-ac-setup)
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources)))
 
 (defun ac-css-mode-setup ()
