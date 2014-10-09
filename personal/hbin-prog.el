@@ -10,11 +10,13 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(rainbow-delimiters dash-at-point))
+(prelude-require-packages '(rainbow-delimiters dash-at-point ggtags))
 
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
   (rainbow-delimiters-mode 1)
+
+  (ggtags-mode 1)
 
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
