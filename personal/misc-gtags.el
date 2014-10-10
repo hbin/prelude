@@ -1,4 +1,4 @@
-;; misc-tags.el --- Navigation between method definitions
+;; misc-gtags.el --- Navigation between method definitions
 ;;
 ;; Copyright (C) 2012-2014 Huang Bin
 ;;
@@ -8,8 +8,6 @@
 ;;; Commentary:
 
 ;; This file is not part of GNU Emacs.
-;; This file is a variant version of `etags-select` which created by
-;; Scott Frazer.
 
 ;;; Code:
 (prelude-require-packages '(projectile ggtags))
@@ -58,4 +56,4 @@ Otherwise, get `find-tag-default symbol."
         (ggtags-check-project))))
 
 (provide 'misc-tags)
-;;; misc-tags.el ends here
+;;; misc-gtags.el ends here
