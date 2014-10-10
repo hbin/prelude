@@ -12,7 +12,7 @@
 ;; Scott Frazer.
 
 ;;; Code:
-(prelude-require-package '(projectile ggtags))
+(prelude-require-packages '(projectile ggtags))
 
 (require 'ggtags)
 
