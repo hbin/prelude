@@ -13,7 +13,7 @@ Emacs power users.
 
 Prelude is compatible **ONLY with GNU Emacs 24.x**. In general you're
 advised to always run Prelude with the latest Emacs - currently
-**24.3**.
+**24.4**.
 
 **Table of Contents**
 
@@ -51,7 +51,7 @@ advised to always run Prelude with the latest Emacs - currently
 	- [Problems with flyspell-mode](#problems-with-flyspell-mode)
 	- [Ugly colors in the terminal Emacs version](#ugly-colors-in-the-terminal-emacs-version)
 	- [MELPA error on initial startup](#melpa-error-on-initial-startup)
-	- [No arrow navigation in editor buffers](#no-arrow-navigation-in-editor-buffers)
+	- [Warnings on arrow navigation in editor buffers](#warnings-on-navigation-in-editor-buffers)
 	- [Customized C-a behavior](#customized-c-a-behavior)
 	- [Poor ido matching performance on large datasets](#poor-ido-matching-performance-on-large-datasets)
 	- [Windows compatibility](#windows-compatibility)
@@ -475,10 +475,10 @@ line:
 (disable-theme 'zenburn)
 ```
 
-Or you can use another theme altogether by adding something like:
+Or you can use another theme altogether by adding something in `personal/preload` like:
 
 ```lisp
-(load-theme 'solarized-dark t)
+(setq prelude-theme 'solarized-dark)
 ```
 
 **P.S.** Solarized is not available by default - you'll have to
