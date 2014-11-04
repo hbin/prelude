@@ -26,7 +26,7 @@
 (add-hook 'scss-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'yaml-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
-(define-key 'help-command (kbd "D") 'dash-at-point)
+(global-set-key (kbd "s-g") 'dash-at-point)
 
 (provide 'hbin-prog)
 ;;; hbin-prog.el ends here

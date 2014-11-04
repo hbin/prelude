@@ -108,18 +108,12 @@
 (global-set-key (kbd "M-]") 'smart-shift-right)
 
 ;; Goto line
-(global-set-key (kbd "s-g") 'goto-line)
+(global-set-key (kbd "s-l") 'goto-line)
 
 ;;; Winner Mode
 (winner-mode 1)
 (global-set-key (kbd "C-x <left>") 'winner-undo)
 (global-set-key (kbd "C-x <right>") 'winner-redo)
-
-(require 'windmove)
-(define-key prelude-mode-map (kbd "s-h")  'windmove-left)
-(define-key prelude-mode-map (kbd "s-l") 'windmove-right)
-(define-key prelude-mode-map (kbd "s-k")    'windmove-up)
-(define-key prelude-mode-map (kbd "s-j")  'windmove-down)
 
 (define-key prelude-mode-map (kbd "s-+") 'enlarge-window-horizontally)
 (define-key prelude-mode-map (kbd "s-=") 'enlarge-window-horizontally)
