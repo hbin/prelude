@@ -37,6 +37,13 @@
        ;; Auto complete
        (auto-complete-mode +1)
 
+       ;; Load snippets
+       (cond
+        ((string= web-mode-engine "django")
+         (yas-activate-extra-mode 'django-mode))
+        ((string= web-mode-engine "erb")
+         (yas-activate-extra-mode 'rhtml-mode)))
+
        ;; Zencoding
        (prelude-require-package 'zencoding-mode)
        (require 'zencoding-mode)

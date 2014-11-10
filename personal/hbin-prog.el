@@ -10,13 +10,22 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(rainbow-delimiters dash-at-point ggtags))
+(prelude-require-packages '(rainbow-delimiters dash-at-point ggtags yasnippet))
+
+(require 'yasnippet)
+(setq yas-snippet-dirs (concat user-emacs-directory "snippets")
+      yas-prompt-functions '(yas-dropdown-prompt
+                             yas-ido-prompt
+                             yas-completing-prompt))
 
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
   (rainbow-delimiters-mode 1)
 
   (ggtags-mode 1)
+
+  (yas-reload-all)
+  (yas-minor-mode)
 
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
