@@ -1,5 +1,11 @@
 # key: html
 # --
 <html>
-  $0
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>$0</title>
+  </head>
+
+  <body>
+  </body>
 </html>

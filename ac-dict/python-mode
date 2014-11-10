@@ -1,0 +1,9 @@
+;;;;; Django dictionary {{{
+django.http
+django.shortcuts
+
+get_object_or_404
+get_list_or_404
+
+;;;;; Django dictionary }}}
+
