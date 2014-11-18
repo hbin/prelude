@@ -70,6 +70,14 @@
 
 (ac-config-default)
 
+;; This will make the function definition void
+;; (fmakunbound 'completion-at-point)
+
+(defun completion-at-point ()
+  "Do nothing.
+
+Override this method to disable `completion-at-point'.")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'misc-ac)
