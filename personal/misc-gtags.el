@@ -14,6 +14,10 @@
 
 (require 'ggtags)
 
+(eval-after-load 'smart-shift
+  '(progn
+     (define-key ggtags-mode-map (kbd "M-]") 'smart-shift-right)))
+
 ;;; Custom stuff
 (setq ggtags-mode-sticky nil)
 

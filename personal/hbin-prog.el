@@ -17,15 +17,13 @@
       yas-prompt-functions '(yas-dropdown-prompt
                              yas-ido-prompt
                              yas-completing-prompt))
+(yas-global-mode 1)
 
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
   (rainbow-delimiters-mode 1)
 
   (ggtags-mode 1)
-
-  (yas-reload-all)
-  (yas-minor-mode)
 
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
