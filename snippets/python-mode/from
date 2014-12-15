@@ -1,0 +1,4 @@
+# name: from
+# key: from
+# --
+from $0 import
