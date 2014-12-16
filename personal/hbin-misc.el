@@ -13,7 +13,7 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin whole-line-or-region key-chord projectile))
+ '(popwin whole-line-or-region key-chord projectile ag))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
