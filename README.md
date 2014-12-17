@@ -179,6 +179,7 @@ By default most of the modules that ship with Prelude are not loaded. For more i
 (require 'prelude-emacs-lisp)
 (require 'prelude-erc)
 ;; (require 'prelude-erlang)
+;; (require 'prelude-elixir)
 ;; (require 'prelude-haskell)
 (require 'prelude-js)
 ;; (require 'prelude-latex)
@@ -233,6 +234,14 @@ alias vi='emacsclient -t'
 
 The last two aliases are helpful if you're used to editing files from
 the command line using `vi(m)`.
+
+Also you can open a file with cursor on choosen line:
+
+```bash
+emacsclient somefile:1234
+```
+
+This will open file 'somefile' and set cursor on line 1234.
 
 ## Getting to know Prelude
 
