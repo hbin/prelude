@@ -134,6 +134,8 @@ automatically."
 (define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
 (define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
 
+(add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
+
 (global-set-key (kbd "C-x C-j") 'neotree-projectile-action)
 
 (provide 'misc-dired)
