@@ -46,28 +46,75 @@
 (eval-after-load "dired" '(hbin-dired-mode-setup))
 (add-hook 'dired-mode-hook 'hbin-dired-mode-init)
 
-;;; Project explorer tree
-(prelude-require-package 'project-explorer)
-(custom-set-variables '(pe/width 30))
-(require 'project-explorer)
+;;; Change the `project-explorer' by the `emacs-neotree'
+(prelude-require-package 'neotree)
+(require 'neotree)
 
-(defun pe/return (&optional arg)
-  "ARG stands for file on the cursor."
+(defun neo-buffer--insert-fold-symbol (name)
+  "Override this method to use the unicode arrows.
+NAME ignored."
+  (let ((n-insert-image (lambda (n)
+                          (insert-image (neo-buffer--get-icon n))))
+        (n-insert-symbol (lambda (n)
+                           (neo-buffer--insert-with-face
+                            n 'neo-expand-btn-face))))
+    (or (and (equal name 'open)  (funcall n-insert-symbol "▾ "))
+        (and (equal name 'close) (funcall n-insert-symbol "▸ ")))
+    ))
+
+(defun neo-buffer--insert-file-entry (node depth)
+  (let ((node-short-name (neo-path--file-short-name node)))
+    (insert-char ?\s (* depth 2)) ; indent
+    (neo-buffer--insert-fold-symbol 'leaf)
+    (insert-button node-short-name
+                   'action '(lambda (_) (neotree-enter current-prefix-arg))
+                   'follow-link t
+                   'face neo-file-link-face
+                   'neo-full-path node)
+    (neo-buffer--node-list-set nil node)
+    (neo-buffer--newline-and-begin)))
+
+(defun neotree-folder-toggle ()
+  "Toggle a folder."
   (interactive)
-  (if (file-directory-p (pe/user-get-filename))
-      (pe/tab arg)
-    (pe/find-file arg)))
+  (let ((btn-full-path (neo-buffer--get-filename-current-line)))
+    (unless (null btn-full-path)
+      (if (file-directory-p btn-full-path)
+          (progn
+            (let ((new-state (neo-buffer--toggle-expand btn-full-path)))
+              (neo-buffer--refresh t)
+              (when neo-auto-indent-point
+                (when new-state (forward-line))
+                (neo-point-auto-indent))))))))
 
-(custom-set-variables '(pe/width 30)
-                      '(pe/omit-regex "^\\.\\|^#\\|~$\\|\\.elc$"))
+(define-key neotree-mode-map (kbd "TAB") 'neotree-folder-toggle)
+(define-key neotree-mode-map (kbd "RET") 'neotree-enter)
+(define-key neotree-mode-map (kbd "o") 'neotree-enter)
+(define-key neotree-mode-map (kbd "R") 'neotree-refresh)
+(define-key neotree-mode-map (kbd "r") 'neotree-refresh)
+(define-key neotree-mode-map (kbd "q") 'neotree-hide)
+(define-key neotree-mode-map (kbd "k") 'neotree-select-previous-sibling-node)
+(define-key neotree-mode-map (kbd "j") 'neotree-select-next-sibling-node)
+(define-key neotree-mode-map (kbd "p") 'previous-line)
+(define-key neotree-mode-map (kbd "n") 'next-line)
+(define-key neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(define-key neotree-mode-map (kbd "U") 'neotree-select-up-node)
+(define-key neotree-mode-map (kbd "D") 'neotree-select-down-node)
+(define-key neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+(define-key neotree-mode-map (kbd "I") 'neotree-hidden-file-toggle)
+(define-key neotree-mode-map (kbd "C-x C-f") 'find-file-other-window)
+(define-key neotree-mode-map (kbd "C") 'neotree-change-root)
+(define-key neotree-mode-map (kbd "m a") 'neotree-create-node)
+(define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
+(define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
 
-(define-key project-explorer-mode-map (kbd "I") 'pe/toggle-omit)
-(define-key project-explorer-mode-map (kbd "C") 'pe/change-directory)
-(define-key project-explorer-mode-map (kbd "o") 'pe/return)
-(define-key project-explorer-mode-map (kbd "m a") 'pe/create-file)
-(define-key project-explorer-mode-map (kbd "m d ") 'pe/delete-file)
-(define-key project-explorer-mode-map (kbd "m c") 'pe/copy-file)
-(global-set-key (kbd "C-x C-j") 'project-explorer-open)
+(setq neo-hidden-files-regexp
+      (s-concat "^\\."                             ; hidden files
+                "\\|.*\\.elc"                      ; Emacs
+                "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
+                "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
+
+(global-set-key (kbd "C-x C-j") 'neotree-projectile-action)
 
 (provide 'misc-dired)
 ;;; misc-dired.el ends here
