@@ -50,6 +50,15 @@
 (prelude-require-package 'neotree)
 (require 'neotree)
 
+(setq neo-smart-open t)
+(setq neo-hidden-files-regexp
+      (s-concat "^\\."                             ; hidden files
+                "\\|.*\\.elc"                      ; Emacs
+                "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
+                "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
+
+
+
 (defun neo-buffer--insert-fold-symbol (name)
   "Override this method to use the unicode arrows.
 NAME ignored."
@@ -87,6 +96,23 @@ NAME ignored."
                 (when new-state (forward-line))
                 (neo-point-auto-indent))))))))
 
+(defun neotree-projectile-action ()
+  "Integration with `Projectile'.
+Usage:
+    (setq projectile-switch-project-action 'neotree-projectile-action).
+When running `projectile-switch-project' (C-c p p), `neotree' will change root
+automatically."
+  (interactive)
+  (cond
+   ((fboundp 'projectile-project-root)
+    (let ((path (projectile-project-root)))
+      (neo-global--open-dir path)
+      (if neo-smart-open
+          (neotree-find)
+        (neo-global--open))))
+   (t
+    (error "Projectile is not available"))))
+
 (define-key neotree-mode-map (kbd "TAB") 'neotree-folder-toggle)
 (define-key neotree-mode-map (kbd "RET") 'neotree-enter)
 (define-key neotree-mode-map (kbd "o") 'neotree-enter)
@@ -107,12 +133,6 @@ NAME ignored."
 (define-key neotree-mode-map (kbd "m a") 'neotree-create-node)
 (define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
 (define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
-
-(setq neo-hidden-files-regexp
-      (s-concat "^\\."                             ; hidden files
-                "\\|.*\\.elc"                      ; Emacs
-                "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
-                "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
 
 (global-set-key (kbd "C-x C-j") 'neotree-projectile-action)
 
