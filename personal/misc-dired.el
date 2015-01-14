@@ -68,7 +68,7 @@ NAME ignored."
                            (neo-buffer--insert-with-face
                             n 'neo-expand-btn-face))))
     (or (and (equal name 'open)  (funcall n-insert-symbol "▼ "))
-        (and (equal name 'close) (funcall n-insert-symbol "▶ ")))
+        (and (equal name 'close) (funcall n-insert-symbol "► ")))
     ))
 
 (defun neo-buffer--insert-file-entry (node depth)
