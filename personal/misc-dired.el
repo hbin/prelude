@@ -50,14 +50,14 @@
 (prelude-require-package 'neotree)
 (require 'neotree)
 
+(setq neo-banner-message "\" Press ? for help.")
 (setq neo-smart-open t)
+(setq neo-window-width 28)
 (setq neo-hidden-files-regexp
       (s-concat "^\\."                             ; hidden files
                 "\\|.*\\.elc"                      ; Emacs
                 "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
                 "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
-
-
 
 (defun neo-buffer--insert-fold-symbol (name)
   "Override this method to use the unicode arrows.
@@ -67,8 +67,8 @@ NAME ignored."
         (n-insert-symbol (lambda (n)
                            (neo-buffer--insert-with-face
                             n 'neo-expand-btn-face))))
-    (or (and (equal name 'open)  (funcall n-insert-symbol "▾ "))
-        (and (equal name 'close) (funcall n-insert-symbol "▸ ")))
+    (or (and (equal name 'open)  (funcall n-insert-symbol "▼ "))
+        (and (equal name 'close) (funcall n-insert-symbol "▶ ")))
     ))
 
 (defun neo-buffer--insert-file-entry (node depth)
