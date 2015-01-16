@@ -33,6 +33,10 @@
 (add-hook 'scss-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'yaml-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
+;; Disable ggtags-mode for Lisp
+(add-hook 'emacs-lisp-mode (lambda () (ggtags-mode -1)))
+(add-hook 'lisp-mode (lambda () (ggtags-mode -1)))
+
 (global-set-key (kbd "s-g") 'dash-at-point)
 
 (provide 'hbin-prog)
