@@ -50,7 +50,6 @@
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
 (setq ag-reuse-window t)
-(setq ag-project-root-function)
 (setq ag-project-root-function 'projectile-project-root)
 
 ;;; Smartparens
