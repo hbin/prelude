@@ -11,6 +11,12 @@
 
 ;;; Code:
 
+;;---- VARS --------------------------------------------------------------------
+
+(defvar hbin-web-mode-hook nil)
+(defvar hbin-slim-mode-hook nil)
+(defvar hbin-scss-mode-hook nil)
+
 (custom-set-variables
  '(js-indent-level 2)
  '(js2-basic-offset 2)
@@ -37,13 +43,6 @@
        ;; Auto complete
        (auto-complete-mode +1)
 
-       ;; Load snippets
-       (cond
-        ((string= web-mode-engine "django")
-         (yas-activate-extra-mode 'django-mode))
-        ((string= web-mode-engine "erb")
-         (yas-activate-extra-mode 'rhtml-mode)))
-
        ;; Zencoding
        (prelude-require-package 'zencoding-mode)
        (require 'zencoding-mode)
@@ -58,7 +57,16 @@
        (modify-syntax-entry ?@ "w")
        (modify-syntax-entry ?? "w")
        (modify-syntax-entry ?! "w")
-       (modify-syntax-entry ?: "."))
+       (modify-syntax-entry ?: ".")
+
+       ;; Load snippets
+       (cond
+        ((string= web-mode-engine "django")
+         (yas-activate-extra-mode 'django-mode))
+        ((string= web-mode-engine "erb")
+         (yas-activate-extra-mode 'rhtml-mode)))
+
+       (local-set-key (kbd "C-c C-c") 'web-mode-comment-or-uncomment))
 
      (setq hbin-web-mode-hook 'hbin-web-mode-defaults)
      (add-hook 'web-mode-hook (lambda () (run-hooks 'hbin-web-mode-hook)))))
