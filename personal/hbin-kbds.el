@@ -68,6 +68,7 @@
 (define-key prelude-mode-map (kbd "M-o") 'other-window)
 (define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "M-k") 'kill-this-buffer)
+(define-key prelude-mode-map (kbd "s-0") 'balance-windows)
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
 
 ;; Use regex searches by default.
