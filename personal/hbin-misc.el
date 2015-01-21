@@ -45,9 +45,13 @@
 (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
 (key-chord-mode +1)
 
-;;; Projectile
-(require 'projectile)
-(setq projectile-ignored-projects '("/usr/local"))
+;;; ag
+(require 'ag)
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers t)
+(setq ag-reuse-window t)
+(setq ag-project-root-function)
+(setq ag-project-root-function 'projectile-project-root)
 
 ;;; Smartparens
 (require 'smartparens)

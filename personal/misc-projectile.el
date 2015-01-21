@@ -12,8 +12,12 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
+
+;; VARS---------------------
+(defvar prelude-mode-map nil)
+(defvar projectile-mode-map nil)
+
 (prelude-require-packages '(projectile))
-(require 'projectile)
 
 ;;; Customizes
 (custom-set-variables
