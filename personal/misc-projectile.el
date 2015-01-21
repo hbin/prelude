@@ -15,6 +15,12 @@
 (prelude-require-packages '(projectile))
 (require 'projectile)
 
+;;; Customizes
+(custom-set-variables
+ '(projectile-enable-idle-timer t)
+ '(projectile-completion-system (quote grizzl))
+ '(projectile-ignored-projects '("/usr/local/")))
+
 ;;; Keybindings
 (define-key prelude-mode-map [?\s-d] nil)
 (define-key prelude-mode-map [?\s-p] nil)
