@@ -43,6 +43,9 @@
        ;; Auto complete
        (auto-complete-mode +1)
 
+       ;; Subword
+       (subword-mode 1)
+
        ;; Zencoding
        (defvar zencoding-mode-keymap nil)
        (let ((map (make-sparse-keymap)))
