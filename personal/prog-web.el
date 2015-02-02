@@ -67,6 +67,11 @@
        (modify-syntax-entry ?! "w")
        (modify-syntax-entry ?: ".")
 
+       ;; Set web engine
+       (when (and (projectile-project-p)
+                  (projectile-verify-file ".python-version"))
+         (web-mode-set-engine "django"))
+
        ;; Load snippets
        (cond
         ((string= web-mode-engine "django")
