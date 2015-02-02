@@ -23,23 +23,26 @@
  '(js2-bounce-indent-p t)
  '(css-indent-offset 2)
  '(coffee-tab-width 2)
+
+ ;; Customize zencoding mode
  '(zencoding-indentation 2)
  '(zencoding-preview-default nil)
- '(zencoding-insert-flash-time 0.2))
+ '(zencoding-insert-flash-time 0.2)
+
+ ;; Customize web mode
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-indent-style 2)
+ '(web-mode-style-padding 2)
+ '(web-mode-script-padding 2)
+ '(web-mode-block-padding 0)
+ '(web-mode-comment-style 2))
 
 ;;; web mode
 (eval-after-load 'web-mode
   '(progn
      (defun hbin-web-mode-defaults ()
-       (setq web-mode-markup-indent-offset 2)
-       (setq web-mode-css-indent-offset 2)
-       (setq web-mode-code-indent-offset 2)
-       (setq web-mode-indent-style 2)
-       (setq web-mode-style-padding 2)
-       (setq web-mode-script-padding 2)
-       (setq web-mode-block-padding 0)
-       (setq web-mode-comment-style 2)
-
        ;; Auto complete
        (auto-complete-mode +1)
 
