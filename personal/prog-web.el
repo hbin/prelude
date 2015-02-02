@@ -44,11 +44,13 @@
        (auto-complete-mode +1)
 
        ;; Zencoding
+       (defvar zencoding-mode-keymap nil)
+       (let ((map (make-sparse-keymap)))
+         (define-key map (kbd "C-,") 'zencoding-expand-yas)
+         (setq zencoding-mode-keymap map))
+
        (prelude-require-package 'zencoding-mode)
        (require 'zencoding-mode)
-       (define-key zencoding-mode-keymap (kbd "C-j") nil)
-       (define-key zencoding-mode-keymap (kbd "<C-return>") nil)
-       (define-key zencoding-mode-keymap (kbd "C-c C-j") 'zencoding-expand-line)
        (zencoding-mode 1)
 
        ;; erb
