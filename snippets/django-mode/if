@@ -1,4 +1,4 @@
-# name: if
+# name: if(django-mode)
 # key: if
 # --
 {% if ${1:condition} %}
