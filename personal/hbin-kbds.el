@@ -89,12 +89,8 @@
 
 ;;; Highlight symbols
 (require 'highlight-symbol)
-(global-set-key (kbd "M-m") 'highlight-symbol-at-point)
-(global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
-(global-set-key (kbd "M-N") 'highlight-symbol-next-in-defun)
-(global-set-key (kbd "M-P") 'highlight-symbol-prev-in-defun)
 
 ;;; Multiple Cursors
 (require 'multiple-cursors)
