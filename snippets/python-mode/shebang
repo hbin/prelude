@@ -1,5 +1,5 @@
 # name: shebang and coding comments
 # key: #!
 # --
-#!/usr/bin/env ruby -w
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-

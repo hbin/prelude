@@ -1,4 +1,4 @@
-# name: if
+# name: if(js)
 # key: if
 # --
 if ($1) {
