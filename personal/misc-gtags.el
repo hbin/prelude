@@ -20,6 +20,7 @@
 
 ;;; Custom stuff
 (setq ggtags-mode-sticky nil)
+(setenv "GTAGSLABEL" "ctags")
 
 ;; Override it to create tags automatically.
 (defun ggtags-tag-at-point ()
@@ -53,11 +54,18 @@ Otherwise, get `find-tag-default symbol."
      (find-tag-default))))
 
 (defun ggtags-ensure-project ()
-  (or (ggtags-find-project)
-      (when (or (yes-or-no-p "File GTAGS not found; run gtags? ")
-                (user-error "Aborted"))
-        (ggtags-create-tags (projectile-project-root))
-        (ggtags-check-project))))
+  (when (projectile-project-p)
+    (let ((gtags-file (expand-file-name "GTAGS" (projectile-project-root))))
+      (unless (file-exists-p gtags-file)
+        (ggtags-create-tags (projectile-project-root))))
+    (ggtags-check-project)))
+
+(defun projectile-regenerate-tags-if ()
+  (if (memq major-mode '(ruby-mode))
+      (projectile-regenerate-tags)))
+
+(remove-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags)
+(add-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags-if)
 
 (provide 'misc-tags)
 ;;; misc-gtags.el ends here
