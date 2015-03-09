@@ -41,6 +41,7 @@ and set the PYTHON_VERSION to it."
 
 (defun hbin-python-mode-init ()
   "Settings for `python-mode'."
+  (ruby-tools-mode +1)
 
   (local-set-key (kbd "C-j") 'newline-and-indent)
 
