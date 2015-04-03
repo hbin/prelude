@@ -24,6 +24,7 @@
   (rainbow-delimiters-mode 1)
 
   (ggtags-mode 1)
+  (linum-mode 1)
 
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
