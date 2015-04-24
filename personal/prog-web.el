@@ -52,7 +52,7 @@
        ;; Zencoding
        (defvar zencoding-mode-keymap nil)
        (let ((map (make-sparse-keymap)))
-         (define-key map (kbd "C-,") 'zencoding-expand-yas)
+         (define-key map (kbd "C-c TAB") 'zencoding-expand-yas)
          (setq zencoding-mode-keymap map))
 
        (prelude-require-package 'zencoding-mode)
@@ -79,7 +79,9 @@
         ((string= web-mode-engine "erb")
          (yas-activate-extra-mode 'rhtml-mode)))
 
+       (local-set-key (kbd "C-c h") 'mc/mark-sgml-tag-pair)
        (local-set-key (kbd "C-c C-c") 'web-mode-comment-or-uncomment))
+
 
      (setq hbin-web-mode-hook 'hbin-web-mode-defaults)
      (add-hook 'web-mode-hook (lambda () (run-hooks 'hbin-web-mode-hook)))))

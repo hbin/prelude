@@ -144,6 +144,8 @@ automatically."
 (define-key neotree-mode-map (kbd "m a") 'neotree-create-node)
 (define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
 (define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
+(define-key neotree-mode-map (kbd "C-p") 'previous-line)
+(define-key neotree-mode-map (kbd "C-n") 'next-line)
 
 (add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
 
