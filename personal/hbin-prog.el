@@ -12,6 +12,8 @@
 ;;; Code:
 (prelude-require-packages '(rainbow-delimiters dash-at-point ggtags yasnippet))
 
+(add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
+
 (require 'yasnippet)
 (setq yas-snippet-dirs (concat user-emacs-directory "snippets")
       yas-prompt-functions '(yas-dropdown-prompt
