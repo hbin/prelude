@@ -1,4 +1,4 @@
 # name: script src
 # key: scriptsrc
 # --
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="$0" type="text/javascript" charset="utf-8"></script>
