@@ -69,7 +69,8 @@
 
        ;; Set web engine
        (when (and (projectile-project-p)
-                  (projectile-verify-file ".python-version"))
+                  (or (projectile-verify-file ".python-version")
+                      (projectile-verify-file "requirements.txt")))
          (web-mode-set-engine "django"))
 
        ;; Load snippets
