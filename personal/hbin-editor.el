@@ -16,6 +16,10 @@
 (column-number-mode t)                   ; 显示列号
 (size-indication-mode t)                 ; 显示文件大小
 
+;; Do not display line number if line number large than 20000.
+(setq line-number-display-limit 20000)
+(setq line-number-display-limit-width 2000)
+
 (global-auto-revert-mode t)              ; 当 Buffer 访问的文件修改时，自动更新 Buffer 中的内容
 (delete-selection-mode t)                ; 有选择域时，先删除再插入
 
