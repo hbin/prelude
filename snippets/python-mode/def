@@ -1,6 +1,6 @@
 # name: define function
 # key: def
 # --
-def ${1:fname}(self):
+def ${1:fname}():
     """${2:docstring for fname}"""
     $0
