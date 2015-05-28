@@ -7,6 +7,11 @@ __doc__
 sys
 sys.path
 
+functools
+functools.partial
+functools.wraps
+
+callable
 ;;;;; Python dictionary }}}
 
 
@@ -73,3 +78,10 @@ DoesNotExist
 
 ;;;;; Django dictionary }}}
 
+
+;;;;; Flask dictionary {{{
+Blueprint
+register_blueprint
+from_object
+render_template
+;;;;; Flask dictionary }}}
