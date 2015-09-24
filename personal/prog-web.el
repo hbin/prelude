@@ -13,6 +13,11 @@
 
 ;;---- VARS --------------------------------------------------------------------
 
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.dtl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+
 (defvar hbin-web-mode-hook nil)
 (defvar hbin-slim-mode-hook nil)
 (defvar hbin-scss-mode-hook nil)

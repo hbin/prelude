@@ -13,7 +13,7 @@
 ;; Auto Completion - http://cx4a.org/software/auto-complete/manual.html#Introduction
 
 ;;; Code:
-(prelude-require-packages '(auto-complete))
+(prelude-require-packages '(auto-complete ac-anaconda))
 (require 'auto-complete-config)
 
 ;; ac-dictionaries for major modes
@@ -62,6 +62,7 @@
   (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
+  (add-hook 'python-mode-hook 'ac-anaconda-setup)
   (add-hook 'css-mode-hook 'ac-css-mode-setup)
   (add-hook 'web-mode-hook 'ac-css-mode-setup)
   (add-hook 'scss-mode-hook 'ac-css-mode-setup)
