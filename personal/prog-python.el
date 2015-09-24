@@ -11,9 +11,6 @@
 
 ;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.dtl\\'" . web-mode))
-
 (prelude-require-packages '(anaconda-mode pyenv-mode f))
 
 (defun projectile-pyenv-mode-set ()
