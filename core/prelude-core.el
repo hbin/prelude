@@ -67,7 +67,7 @@ This variable can be set via .dir-locals.el to provide multi-term support.")
   "Create or visit a terminal buffer."
   (interactive)
   (prelude-start-or-switch-to (lambda ()
-                                (ansi-term (getenv "SHELL") (concat prelude-term-buffer-name "-term")))
+                                (ansi-term prelude-shell (concat prelude-term-buffer-name "-term")))
                               (format "*%s-term*" prelude-term-buffer-name)))
 
 (defun prelude-search (query-url prompt)
@@ -248,7 +248,7 @@ there's a region, all lines that region covers will be duplicated."
       (if (vc-backend filename)
           (vc-delete-file filename)
         (when (y-or-n-p (format "Are you sure you want to delete %s? " filename))
-          (delete-file filename)
+          (delete-file filename delete-by-moving-to-trash)
           (message "Deleted file %s" filename)
           (kill-buffer))))))
 
