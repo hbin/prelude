@@ -73,8 +73,13 @@
 
 (require 'smart-mode-line)
 (setq sml/no-confirm-load-theme t)
-(setq sml/theme 'respectful)
+;; delegate theming to the currently active theme
+(setq sml/theme nil)
 (add-hook 'after-init-hook #'sml/setup)
+
+;; show the cursor when moving after big movements in the window
+(require 'beacon)
+(beacon-mode +1)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here
