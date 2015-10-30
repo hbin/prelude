@@ -1,4 +1,4 @@
-# name: ready
+# name: jquery.ready
 # key: ready
 # --
 $(function () {

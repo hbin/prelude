@@ -13,6 +13,7 @@
 
 ;;---- VARS --------------------------------------------------------------------
 
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.dtl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
@@ -53,6 +54,9 @@
 
        ;; Subword
        (subword-mode 1)
+
+       ;; JS2
+       (js2-minor-mode 1)
 
        ;; Zencoding
        (defvar zencoding-mode-keymap nil)
