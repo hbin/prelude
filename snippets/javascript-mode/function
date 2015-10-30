@@ -1,5 +1,5 @@
 # name: function
-# key: fun
+# key: function
 # --
 function ${1:function_name}(${2:argument}) {
   ${0:// body...}
