@@ -21,7 +21,7 @@
 
 (defun hbin-frame-init (frame)
   "Custom behaviours for FRAME."
-  (set-frame-font "Monaco:pixelsize=16")
+  (set-frame-font "Monaco:pixelsize=18")
   (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=16")
 
   ;; UI
