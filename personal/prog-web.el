@@ -68,8 +68,9 @@
        (require 'zencoding-mode)
        (zencoding-mode 1)
 
-       ;; erb
        (ruby-tools-mode +1)
+
+       ;; erb
        (modify-syntax-entry ?$ "w")
        (modify-syntax-entry ?@ "w")
        (modify-syntax-entry ?? "w")
@@ -93,8 +94,7 @@
        (local-set-key (kbd "C-c C-c") 'web-mode-comment-or-uncomment))
 
 
-     (setq hbin-web-mode-hook 'hbin-web-mode-defaults)
-     (add-hook 'web-mode-hook (lambda () (run-hooks 'hbin-web-mode-hook)))))
+     (add-hook 'web-mode-hook 'hbin-web-mode-defaults)))
 
 ;;; Slim-mode
 (eval-after-load 'slim-mode

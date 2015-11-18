@@ -16,6 +16,8 @@
 (defun hbin-js-mode-init ()
   "Modify the js syntax."
 
+  (ruby-tools-mode +1)
+
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?- "w"))
