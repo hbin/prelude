@@ -2,6 +2,7 @@
 ac-comphist.dat
 *~
 *.elc
+anaconda-mode/
 auto-save-list
 recentf
 savehist
