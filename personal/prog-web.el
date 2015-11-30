@@ -55,9 +55,6 @@
        ;; Subword
        (subword-mode 1)
 
-       ;; JS2
-       (js2-minor-mode 1)
-
        ;; Zencoding
        (defvar zencoding-mode-keymap nil)
        (let ((map (make-sparse-keymap)))
