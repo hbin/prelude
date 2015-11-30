@@ -43,7 +43,12 @@
  '(web-mode-style-padding 2)
  '(web-mode-script-padding 2)
  '(web-mode-block-padding 0)
- '(web-mode-comment-style 2))
+ '(web-mode-comment-style 2)
+ '(web-mode-enable-auto-closing t)
+ '(web-mode-enable-auto-pairing nil)
+ '(web-mode-enable-auto-opening t)
+ '(web-mode-enable-auto-quoting nil)
+ '(web-mode-enable-auto-expanding nil))
 
 ;;; web mode
 (eval-after-load 'web-mode
