@@ -38,6 +38,12 @@
 
 ;;; Popwin
 (require 'popwin)
+(popwin-mode 1)
+(global-set-key (kbd "C-q") popwin:keymap)
+
+(push '("*ag search*" :height 10) popwin:special-display-config)
+(push '("*ggtags-global*" :height 10) popwin:special-display-config)
+
 ;; (setq display-buffer-function 'popwin:display-buffer)
 
 ;;; Highlight symbols
@@ -75,7 +81,7 @@
 (require 'ag)
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
-(setq ag-reuse-window t)
+(setq ag-reuse-window nil)
 (setq ag-project-root-function 'projectile-project-root)
 
 ;;; Smartparens

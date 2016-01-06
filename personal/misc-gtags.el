@@ -18,17 +18,14 @@
   '(progn
      (define-key ggtags-mode-map (kbd "M-]") 'smart-shift-right)))
 
-(defadvice compile-goto-error (around my-compile-goto-error activate)
-  (let ((display-buffer-overriding-action
-         '(display-buffer-reuse-window (inhibit-same-window . nil))))
-    ad-do-it))
-
 ;;; Custom stuff
-(setq ggtags-use-sqlite3 t)
+(setq ggtags-use-sqlite3 nil)
 (setq ggtags-use-idutils nil)
 (setq ggtags-global-window-height nil)
 (setq ggtags-enable-navigation-keys nil)
 (setq ggtags-mode-sticky nil)
+(setq ggtags-auto-jump-to-match 'history)
+(setq ggtags-global-abbreviate-filename whitespace-line-column)
 (setenv "GTAGSLABEL" "ctags")
 
 ;; Override it to create tags automatically.
