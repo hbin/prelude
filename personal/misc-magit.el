@@ -52,7 +52,7 @@
 (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
 
 ;;; Frontend for git blame
-(defalias 'git-blame 'magit-blame-mode)
+(defalias 'git-blame 'magit-blame)
 
 (provide 'misc-magit)
 ;;; misc-magit.el ends here
