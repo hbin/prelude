@@ -10,7 +10,7 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(rainbow-delimiters dash-at-point ggtags yasnippet))
+(prelude-require-packages '(rainbow-delimiters dash-at-point yasnippet))
 
 (add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
 
