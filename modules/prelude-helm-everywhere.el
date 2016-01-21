@@ -43,9 +43,9 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-h f") 'helm-apropos)
-(global-set-key (kbd "C-h r") 'helm-info-emacs)
-(global-set-key (kbd "C-h C-l") 'helm-locate-library)
+(define-key 'help-command "f" 'helm-apropos)
+(define-key 'help-command "r" 'helm-info-emacs)
+(define-key 'help-command "l" 'helm-locate-library)
 (define-key prelude-mode-map (kbd "C-c f") 'helm-recentf)
 
 (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)

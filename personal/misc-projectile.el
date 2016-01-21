@@ -22,7 +22,6 @@
 ;;; Customizes
 (custom-set-variables
  '(projectile-enable-idle-timer t)
- '(projectile-completion-system (quote grizzl))
  '(projectile-ignored-projects '("/usr/local/")))
 
 ;;; Keybindings
@@ -39,6 +38,23 @@
 (define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
 (define-key projectile-mode-map (kbd "C-x C-i") 'projectile-find-tag)
 (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-switch-project)
+
+(defun projectile-completing-read (prompt choices &optional initial-input)
+  "Override this method for global fuzzy match."
+  (let ((prompt (projectile-prepend-project-name prompt)))
+    (cond
+     ((eq projectile-completion-system 'helm)
+      (if (fboundp 'helm-comp-read)
+          (helm-comp-read prompt choices
+                          :initial-input initial-input
+                          :candidates-in-buffer t
+                          :fuzzy t   ;; Enable fuzzy matching
+                          :must-match 'confirm)))
+     ((eq projectile-completion-system 'grizzl)
+      (if (and (fboundp 'grizzl-completing-read)
+               (fboundp 'grizzl-make-index))
+          (grizzl-completing-read prompt (grizzl-make-index choices))))
+     (t (funcall projectile-completion-system prompt choices)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
