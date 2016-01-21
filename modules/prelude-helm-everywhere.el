@@ -42,7 +42,6 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (define-key 'help-command "f" 'helm-apropos)
 (define-key 'help-command "r" 'helm-info-emacs)
 (define-key 'help-command "l" 'helm-locate-library)
