@@ -39,10 +39,7 @@
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?$ "w")
-  (modify-syntax-entry ?@ "w")
-  (modify-syntax-entry ?? "w")
-  (modify-syntax-entry ?! "w")
-  (modify-syntax-entry ?: "."))
+  (modify-syntax-entry ?@ "w"))
 
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
