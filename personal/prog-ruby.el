@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(prelude-require-packages '(rbenv ruby-hash-syntax rspec-mode projectile-rails))
+(prelude-require-packages '(rbenv ruby-hash-syntax projectile-rails))
 
 ;; rbenv
 (require 'rbenv)
@@ -46,19 +46,6 @@
 
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
-
-;;; RSpec
-(require 'rspec-mode)
-(setq rspec-use-spring-when-possible nil
-      rspec-use-zeus-when-possible nil
-      rspec-use-opts-file-when-available nil)
-
-(defadvice rspec-compile (around rspec-compile-around)
-  "Use BASH shell for running the specs because of ZSH issues."
-  (let ((shell-file-name "/bin/bash"))
-    ad-do-it))
-
-(ad-activate 'rspec-compile)
 
 ;;; Rails
 (custom-set-variables
