@@ -16,8 +16,11 @@
 
 (helm-autoresize-mode 1)
 
-(setq helm-M-x-fuzzy-match t)
-(setq helm-recentf-fuzzy-match t)
+(setq helm-M-x-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t
+      helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match t)
 
 ;; https://www.reddit.com/r/emacs/comments/345vtl/make_helm_window_at_the_bottom_without_using_any/
 (add-to-list 'display-buffer-alist
