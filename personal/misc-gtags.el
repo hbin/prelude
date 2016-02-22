@@ -10,27 +10,15 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(projectile ggtags))
+(prelude-require-packages '(projectile helm-gtags))
 
-(require 'ggtags)
-
-(eval-after-load 'smart-shift
-  '(progn
-     (define-key ggtags-mode-map (kbd "M-]") 'smart-shift-right)))
+(require 'helm-gtags)
 
 ;;; Custom stuff
-(setq ggtags-use-sqlite3 nil)
-(setq ggtags-use-idutils nil)
-(setq ggtags-global-window-height nil)
-(setq ggtags-enable-navigation-keys nil)
-(setq ggtags-mode-sticky nil)
-(setq ggtags-auto-jump-to-match 'history)
-(setq ggtags-global-abbreviate-filename whitespace-line-column)
 (setenv "GTAGSLABEL" "ctags")
 
-;; Override it to create tags automatically.
-(defun ggtags-tag-at-point ()
-  "Get ggtags tag at point.
+(defun ruby-tag-at-point ()
+  "Get ruby tag at point.
 
 1. thing at 'current_user'   get current_user;
 2. thing at '!current_user'  get current_user;
@@ -59,19 +47,41 @@ Otherwise, get `find-tag-default symbol."
            (find-tag-default)))
      (find-tag-default))))
 
-(defun ggtags-ensure-project ()
-  (when (projectile-project-p)
-    (let ((gtags-file (expand-file-name "GTAGS" (projectile-project-root))))
-      (unless (file-exists-p gtags-file)
-        (ggtags-create-tags (projectile-project-root))))
-    (ggtags-check-project)))
-
-(defun projectile-regenerate-tags-if ()
+(defun helm-gtags--read-gtagslabel ()
+  "Always use Ctags as a plug-in parser for `ruby-mode'."
   (if (memq major-mode '(ruby-mode))
-      (projectile-regenerate-tags)))
+      (getenv "GTAGSLABEL")
+    (let ((labels '("default" "native" "ctags" "pygments")))
+      (completing-read "GTAGSLABEL(Default: default): " labels nil t nil nil "default"))))
 
-(remove-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags)
-(add-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags-if)
+(defun helm-gtags-create-tags (dir label)
+  (interactive)
+  (let ((default-directory (projectile-project-root))
+        (label (helm-gtags--read-gtagslabel))
+        (proc-buf (get-buffer-create " *helm-gtags-create*")))
+    (let ((proc (start-file-process "helm-gtags-create" proc-buf
+                                    "gtags" "-q" (helm-gtags--label-option label))))
+      (set-process-sentinel proc (helm-gtags--make-gtags-sentinel 'create)))))
+
+(defun helm-gtags--find-tag-simple ()
+  (or (getenv "GTAGSROOT")
+      (locate-dominating-file default-directory "GTAGS")
+      (let* ((tagroot (projectile-project-root))
+             (label (helm-gtags--read-gtagslabel))
+             (default-directory tagroot))
+        (message "gtags is generating tags....")
+        (unless (zerop (process-file "gtags" nil nil nil
+                                     "-q" (helm-gtags--label-option label)))
+          (error "Faild: 'gtags -q'"))
+        tagroot)))
+
+(defun helm-gtags-find-tag-from-here ()
+  "Jump to definition."
+  (interactive)
+  (helm-gtags--common '(helm-source-gtags-tags) (ruby-tag-at-point)))
+
+(global-set-key (kbd "M-.") 'helm-gtags-find-tag-from-here)
+(global-set-key (kbd "M-*") 'helm-gtags-pop-stack)
 
 (provide 'misc-tags)
 ;;; misc-gtags.el ends here

@@ -42,7 +42,6 @@
 (global-set-key (kbd "C-q") popwin:keymap)
 
 (push '("*ag search*" :height 10) popwin:special-display-config)
-(push '("*ggtags-global*" :height 10) popwin:special-display-config)
 
 ;; (setq display-buffer-function 'popwin:display-buffer)
 

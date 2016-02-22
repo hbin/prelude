@@ -43,7 +43,6 @@ and set the PYTHON_VERSION to it."
   (local-set-key (kbd "C-j") 'newline-and-indent)
 
   ;; Code navigation for Python.
-  (if (fboundp 'ggtags-mode) (ggtags-mode -1))
   (if (fboundp 'anaconda-mode) (anaconda-mode 1)))
 
 (add-hook 'python-mode-hook 'hbin-python-mode-init)

@@ -22,6 +22,7 @@
 ;;; Customizes
 (custom-set-variables
  '(projectile-enable-idle-timer t)
+ '(projectile-idle-timer-hook '(helm-gtags-update-tags))
  '(projectile-ignored-projects '("/usr/local/")))
 
 ;;; Keybindings
@@ -55,6 +56,14 @@
                (fboundp 'grizzl-make-index))
           (grizzl-completing-read prompt (grizzl-make-index choices))))
      (t (funcall projectile-completion-system prompt choices)))))
+
+(defun projectile-find-tag ()
+  "Override this method to call helm-gtags."
+  (interactive)
+  (projectile-visit-project-tags-table)
+  ;; Auto-discover the user's preference for tags
+  (let ((find-tag-fn 'helm-gtags-parse-file))
+    (call-interactively find-tag-fn)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
