@@ -11,12 +11,39 @@
 
 ;;; Code:
 
-(prelude-require-packages '(rbenv ruby-hash-syntax projectile-rails))
+(prelude-require-packages '(rbenv bundler ruby-hash-syntax projectile-rails))
 
 ;; rbenv
 (require 'rbenv)
 (setq rbenv-show-active-ruby-in-modeline nil)
 (global-rbenv-mode)
+
+;; bundler
+(require 'bundler)
+
+(defvar bundle-commonly-used-gems
+  '("actionpack"
+    "activemodel"
+    "activerecord"
+    "activesupport"
+    "railties"
+    ))
+
+(defun bundle-commonly-used-gem-paths ()
+  "Get commonly used gems' paths."
+  (-map 'bundle-gem-location bundle-commonly-used-gems))
+
+(defun bundle-gtags ()
+  "Generate gtags for every commonly used gems."
+  (interactive)
+  (let ((bundler-stdout
+         (shell-command-to-string "bundle check")))
+    (unless (string-match "Could not locate Gemfile" bundler-stdout)
+      (let ((gem-paths (bundle-commonly-used-gem-paths)))
+        (-each gem-paths
+          (lambda (path)
+            (helm-gtags-create-tags path nil)))
+        (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))
 
 (defun hbin-ruby-mode-setup ()
   "Setup ruby mode."

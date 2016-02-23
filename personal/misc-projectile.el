@@ -58,7 +58,7 @@
      (t (funcall projectile-completion-system prompt choices)))))
 
 (defun projectile-find-tag ()
-  "Override this method to call helm-gtags."
+  "Override this method to call helm-gtags-parse-file."
   (interactive)
   (projectile-visit-project-tags-table)
   ;; Auto-discover the user's preference for tags
