@@ -31,7 +31,8 @@
 
 (defun bundle-commonly-used-gem-paths ()
   "Get commonly used gems' paths."
-  (-map 'bundle-gem-location bundle-commonly-used-gems))
+  (-filter 'stringp (-map 'bundle-gem-location
+                          bundle-commonly-used-gems)))
 
 (defun bundle-gtags ()
   "Generate gtags for every commonly used gems."
@@ -40,10 +41,12 @@
          (shell-command-to-string "bundle check")))
     (unless (string-match "Could not locate Gemfile" bundler-stdout)
       (let ((gem-paths (bundle-commonly-used-gem-paths)))
-        (-each gem-paths
-          (lambda (path)
-            (helm-gtags-create-tags path nil)))
-        (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))
+        (if gem-paths
+            (progn
+              (-each gem-paths
+                (lambda (path)
+                  (helm-gtags-create-tags path nil)))
+              (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
 
 (defun hbin-ruby-mode-setup ()
   "Setup ruby mode."
