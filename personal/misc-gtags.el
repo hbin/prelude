@@ -14,6 +14,17 @@
 
 (require 'helm-gtags)
 
+(custom-set-variables
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-mode-name " Gtags"))
+
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag-from-here)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)
+     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+     (define-key helm-gtags-mode-map (kbd "C-x C-i") 'helm-gtags-parse-file)))
+
 ;;; Custom stuff
 (setenv "GTAGSLABEL" "ctags")
 
@@ -79,9 +90,6 @@ Otherwise, get `find-tag-default symbol."
   "Jump to definition."
   (interactive)
   (helm-gtags--common '(helm-source-gtags-tags) (ruby-tag-at-point)))
-
-(global-set-key (kbd "M-.") 'helm-gtags-find-tag-from-here)
-(global-set-key (kbd "M-*") 'helm-gtags-pop-stack)
 
 (provide 'misc-tags)
 ;;; misc-gtags.el ends here

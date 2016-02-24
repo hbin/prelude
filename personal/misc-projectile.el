@@ -57,14 +57,6 @@
           (grizzl-completing-read prompt (grizzl-make-index choices))))
      (t (funcall projectile-completion-system prompt choices)))))
 
-(defun projectile-find-tag ()
-  "Override this method to call helm-gtags-parse-file."
-  (interactive)
-  (projectile-visit-project-tags-table)
-  ;; Auto-discover the user's preference for tags
-  (let ((find-tag-fn 'helm-gtags-parse-file))
-    (call-interactively find-tag-fn)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'misc-projectile)

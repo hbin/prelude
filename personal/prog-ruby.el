@@ -89,6 +89,7 @@
 (define-key projectile-rails-mode-map (kbd "C-c ; P") 'projectile-rails-server)
 
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+(add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
