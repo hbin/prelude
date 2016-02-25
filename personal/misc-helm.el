@@ -10,7 +10,6 @@
 ;;; Commentary:
 
 ;; This file is not part of GNU Emacs.
-;; Auto Completion - http://cx4a.org/software/auto-complete/manual.html#Introduction
 
 ;;; Code:
 
