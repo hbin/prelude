@@ -27,8 +27,8 @@
 
 (add-hook 'projectile-idle-timer-hook
           (lambda ()
-            (if helm-gtags-mode
-                (helm-gtags-update-tags))))
+            (when helm-gtags-mode
+              (helm-gtags-update-tags))))
 
 ;;; Custom stuff
 (setenv "GTAGSLABEL" "ctags")

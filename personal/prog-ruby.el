@@ -64,12 +64,18 @@
          (process (get-buffer-process ruby-buffer)))
     process))
 
-(defadvice robe-start (after ac-setup-after-robe-start (&optional force) activate)
-  "Setup ac-robe-source when robe-start successfuly."
-  (if (and (or robe-running
-               (ac-robe-available))
-           (not (-contains? 'ac-sources ac-source-robe)))
-      (ac-robe-setup)))
+(defadvice robe-start (after robe-start-after-advice (&optional force) activate)
+  "Setup ac/company sources when robe-start successfuly."
+  (when (or robe-running
+            (ac-robe-available))
+    (if (and (boundp 'auto-complete-mode)
+             auto-complete-mode
+             (not (-contains? ac-sources 'ac-source-robe)))
+        (push 'ac-source-robe ac-sources))
+    (if (and (boundp 'company-mode)
+             company-mode
+             (not (-contains? company-backends 'company-robe)))
+        (push 'company-robe company-backends))))
 
 ;;; Ruby mode
 (defun hbin-ruby-mode-setup ()
@@ -114,6 +120,12 @@
 
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
+
+(add-hook 'projectile-idle-timer-hook
+          (lambda ()
+            (when (or robe-running
+                      (ac-robe-available))
+              (robe-rails-refresh))))
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
