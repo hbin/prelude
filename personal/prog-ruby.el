@@ -11,14 +11,14 @@
 
 ;;; Code:
 
-(prelude-require-packages '(rbenv bundler ruby-hash-syntax projectile-rails))
+(prelude-require-packages '(rbenv bundler robe ruby-hash-syntax projectile-rails))
 
-;; rbenv
+;;; rbenv
 (require 'rbenv)
 (setq rbenv-show-active-ruby-in-modeline nil)
 (global-rbenv-mode)
 
-;; bundler
+;;; bundler
 (require 'bundler)
 
 (defvar bundle-commonly-used-gems
@@ -48,6 +48,30 @@
                   (helm-gtags-create-tags path nil)))
               (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
 
+;;; robe-mode
+;; Robe is a code assistance tool that uses a Ruby REPL subprocess with your
+;; application.
+;;
+;; The following settings is intend to start a robe subprocess to provide
+;; ac-source for auto-complete only, without enable robe-mode.
+(require 'ac-robe)
+(require 'robe)
+
+;;override
+(defun ac-robe-available ()
+  (let* ((ruby-buffer (and inf-ruby-buffer
+                           (get-buffer inf-ruby-buffer)))
+         (process (get-buffer-process ruby-buffer)))
+    process))
+
+(defadvice robe-start (after ac-setup-after-robe-start (&optional force) activate)
+  "Setup ac-robe-source when robe-start successfuly."
+  (if (and (or robe-running
+               (ac-robe-available))
+           (not (-contains? 'ac-sources ac-source-robe)))
+      (ac-robe-setup)))
+
+;;; Ruby mode
 (defun hbin-ruby-mode-setup ()
   "Setup ruby mode."
   (require 'ruby-hash-syntax)
