@@ -25,6 +25,11 @@
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
      (define-key helm-gtags-mode-map (kbd "C-x C-i") 'helm-gtags-parse-file)))
 
+(add-hook 'projectile-idle-timer-hook
+          (lambda ()
+            (if helm-gtags-mode
+                (helm-gtags-update-tags))))
+
 ;;; Custom stuff
 (setenv "GTAGSLABEL" "ctags")
 
