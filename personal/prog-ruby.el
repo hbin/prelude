@@ -66,8 +66,7 @@
 
 (defadvice robe-start (after robe-start-after-advice (&optional force) activate)
   "Setup ac/company sources when robe-start successfuly."
-  (when (or robe-running
-            (ac-robe-available))
+  (when robe-running
     (if (and (boundp 'auto-complete-mode)
              auto-complete-mode
              (not (-contains? ac-sources 'ac-source-robe)))
@@ -123,8 +122,7 @@
 
 (add-hook 'projectile-idle-timer-hook
           (lambda ()
-            (when (or robe-running
-                      (ac-robe-available))
+            (when robe-running
               (robe-rails-refresh))))
 
 (provide 'prog-ruby)
