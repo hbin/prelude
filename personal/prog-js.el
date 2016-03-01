@@ -11,15 +11,13 @@
 
 ;;; Code:
 
-(prelude-require-packages '(js2-mode))
+(prelude-require-packages '(js2-mode tern))
 
 (defun hbin-js-mode-init ()
   "Modify the js syntax."
 
   (ruby-tools-mode +1)
 
-  ;; Words prefixed with $ are global variables,
-  ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?- "w"))
 
 (add-hook 'js-mode-hook  'hbin-js-mode-init)
