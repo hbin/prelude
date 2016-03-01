@@ -59,8 +59,16 @@ With ARG, move by that many elements."
 
 (eval-after-load 'company
   '(progn
-     (add-to-list 'company-backends '(company-anaconda :with company-capf))
-     (add-to-list 'company-backends 'company-robe)))
+     (add-hook 'ruby-mode-hook
+               (lambda ()
+                 (let ((origin-backends company-backends))
+                   (set (make-local-variable 'company-backends)
+                        (add-to-list 'origin-backends 'company-robe)))))
+     (add-hook 'python-mode-hook
+               (lambda ()
+                 (let ((origin-backends company-backends))
+                   (set (make-local-variable 'company-backends)
+                        (add-to-list 'origin-backends '(company-anaconda :with company-capf))))))))
 
 ;;;Override
 (defun inf-ruby-console-rails (dir)
