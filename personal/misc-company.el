@@ -79,8 +79,17 @@ With ARG, move by that many elements."
                       "rails console development")
               "robe")))
 
+(defun before-kill-emacs-advice (orig-fun &rest args)
+  (-each '("*robe*" "*anaconda-mode*")
+    (lambda (item)
+      (let ((process (get-buffer-process item)))
+        (when process
+          (set-process-query-on-exit-flag process nil)))))
+  (apply orig-fun args))
+(advice-add 'save-buffers-kill-terminal :around #'before-kill-emacs-advice)
+
 (defun start-robe-before-complete-in-rails (manually)
-  "Start robe before complete in rails app."
+  "Start robe before MANUALLY complete in rails app."
   (when (and manually
              (bound-and-true-p projectile-rails-mode)
              (not robe-running))
