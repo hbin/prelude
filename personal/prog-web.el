@@ -54,9 +54,6 @@
 (eval-after-load 'web-mode
   '(progn
      (defun hbin-web-mode-defaults ()
-       ;; Auto complete
-       (auto-complete-mode +1)
-
        ;; Subword
        (subword-mode 1)
 

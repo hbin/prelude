@@ -12,7 +12,7 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(company))
+(prelude-require-packages '(company company-anaconda robe))
 
 (require 'company)
 
@@ -48,11 +48,38 @@ With ARG, move by that many elements."
 (define-key company-active-map (kbd "C-n") 'company-select-next)
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
-(defadvice company-robe
-    (before fake-robe-mode (command &optional arg &rest ignore) activate)
-  (unless robe-mode (setq robe-mode t)))
+;;;robe-mode
+(require 'robe)
 
-;; (global-company-mode 1)
+(defun fake-company-robe (orig-fun &rest args)
+  "robe-mode should be true to use company-robe backend without enable robe-mode."
+  (let ((robe-mode t))
+    (apply orig-fun args)))
+(advice-add 'company-robe :around #'fake-company-robe)
+
+(eval-after-load 'company
+  '(progn
+     (add-to-list 'company-backends '(company-anaconda :with company-capf))
+     (add-to-list 'company-backends 'company-robe)))
+
+;;;Override
+(defun inf-ruby-console-rails (dir)
+  "Run Rails console in DIR."
+  (interactive "D")
+  (let ((with-bundler (file-exists-p "Gemfile")))
+    (run-ruby (concat (when with-bundler "bundle exec ")
+                      "rails console development")
+              "robe")))
+
+(defun start-robe-before-complete-in-rails (manually)
+  "Start robe before complete in rails app."
+  (when (and manually
+             (bound-and-true-p projectile-rails-mode)
+             (not robe-running))
+    (robe-start t)))
+(add-hook 'company-completion-started-hook 'start-robe-before-complete-in-rails)
+
+(global-company-mode 1)
 
 (provide 'misc-company)
 ;;; misc-company.el ends here

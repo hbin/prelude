@@ -48,33 +48,9 @@
                   (helm-gtags-create-tags path nil)))
               (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
 
-;;; robe-mode
-;; Robe is a code assistance tool that uses a Ruby REPL subprocess with your
-;; application.
-;;
-;; The following settings is intend to start a robe subprocess to provide
-;; ac-source for auto-complete only, without enable robe-mode.
-(require 'ac-robe)
+;;; Robe
 (require 'robe)
-
-;;override
-(defun ac-robe-available ()
-  (let* ((ruby-buffer (and inf-ruby-buffer
-                           (get-buffer inf-ruby-buffer)))
-         (process (get-buffer-process ruby-buffer)))
-    process))
-
-(defadvice robe-start (after robe-start-after-advice (&optional force) activate)
-  "Setup ac/company sources when robe-start successfuly."
-  (when robe-running
-    (if (and (boundp 'auto-complete-mode)
-             auto-complete-mode
-             (not (-contains? ac-sources 'ac-source-robe)))
-        (push 'ac-source-robe ac-sources))
-    (if (and (boundp 'company-mode)
-             company-mode
-             (not (-contains? company-backends 'company-robe)))
-        (push 'company-robe company-backends))))
+(define-key ruby-mode-map (kbd "C-c ]") 'robe-jump)
 
 ;;; Ruby mode
 (defun hbin-ruby-mode-setup ()
@@ -103,7 +79,7 @@
 (eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
 (add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
 
-;;; Rails
+;;;projectile-rails
 (custom-set-variables
  '(projectile-rails-expand-snippet nil)
  '(projectile-rails-keymap-prefix (kbd "C-c ;"))
@@ -119,11 +95,6 @@
 
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
-
-(add-hook 'projectile-idle-timer-hook
-          (lambda ()
-            (when robe-running
-              (robe-rails-refresh))))
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
