@@ -71,8 +71,10 @@ Otherwise, get `find-tag-default symbol."
       (completing-read "GTAGSLABEL(Default: default): " labels nil t nil nil "default"))))
 
 (defun helm-gtags-create-tags (dir label)
-  (interactive)
-  (let ((default-directory (or dir (projectile-project-root)))
+  (interactive
+   (list (projectile-project-root)
+         (helm-gtags--read-gtagslabel)))
+  (let ((default-directory dir)
         (label (helm-gtags--read-gtagslabel))
         (proc-buf (get-buffer-create " *helm-gtags-create*")))
     (let ((proc (start-file-process "helm-gtags-create" proc-buf
