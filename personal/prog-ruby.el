@@ -71,6 +71,8 @@
 (defun hbin-ruby-mode-init ()
   "Modify the Ruby syntax."
 
+  (helm-gtags-mode +1)
+
   ;; Words prefixed with $ are global variables,
   ;; prefixed with @ are instance variables.
   (modify-syntax-entry ?$ "w")
