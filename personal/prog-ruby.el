@@ -51,6 +51,7 @@
 ;;; Robe
 (require 'robe)
 (define-key ruby-mode-map (kbd "C-c ]") 'robe-jump)
+(define-key ruby-mode-map (kbd "C-c [") 'pop-tag-mark)
 
 ;;; Ruby mode
 (defun hbin-ruby-mode-setup ()
