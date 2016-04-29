@@ -39,8 +39,8 @@
   '(progn
      (defun prelude-haskell-mode-defaults ()
        (subword-mode +1)
-       (haskell-doc-mode)
-       (haskell-indentation-mode)
+       (eldoc-mode +1)
+       (haskell-indentation-mode +1)
        (interactive-haskell-mode +1))
 
      (setq prelude-haskell-mode-hook 'prelude-haskell-mode-defaults)

@@ -47,6 +47,7 @@
     anzu
     beacon
     browse-kill-ring
+    crux
     dash
     discover-my-major
     diff-hl
@@ -73,6 +74,7 @@
     smartrep
     undo-tree
     volatile-highlights
+    which-key
     zenburn-theme
     zop-to-char)
   "A list of packages to ensure are installed at launch.")
