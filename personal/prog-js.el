@@ -13,6 +13,10 @@
 
 (prelude-require-packages '(js2-mode tern))
 
+(custom-set-variables
+ '(js2-mode-show-parse-errors nil)
+ '(js2-mode-show-strict-warnings nil))
+
 (defun hbin-js-mode-init ()
   "Modify the js syntax."
 
