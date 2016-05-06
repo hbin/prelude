@@ -32,7 +32,7 @@
   (define-key ido-file-dir-completion-map [(meta ?d)] 'kill-word)
   (define-key ido-file-dir-completion-map [(meta ?f)] 'forward-word)
   (define-key ido-file-dir-completion-map "\C-x\C-f" nil)
-  (define-key ido-common-completion-map "\C-a" 'move-beginning-of-line)
+  (define-key ido-common-completion-map "\C-a" 'crux-move-beginning-of-line)
   (define-key ido-common-completion-map "\C-e" 'move-end-of-line)
   (define-key ido-common-completion-map "\C-f" 'forward-char))
 (add-hook 'ido-setup-hook 'ido-my-keys)
@@ -57,8 +57,8 @@
 (define-key key-translation-map [?\C-h] [?\C-?])
 
 ;; Vim like open previous/next line
-(global-set-key (kbd "C-o") 'prelude-smart-open-line)
-(global-set-key (kbd "C-M-o") 'prelude-smart-open-line-above)
+(global-set-key (kbd "C-o") 'crux-smart-open-line)
+(global-set-key (kbd "C-M-o") 'crux-smart-open-line-above)
 
 ;; Window switching
 (define-key prelude-mode-map (kbd "M-0") 'delete-window)
