@@ -33,7 +33,8 @@
 
 (define-key projectile-mode-map (kbd "M-t") 'projectile-find-file)
 (define-key projectile-mode-map (kbd "M-T") 'projectile-find-file-other-window)
-(define-key projectile-mode-map (kbd "M-g") 'projectile-ag)
+(define-key projectile-mode-map (kbd "M-g") 'helm-projectile-ag)
+(define-key projectile-mode-map (kbd "M-G") 'helm-do-ag-this-file)
 (define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
 (define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
 (define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)

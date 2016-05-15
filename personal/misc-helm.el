@@ -15,11 +15,23 @@
 
 (helm-autoresize-mode 1)
 
-(setq helm-M-x-fuzzy-match t
-      helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match t
-      helm-semantic-fuzzy-match t
-      helm-imenu-fuzzy-match t)
+(setq grep-find-ignored-files
+      (append grep-find-ignored-files
+              '("*.svg")))
+
+(custom-set-variables '(helm-M-x-fuzzy-match t)
+                      '(helm-buffers-fuzzy-matching t)
+                      '(helm-recentf-fuzzy-match t)
+                      '(helm-semantic-fuzzy-match t)
+                      '(helm-imenu-fuzzy-match t)
+                      '(helm-autoresize-min-height 1)
+                      '(helm-ag-use-agignore t)
+                      '(helm-ag-use-grep-ignore-list t)
+                      '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+                      '(helm-ag-command-option "--all-text")
+                      '(helm-ag-insert-at-point 'symbol))
+
+(global-set-key (kbd "M-z") 'helm-resume)
 
 ;; https://www.reddit.com/r/emacs/comments/345vtl/make_helm_window_at_the_bottom_without_using_any/
 (add-to-list 'display-buffer-alist

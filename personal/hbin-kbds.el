@@ -21,8 +21,8 @@
         (setq mac-option-modifier 'super))))
 
 ;; Define my own keymap
-(defvar hbin-map (make-sparse-keymap))
-(global-set-key (kbd "M-z") hbin-map)
+;; (defvar hbin-map (make-sparse-keymap))
+;; (global-set-key (kbd "C-q") hbin-map)
 
 ;; Disable several ido kbds
 (require'ido)
