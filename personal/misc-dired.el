@@ -60,7 +60,7 @@
                 "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
                 "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
 
-(defun neo-buffer--insert-fold-symbol (name)
+(defun neo-buffer--insert-fold-symbol (name &optional node-name)
   "Write icon by NAME, the icon style affected by neo-theme.
 `open' write opened folder icon.
 `close' write closed folder icon.
