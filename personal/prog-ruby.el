@@ -11,12 +11,7 @@
 
 ;;; Code:
 
-(prelude-require-packages '(rbenv bundler robe ruby-hash-syntax projectile-rails))
-
-;;; rbenv
-(require 'rbenv)
-(setq rbenv-show-active-ruby-in-modeline nil)
-(global-rbenv-mode)
+(prelude-require-packages '(bundler robe ruby-hash-syntax projectile-rails))
 
 ;;; bundler
 (require 'bundler)
