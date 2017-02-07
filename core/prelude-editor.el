@@ -1,6 +1,6 @@
 ;;; prelude-editor.el --- Emacs Prelude: enhanced core editing experience.
 ;;
-;; Copyright © 2011-2016 Bozhidar Batsov
+;; Copyright © 2011-2017 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
@@ -433,6 +433,10 @@ and file 'filename' will be opened and cursor set on line 'linenumber'"
                                (cons (string-to-number (match-string 2 name))
                                      (string-to-number (or (match-string 3 name) ""))))
                             fn))) files)))
+
+;; use settings from .editorconfig file when present
+(require 'editorconfig)
+(editorconfig-mode 1)
 
 (provide 'prelude-editor)
 

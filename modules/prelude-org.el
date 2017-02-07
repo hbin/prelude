@@ -1,6 +1,6 @@
 ;;; prelude-org.el --- Emacs Prelude: org-mode configuration.
 ;;
-;; Copyright © 2011-2016 Bozhidar Batsov
+;; Copyright © 2011-2017 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
@@ -44,6 +44,7 @@
     (set-keymap-parent newmap oldmap)
     (define-key newmap (kbd "C-c +") nil)
     (define-key newmap (kbd "C-c -") nil)
+    (define-key newmap (kbd "C-a") nil)
     (make-local-variable 'minor-mode-overriding-map-alist)
     (push `(prelude-mode . ,newmap) minor-mode-overriding-map-alist))
 )
