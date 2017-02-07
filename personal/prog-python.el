@@ -13,16 +13,20 @@
 
 (prelude-require-packages '(anaconda-mode f))
 
-(defun hbin-python-mode-init ()
-  "Settings for `python-mode'."
-  (ruby-tools-mode +1)
+(eval-after-load 'python-mode
+  '(progn
+     (defun hbin-python-mode-defaults ()
+       "Settings for `python-mode'."
+       (ruby-tools-mode +1)
 
-  (local-set-key (kbd "C-j") 'newline-and-indent)
+       (local-set-key (kbd "C-j") 'newline-and-indent)
 
-  ;; Code navigation for Python.
-  (if (fboundp 'anaconda-mode) (anaconda-mode 1)))
+       ;; Code navigation for Python.
+       (if (fboundp 'anaconda-mode) (anaconda-mode 1)))
 
-(add-hook 'python-mode-hook 'hbin-python-mode-init)
+     (setq hbin-python-mode-hook 'hbin-python-mode-defaults)
+     (add-hook 'python-mode-hook (lambda ()
+                                   (run-hook 'hbin-python-mode-hook)))))
 
 (provide 'prog-python)
 ;;; prog-python.el ends here

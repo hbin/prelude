@@ -13,86 +13,87 @@
 
 (prelude-require-packages '(bundler robe ruby-hash-syntax projectile-rails))
 
-;;; bundler
-(require 'bundler)
+(eval-after-load 'ruby-mode
+  '(progn
+     "Setup ruby mode."
+     (require 'ruby-hash-syntax)
+     (define-key ruby-mode-map (kbd "C-c #") 'ruby-toggle-hash-syntax)
 
-(defvar bundle-commonly-used-gems
-  '("actionpack"
-    "activemodel"
-    "activerecord"
-    "activesupport"
-    "railties"
-    ))
+     ;; Prevent Emacs from adding coding shebang automatically.
+     (setq ruby-insert-encoding-magic-comment nil)
 
-(defun bundle-commonly-used-gem-paths ()
-  "Get commonly used gems' paths."
-  (-filter 'stringp (-map 'bundle-gem-location
-                          bundle-commonly-used-gems)))
+     ;; Font lock for new hash style.
+     (font-lock-add-keywords
+      'ruby-mode
+      '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))
+        ("\\(^\\|[^_:.@$\\W]\\|\\.\\.\\)\\b\\(include\\|extend\\|require\\|autoload\\)\\b[^_:.@$\\W]" . font-lock-function-name-face)))
 
-(defun bundle-gtags ()
-  "Generate gtags for every commonly used gems."
-  (interactive)
-  (let ((bundler-stdout
-         (shell-command-to-string "bundle check")))
-    (unless (string-match "Could not locate Gemfile" bundler-stdout)
-      (let ((gem-paths (bundle-commonly-used-gem-paths)))
-        (if gem-paths
-            (progn
-              (-each gem-paths
-                (lambda (path)
-                  (helm-gtags-create-tags path nil)))
-              (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
+     ;;; Bundler configuration start {{{
+     (require 'bundler)
 
-;;; Robe
-(require 'robe)
-(define-key ruby-mode-map (kbd "C-c ]") 'robe-jump)
-(define-key ruby-mode-map (kbd "C-c [") 'pop-tag-mark)
+     (defvar bundle-commonly-used-gems
+       '("actionpack"
+         "activemodel"
+         "activerecord"
+         "activesupport"
+         "railties"
+         ))
 
-;;; Ruby mode
-(defun hbin-ruby-mode-setup ()
-  "Setup ruby mode."
-  (require 'ruby-hash-syntax)
-  (define-key ruby-mode-map (kbd "C-c #") 'ruby-toggle-hash-syntax)
+     (defun bundle-commonly-used-gem-paths ()
+       "Get commonly used gems' paths."
+       (-filter 'stringp (-map 'bundle-gem-location
+                               bundle-commonly-used-gems)))
 
-  ;; Prevent Emacs from adding coding shebang automatically.
-  (setq ruby-insert-encoding-magic-comment nil)
+     (defun bundle-gtags ()
+       "Generate gtags for every commonly used gems."
+       (interactive)
+       (let ((bundler-stdout
+              (shell-command-to-string "bundle check")))
+         (unless (string-match "Could not locate Gemfile" bundler-stdout)
+           (let ((gem-paths (bundle-commonly-used-gem-paths)))
+             (if gem-paths
+                 (progn
+                   (-each gem-paths
+                     (lambda (path)
+                       (helm-gtags-create-tags path nil)))
+                   (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
+     ;;; Bundler configuration ends}}}
 
-  ;; Font lock for new hash style.
-  (font-lock-add-keywords
-   'ruby-mode
-   '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))
-     ("\\(^\\|[^_:.@$\\W]\\|\\.\\.\\)\\b\\(include\\|extend\\|require\\|autoload\\)\\b[^_:.@$\\W]" . font-lock-function-name-face)))
-  )
+     ;;; Robe
+     (require 'robe)
+     (define-key ruby-mode-map (kbd "C-c ]") 'robe-jump)
+     (define-key ruby-mode-map (kbd "C-c [") 'pop-tag-mark)
 
-(defun hbin-ruby-mode-init ()
-  "Modify the Ruby syntax."
+     ;;; Rails start {{{
+     (custom-set-variables
+      '(projectile-rails-expand-snippet nil)
+      '(projectile-rails-keymap-prefix (kbd "C-c ;"))
+      '(projectile-rails-font-lock-face-name 'font-lock-function-name-face))
 
-  (helm-gtags-mode +1)
+     (require 'projectile-rails)
+     (projectile-rails-global-mode)
+     (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
 
-  ;; Words prefixed with $ are global variables,
-  ;; prefixed with @ are instance variables.
-  (modify-syntax-entry ?$ "w")
-  (modify-syntax-entry ?@ "w"))
+     (let ((map projectile-rails-mode-map))
+       (define-key map (kbd "s-<return>") 'projectile-rails-goto-file-at-point)
+       (define-key map (kbd "C-c ; r") 'projectile-rails-find-spec)
+       (define-key map (kbd "C-c ; R") 'projectile-rails-find-current-spec)
+       (define-key map (kbd "C-c ; p") 'projectile-rails-console)
+       (define-key map (kbd "C-c ; P") 'projectile-rails-server))
+     ;;; Rails end }}}
 
-(eval-after-load 'ruby-mode '(hbin-ruby-mode-setup))
-(add-hook 'ruby-mode-hook 'hbin-ruby-mode-init)
+     ;;; Defaults
+     (defun hbin-ruby-mode-defaults ()
+       "Modify the Ruby syntax."
+       (helm-gtags-mode +1)
 
-;;;projectile-rails
-(custom-set-variables
- '(projectile-rails-expand-snippet nil)
- '(projectile-rails-keymap-prefix (kbd "C-c ;"))
- '(projectile-rails-font-lock-face-name 'font-lock-function-name-face))
+       ;; Words prefixed with $ are global variables,
+       ;; prefixed with @ are instance variables.
+       (modify-syntax-entry ?$ "w")
+       (modify-syntax-entry ?@ "w"))
 
-(require 'projectile-rails)
-
-(define-key projectile-rails-mode-map (kbd "s-<return>") 'projectile-rails-goto-file-at-point)
-(define-key projectile-rails-mode-map (kbd "C-c ; r") 'projectile-rails-find-spec)
-(define-key projectile-rails-mode-map (kbd "C-c ; R") 'projectile-rails-find-current-spec)
-(define-key projectile-rails-mode-map (kbd "C-c ; p") 'projectile-rails-console)
-(define-key projectile-rails-mode-map (kbd "C-c ; P") 'projectile-rails-server)
-
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-(add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
+     (setq hbin-ruby-mode-hook 'hbin-ruby-mode-defaults)
+     (add-hook 'ruby-mode-hook (lambda () (run-hooks 'hbin-ruby-mode-hook)))))
 
 (provide 'prog-ruby)
 ;;; prog-ruby.el ends here
