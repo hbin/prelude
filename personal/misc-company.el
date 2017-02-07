@@ -12,7 +12,7 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(company company-anaconda company-tern robe))
+(prelude-require-packages '(company company-anaconda company-tern company-go robe))
 
 (require 'company)
 
@@ -69,11 +69,17 @@ With ARG, move by that many elements."
                  (let ((origin-backends company-backends))
                    (set (make-local-variable 'company-backends)
                         (add-to-list 'origin-backends '(company-anaconda :with company-capf))))))
+     (add-hook 'go-mode-hook
+               (lambda ()
+                 (let ((origin-backends company-backends))
+                   (set (make-local-variable 'company-backends)
+                        (add-to-list 'origin-backends 'company-go)))))
      (add-hook 'js2-mode-hook
                (lambda ()
                  (let ((origin-backends company-backends))
                    (set (make-local-variable 'company-backends)
                         (add-to-list 'origin-backends 'company-tern)))))))
+
 
 ;;;Override
 (defun inf-ruby-console-rails (dir)
