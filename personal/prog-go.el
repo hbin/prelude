@@ -33,9 +33,11 @@
        (let ((oldmap (cdr (assoc 'prelude-mode minor-mode-map-alist)))
              (newmap (make-sparse-keymap)))
          (set-keymap-parent newmap oldmap)
+         (define-key newmap (kbd "<f5>") 'go-run)
          (define-key newmap (kbd "C-c n") 'gofmt)
          (define-key newmap (kbd "M-.") 'godef-jump)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
+         (define-key newmap (kbd "M-R") 'go-rename)
          (make-local-variable 'minor-mode-overriding-map-alist)
          (push `(prelude-mode . ,newmap) minor-mode-overriding-map-alist))
 
