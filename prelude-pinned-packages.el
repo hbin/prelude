@@ -1,5 +1,6 @@
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/")
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (setq package-pinned-packages
       '(
@@ -57,11 +58,11 @@
         (gitconfig-mode . "melpa-stable")
         (gitignore-mode . "melpa-stable")
         (go-eldoc . "melpa-stable")
-        (go-guru . "melpa-stable")
+        (go-guru . "melpa")
         (go-mode . "melpa-stable")
-        (go-projectile . "melpa-stable")
-        (go-rename . "melpa-stable")
-        (gotest . "melpa-stable")
+        (go-projectile . "melpa")
+        (go-rename . "melpa")
+        (gotest . "melpa")
         (goto-chg . "melpa-stable")
         (grizzl . "melpa-stable")
         (groovy-mode . "melpa-stable")
