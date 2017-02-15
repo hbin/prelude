@@ -10,7 +10,7 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(go-mode go-projectile))
+(prelude-require-packages '(go-mode go-eldoc go-projectile gotest))
 
 (eval-after-load 'go-mode
   '(progn
@@ -33,7 +33,11 @@
        (let ((oldmap (cdr (assoc 'prelude-mode minor-mode-map-alist)))
              (newmap (make-sparse-keymap)))
          (set-keymap-parent newmap oldmap)
-         (define-key newmap (kbd "<f5>") 'go-run)
+         (define-key newmap (kbd "C-c ; x") 'go-run)
+         (define-key newmap (kbd "C-c ; f") 'go-test-current-file)
+         (define-key newmap (kbd "C-c ; t") 'go-test-current-test)
+         (define-key newmap (kbd "C-c ; p") 'go-test-current-project)
+         (define-key newmap (kbd "C-c ; b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
          (define-key newmap (kbd "M-.") 'godef-jump)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
@@ -53,9 +57,7 @@
        (whitespace-toggle-options '(tabs))
 
        ;; flycheck
-       (let ((file-name (buffer-file-name)))
-         (when (and file-name (string-match-p ".*?\\.go\\'" file-name))
-           (setq-local flycheck-checkers '(go-gofmt))))
+       (setq-local flycheck-checkers '(go-golint))
 
        ;; CamelCase aware editing operations
        (subword-mode +1))
