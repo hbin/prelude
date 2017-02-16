@@ -11,8 +11,6 @@
 
 ;;; Code:
 
-(prelude-require-packages '(anaconda-mode))
-
 (defun hbin-markdown-mode-init ()
   "Settings for markdown-mode."
   (if (fboundp 'yas-minor-mode)
