@@ -26,7 +26,8 @@
 
      (defun hbin-go-mode-defaults ()
        (setq-local tab-width 4)
-       (setq indent-tabs-mode t)
+       (setq-local indent-tabs-mode t)
+       (setq-local whitespace-line-column 120)
 
        ;; Overide prelude minor mode keymap
        ;; FYI: http://emacsredux.com/blog/2013/09/25/removing-key-bindings-from-minor-mode-keymaps/
