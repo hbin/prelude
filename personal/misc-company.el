@@ -12,7 +12,12 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(company company-anaconda company-tern company-go robe))
+(prelude-require-packages '(company
+                            company-dict     ; Dictionary
+                            company-anaconda ; Python - https://github.com/proofit404/anaconda-mode
+                            company-tern     ; Javascript - http://ternjs.net/
+                            company-go       ; Go - https://github.com/nsf/gocode
+                            robe))           ; Ruby - https://github.com/dgutov/robe
 
 (require 'company)
 
@@ -23,6 +28,7 @@
 ;; invert the navigation direction if the the completion popup-isearch-match
 ;; is displayed on top (happens near the bottom of windows)
 (setq company-tooltip-flip-when-above nil)
+(setq company-dict-dir (concat user-emacs-directory "dict/"))
 
 ;;override
 (defun company-complete-common-or-cycle-dwim (&optional arg)
@@ -59,6 +65,8 @@ With ARG, move by that many elements."
 
 (eval-after-load 'company
   '(progn
+     (add-to-list 'company-backends 'company-dict)
+
      (add-hook 'ruby-mode-hook
                (lambda ()
                  (let ((origin-backends company-backends))
