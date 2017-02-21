@@ -381,6 +381,7 @@ indent yanked text (with prefix arg don't indent)."
 
 ;; enable Prelude's keybindings
 (prelude-global-mode t)
+(diminish 'prelude-mode)
 
 ;; sensible undo
 (global-undo-tree-mode)
@@ -437,6 +438,7 @@ and file 'filename' will be opened and cursor set on line 'linenumber'"
 ;; use settings from .editorconfig file when present
 (require 'editorconfig)
 (editorconfig-mode 1)
+(diminish 'editorconfig-mode)
 
 (provide 'prelude-editor)
 

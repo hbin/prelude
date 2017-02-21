@@ -61,6 +61,7 @@
 (setq projectile-completion-system 'helm)
 (helm-descbinds-mode)
 (helm-mode 1)
+(diminish 'helm-mode)
 
 ;; enable Helm version of Projectile with replacment commands
 (helm-projectile-on)

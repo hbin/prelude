@@ -72,6 +72,7 @@
 
      (require 'projectile-rails)
      (projectile-rails-global-mode)
+     (diminish 'projectile-rails-mode)
      (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
 
      (let ((map projectile-rails-mode-map))
@@ -86,6 +87,7 @@
      (defun hbin-ruby-mode-defaults ()
        "Modify the Ruby syntax."
        (helm-gtags-mode +1)
+       (diminish 'helm-gtags-mode)
 
        ;; Words prefixed with $ are global variables,
        ;; prefixed with @ are instance variables.

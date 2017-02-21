@@ -87,6 +87,7 @@
 ;; show available keybindings after you start typing
 (require 'which-key)
 (which-key-mode +1)
+(diminish 'which-key-mode)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

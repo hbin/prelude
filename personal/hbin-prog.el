@@ -23,6 +23,7 @@
                              yas-ido-prompt
                              yas-completing-prompt))
 (yas-global-mode 1)
+(diminish 'yas-minor-mode)
 
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
@@ -43,6 +44,7 @@
 
 (require 'docker)
 (docker-global-mode)
+(diminish 'docker-mode)
 
 (provide 'hbin-prog)
 ;;; hbin-prog.el ends here

@@ -21,7 +21,8 @@
 
 ;;; Whole line or region
 (require 'whole-line-or-region)
-(whole-line-or-region-mode)
+(whole-line-or-region-mode 1)
+(diminish 'whole-line-or-region-mode)
 
 ;; Sesible undo
 (require 'undo-tree)
@@ -72,6 +73,7 @@
         (font-lock-fontify-region (point-min) (point-max))))))
 
 (hl-highlight-mode +1)
+(diminish 'hl-highlight-mode)
 (global-set-key (kbd "M-m") 'hl-highlight-thingatpt-local)
 (global-set-key (kbd "M-M") 'hl-unhighlight-all-local)
 
@@ -90,6 +92,7 @@
 ;;; Smartparens
 (require 'smartparens)
 (setq sp-highlight-pair-overlay nil)     ; Do not highlight autoinserted pairs
+(diminish 'smartparens-mode)
 
 ;;; Ignore '/'
 (require 'ffap)

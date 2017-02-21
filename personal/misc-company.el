@@ -116,6 +116,7 @@ With ARG, move by that many elements."
 (add-hook 'company-completion-started-hook 'start-robe-before-complete-in-rails)
 
 (global-company-mode 1)
+(diminish 'company-mode)
 
 (provide 'misc-company)
 ;;; misc-company.el ends here
