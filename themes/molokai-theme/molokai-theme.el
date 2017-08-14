@@ -34,7 +34,7 @@
 (let ((class '((class color) (min-colors 89)))
       ;; molokai palette
       (molokai-white          "#ffffff")
-      (molokai-fg             "#f8f8f0")
+      (molokai-fg             "#e8e8e8")
       (molokai-red            "#ff0000")
       (molokai-pink           "#f92672")
       (molokai-orange+5       "#ef5939")
@@ -68,6 +68,7 @@
       (molokai-base02         "#455354")
       (molokai-base03         "#293739")
       (molokai-dodgerblue     "#13354a"))
+
   (custom-theme-set-faces
    'molokai
 
@@ -130,24 +131,8 @@
    `(neo-root-dir-face ((t (:foreground ,molokai-pink :weight bold))))
    `(neo-dir-link-face ((t (:foreground ,molokai-chartreuse))))
    `(neo-expand-btn-face ((t (:foreground ,molokai-orange+5 :weight bold))))
+   `(neo-file-link-face ((t (:foreground ,molokai-fg :weight bold))))
    ))
-
-(defcustom molokai-theme-kit nil
-  "Non-nil means load molokai-theme-kit UI component"
-  :type 'boolean
-  :group 'molokai-theme)
-
-(defcustom molokai-theme-kit-file
-  (concat (file-name-directory
-           (or (buffer-file-name) load-file-name))
-          "molokai-theme-kit.el")
-  "molokai-theme-kit-file"
-  :type 'string
-  :group 'molokai-theme)
-
-(if (and molokai-theme-kit
-         (file-exists-p molokai-theme-kit-file))
-    (load-file molokai-theme-kit-file))
 
 ;;;###autoload
 (and load-file-name
