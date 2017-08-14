@@ -116,5 +116,11 @@ comment as a filename."
       (setq ad-return-value nil)))
 (ad-activate 'ffap-file-at-point)
 
+(require 'cl-lib)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (cl-letf (((symbol-function #'process-list) (lambda ())))
+    ad-do-it))
+
 (provide 'hbin-misc)
 ;;; hbin-misc.el ends here
