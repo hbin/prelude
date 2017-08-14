@@ -53,7 +53,6 @@
 (setq all-the-icons-scale-factor 1)
 
 (require 'neotree)
-
 (setq neo-banner-message "\" Press ? for help.")
 (setq neo-smart-open t)
 (setq neo-window-width 28)
@@ -77,45 +76,21 @@
                 (when new-state (forward-line))
                 (neo-point-auto-indent))))))))
 
-(defun neotree-projectile-action ()
-  "Integration with `Projectile'.
-Usage:
-    (setq projectile-switch-project-action 'neotree-projectile-action).
-When running `projectile-switch-project' (C-c p p), `neotree' will change root
-automatically."
-  (interactive)
-  (cond
-   ((fboundp 'projectile-project-root)
-    (let ((path (projectile-project-root)))
-      (neo-global--open-dir path)
-      (if neo-smart-open
-          (neotree-find)
-        (neo-global--open))))
-   (t
-    (error "Projectile is not available"))))
-
-(define-key neotree-mode-map (kbd "TAB") 'neotree-folder-toggle)
-(define-key neotree-mode-map (kbd "RET") 'neotree-enter)
 (define-key neotree-mode-map (kbd "o") 'neotree-enter)
 (define-key neotree-mode-map (kbd "R") 'neotree-refresh)
 (define-key neotree-mode-map (kbd "r") 'neotree-refresh)
+(define-key neotree-mode-map (kbd "s") (neotree-make-executor
+                                        :file-fn 'neo-open-file-vertical-split))
+(define-key neotree-mode-map (kbd "i") (neotree-make-executor
+                                        :file-fn 'neo-open-file-horizontal-split))
 (define-key neotree-mode-map (kbd "q") 'neotree-hide)
 (define-key neotree-mode-map (kbd "k") 'neotree-select-previous-sibling-node)
 (define-key neotree-mode-map (kbd "j") 'neotree-select-next-sibling-node)
-(define-key neotree-mode-map (kbd "p") 'previous-line)
-(define-key neotree-mode-map (kbd "n") 'next-line)
-(define-key neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-(define-key neotree-mode-map (kbd "U") 'neotree-select-up-node)
-(define-key neotree-mode-map (kbd "D") 'neotree-select-down-node)
-(define-key neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 (define-key neotree-mode-map (kbd "I") 'neotree-hidden-file-toggle)
-(define-key neotree-mode-map (kbd "C-x C-f") 'find-file-other-window)
 (define-key neotree-mode-map (kbd "C") 'neotree-change-root)
 (define-key neotree-mode-map (kbd "m a") 'neotree-create-node)
 (define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
 (define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
-(define-key neotree-mode-map (kbd "C-p") 'previous-line)
-(define-key neotree-mode-map (kbd "C-n") 'next-line)
 
 (add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
 
