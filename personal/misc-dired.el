@@ -56,7 +56,7 @@
 (setq neo-banner-message "\" Press ? for help.")
 (setq neo-smart-open t)
 (setq neo-window-width 28)
-(setq neo-hidden-files-regexp
+(setq neo-show-hidden-files
       (s-concat "^\\."                             ; hidden files
                 "\\|.*\\.elc"                      ; Emacs
                 "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
