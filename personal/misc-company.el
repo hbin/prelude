@@ -13,11 +13,9 @@
 
 ;;; Code:
 (prelude-require-packages '(company
-                            company-dict     ; Dictionary
                             company-anaconda ; Python - https://github.com/proofit404/anaconda-mode
                             company-tern     ; Javascript - http://ternjs.net/
-                            company-go       ; Go - https://github.com/nsf/gocode
-                            robe))           ; Ruby - https://github.com/dgutov/robe
+                            company-go))     ; Go - https://github.com/nsf/gocode
 
 (require 'company)
 
@@ -28,7 +26,6 @@
 ;; invert the navigation direction if the the completion popup-isearch-match
 ;; is displayed on top (happens near the bottom of windows)
 (setq company-tooltip-flip-when-above nil)
-(setq company-dict-dir (concat user-emacs-directory "dict/"))
 
 ;;override
 (defun company-complete-common-or-cycle-dwim (&optional arg)
@@ -54,24 +51,8 @@ With ARG, move by that many elements."
 (define-key company-active-map (kbd "C-n") 'company-select-next)
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
 
-;;;robe-mode
-(require 'robe)
-
-(defun fake-company-robe (orig-fun &rest args)
-  "robe-mode should be true to use company-robe backend without enable robe-mode."
-  (let ((robe-mode t))
-    (apply orig-fun args)))
-(advice-add 'company-robe :around #'fake-company-robe)
-
 (eval-after-load 'company
   '(progn
-     (add-to-list 'company-backends 'company-dict)
-
-     (add-hook 'ruby-mode-hook
-               (lambda ()
-                 (let ((origin-backends company-backends))
-                   (set (make-local-variable 'company-backends)
-                        (add-to-list 'origin-backends 'company-robe)))))
      (add-hook 'python-mode-hook
                (lambda ()
                  (let ((origin-backends company-backends))
@@ -88,32 +69,6 @@ With ARG, move by that many elements."
                    (set (make-local-variable 'company-backends)
                         (add-to-list 'origin-backends 'company-tern)))))))
 
-
-;;;Override
-(defun inf-ruby-console-rails (dir)
-  "Run Rails console in DIR."
-  (interactive "D")
-  (let ((with-bundler (file-exists-p "Gemfile")))
-    (run-ruby (concat (when with-bundler "bundle exec ")
-                      "rails console development")
-              "robe")))
-
-(defun before-kill-emacs-advice (orig-fun &rest args)
-  (-each '("*robe*" "*anaconda-mode*")
-    (lambda (item)
-      (let ((process (get-buffer-process item)))
-        (when process
-          (set-process-query-on-exit-flag process nil)))))
-  (apply orig-fun args))
-(advice-add 'save-buffers-kill-terminal :around #'before-kill-emacs-advice)
-
-(defun start-robe-before-complete-in-rails (manually)
-  "Start robe before MANUALLY complete in rails app."
-  (when (and manually
-             (bound-and-true-p projectile-rails-mode)
-             (not robe-running))
-    (robe-start t)))
-(add-hook 'company-completion-started-hook 'start-robe-before-complete-in-rails)
 
 (global-company-mode 1)
 (diminish 'company-mode)
