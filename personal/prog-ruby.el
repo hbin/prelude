@@ -61,8 +61,8 @@
 
      ;;; Robe
      (require 'robe)
-     (define-key ruby-mode-map (kbd "C-.") 'robe-jump)
-     (define-key ruby-mode-map (kbd "C-,") 'pop-tag-mark)
+     (define-key ruby-mode-map (kbd "s-.") 'robe-jump)
+     (define-key ruby-mode-map (kbd "s-,") 'pop-tag-mark)
      (setq inf-ruby-console-environment "development")
 
      ;;; Rails start {{{
