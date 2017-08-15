@@ -1,5 +1,4 @@
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/")
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (setq package-pinned-packages
@@ -116,7 +115,7 @@
         (slim-mode . "melpa-stable")
         (slime . "melpa-stable")
         (smart-mode-line . "melpa-stable")
-        (smartparens . "melpa-stable")
+        (smartparens . "melpa")
         (smartrep . "melpa-stable")
         (smex . "melpa-stable")
         (spinner . "gnu")
