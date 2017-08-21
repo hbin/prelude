@@ -20,12 +20,8 @@
 (setq neo-banner-message "\" Press ? for help.")
 (setq neo-smart-open t)
 (setq neo-window-width 28)
-(setq neo-show-hidden-files
-      (s-concat "^\\."                             ; hidden files
-                "\\|.*\\.elc"                      ; Emacs
-                "\\|TAGS\\|GPATH\\|GRTAGS\\|GTAGS" ; TAG files
-                "\\|__pycache__\\|.*\\.py[cod]"))  ; Python
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(add-to-list 'neo-hidden-regexp-list "TAGS\\|GPATH\\|GRTAGS\\|GTAGS")
 
 (defun neotree-folder-toggle ()
   "Toggle a folder."
