@@ -76,6 +76,19 @@
                 (when new-state (forward-line))
                 (neo-point-auto-indent))))))))
 
+(defun neotree-projectile-file ()
+  (interactive)
+  (cond
+   ((and (fboundp 'projectile-project-root)
+         (buffer-file-name)
+         (projectile-file-exists-p (buffer-file-name)))
+    (let ((root (projectile-project-root))
+          (file (buffer-file-name)))
+      (neotree-dir root)
+      (neotree-find file)))
+   (t
+    (error "You're not in a project"))))
+
 (define-key neotree-mode-map (kbd "o") 'neotree-enter)
 (define-key neotree-mode-map (kbd "R") 'neotree-refresh)
 (define-key neotree-mode-map (kbd "r") 'neotree-refresh)
@@ -94,7 +107,7 @@
 
 (add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
 
-(global-set-key (kbd "C-x C-j") 'neotree-projectile-action)
+(global-set-key (kbd "C-x C-j") 'neotree-projectile-file)
 
 (provide 'misc-dired)
 ;;; misc-dired.el ends here
