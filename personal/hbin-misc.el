@@ -21,8 +21,11 @@
 
 ;;; Whole line or region
 (require 'whole-line-or-region)
-(whole-line-or-region-mode 1)
-(diminish 'whole-line-or-region-mode)
+(whole-line-or-region-global-mode)
+(diminish 'whole-line-or-region-local-mode)
+
+;;; Whitespace
+(diminish 'whitespace-mode)
 
 ;; Sesible undo
 (require 'undo-tree)
