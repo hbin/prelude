@@ -81,7 +81,10 @@
 (global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
 
 (prelude-require-packages
- '(expand-region highlight-symbol multiple-cursors smart-shift))
+ '(crux expand-region highlight-symbol multiple-cursors smart-shift))
+
+(require 'crux)
+(crux-with-region-or-line comment-or-uncomment-region)
 
 ;; Expand region
 (require 'expand-region)
