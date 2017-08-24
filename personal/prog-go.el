@@ -12,6 +12,9 @@
 ;;; Code:
 (prelude-require-packages '(go-mode go-eldoc go-projectile gotest))
 
+(defvar gofmt-command nil)
+(defvar hbin-go-mode-hook nil)
+
 (eval-after-load 'go-mode
   '(progn
      (require 'go-projectile)
@@ -34,11 +37,11 @@
        (let ((oldmap (cdr (assoc 'prelude-mode minor-mode-map-alist)))
              (newmap (make-sparse-keymap)))
          (set-keymap-parent newmap oldmap)
-         (define-key newmap (kbd "C-c ; x") 'go-run)
-         (define-key newmap (kbd "C-c ; f") 'go-test-current-file)
-         (define-key newmap (kbd "C-c ; t") 'go-test-current-test)
-         (define-key newmap (kbd "C-c ; p") 'go-test-current-project)
-         (define-key newmap (kbd "C-c ; b") 'go-test-current-benchmark)
+         (define-key newmap (kbd "C-c , x") 'go-run)
+         (define-key newmap (kbd "C-c , v") 'go-test-current-file)
+         (define-key newmap (kbd "C-c , s") 'go-test-current-test)
+         (define-key newmap (kbd "C-c , a") 'go-test-current-project)
+         (define-key newmap (kbd "C-c , b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
          (define-key newmap (kbd "M-.") 'godef-jump)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
