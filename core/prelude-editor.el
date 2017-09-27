@@ -231,7 +231,7 @@ The body of the advice is in BODY."
   (when prelude-whitespace
     ;; keep the whitespace decent all the time (in this buffer)
     (add-hook 'before-save-hook 'prelude-cleanup-maybe nil t)
-    (whitespace-mode +1)))
+    (whitespace-mode -1)))
 
 (add-hook 'text-mode-hook 'prelude-enable-flyspell)
 (add-hook 'text-mode-hook 'prelude-enable-whitespace)
