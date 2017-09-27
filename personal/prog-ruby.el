@@ -22,6 +22,9 @@
      ;; Prevent Emacs from adding coding shebang automatically.
      (setq ruby-insert-encoding-magic-comment nil)
 
+     ;; Don't use spring
+     (setq rspec-use-spring-when-possible nil)
+
      ;; Font lock for new hash style.
      (font-lock-add-keywords
       'ruby-mode
