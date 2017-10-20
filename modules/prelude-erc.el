@@ -112,11 +112,32 @@ that can occur between two notifications.  The default is
 ;; utf-8 always and forever
 (setq erc-server-coding-system '(utf-8 . utf-8))
 
+
+(defvar my-fav-irc '( "irc.freenode.net" )
+  "Stores the list of IRC servers that you want to connect to with start-irc.")
+
+(defvar bye-irc-message "Asta la vista"
+  "Message string to be sent while quitting IRC.")
+
+(defcustom prelude-new-irc-persp nil
+  "True (t) means start IRC in new perspective."
+  :type 'boolean
+  :require 'prelude-erc
+  :group 'prelude)
+
+(defun connect-to-erc (server)
+  "Connects securely to IRC SERVER over TLS at port 6697."
+  (erc-tls :server server
+           :port 6697
+           :nick erc-nick ))
+
 (defun start-irc ()
-  "Connect to IRC."
+  "Connect to IRC?"
   (interactive)
   (when (y-or-n-p "Do you want to start IRC? ")
-    (erc :server "irc.freenode.net" :port 6667 :nick erc-nick)))
+    (when prelude-new-irc-persp
+      (persp-switch "IRC"))
+    (mapcar 'connect-to-erc my-fav-irc)))
 
 (defun filter-server-buffers ()
   (delq nil
@@ -125,12 +146,16 @@ that can occur between two notifications.  The default is
          (buffer-list))))
 
 (defun stop-irc ()
-  "Disconnects from all irc servers"
+  "Disconnects from all irc servers."
   (interactive)
+  (when prelude-new-irc-persp
+    (persp-switch "IRC"))
   (dolist (buffer (filter-server-buffers))
     (message "Server buffer: %s" (buffer-name buffer))
     (with-current-buffer buffer
-      (erc-quit-server "Asta la vista"))))
+      (erc-quit-server bye-irc-message)))
+  (when prelude-new-irc-persp
+    (persp-kill "IRC")))
 
 (setq erc-autojoin-channels-alist '(("freenode.net" "#prelude-emacs" "#projectile")))
 

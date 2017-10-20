@@ -25,3 +25,6 @@ session*
 tramp
 /var/pcache
 abbrev_defs
+.emacs.desktop
+.emacs.desktop.lock
+network-security.data

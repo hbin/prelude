@@ -179,6 +179,13 @@ then
     printf "$YELLOW WARNING:$RESET Prelude depends on emacs $RED 24$RESET !\n"
 fi
 
+if [ -f "$HOME/.emacs" ]
+then
+    ## If $HOME/.emacs exists, emacs ignores prelude's init.el, so remove it
+    printf " Backing up the existing $HOME/.emacs to $HOME/.emacs.pre-prelude\n"
+    mv $HOME/.emacs $HOME/.emacs.pre-prelude
+fi
+
 if [ -d "$PRELUDE_INSTALL_DIR" ] || [ -f "$PRELUDE_INSTALL_DIR" ]
 then
     # Existing file/directory found -> backup
@@ -236,4 +243,4 @@ printf "$BBLUE | |_) |  __/ _ \ | | | |/ _  |/ _ \ \n"
 printf "$BBLUE |  __/| | |  __/ | |_| | (_| |  __/ \n"
 printf "$BBLUE |_|   |_|  \___|_|\__,_|\__,_|\___| \n\n"
 printf "$GREEN ... is now installed and ready to do thy bidding, Master $USER!$RESET\n"
-printf "$GREEN Don't forget to adjust the modules you want to use in $PRELUDE_INSTALL_DIR/prelude-modules.el!$RESET\n"
+printf "$GREEN Don't forget to adjust the modules you want to use in $PRELUDE_INSTALL_DIR/sample/prelude-modules.el!$RESET\n"

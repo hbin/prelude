@@ -1,5 +1,5 @@
 [![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
-[![Gratipay](http://img.shields.io/gratipay/bbatsov.svg)](https://gratipay.com/bbatsov/)
+[![Gratipay Team](https://img.shields.io/gratipay/team/prelude.svg?maxAge=2592000)](https://gratipay.com/prelude/)
 
 Emacs Prelude
 =============
@@ -15,12 +15,18 @@ Emacs power users.
 
 Prelude is compatible **ONLY with GNU Emacs 24.4+**. In general you're
 advised to always run Prelude with the latest Emacs - currently
-**24.5**.
+**25.2**.
+
+You can support the development of Prelude via
+[Salt](https://bountysource.com/teams/prelude) and
+[Gratipay](https://www.gratipay.com/prelude).
+
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.1.3/dist/gratipay.png)](https://gratipay.com/prelude)
 
 **Table of Contents**
 
 - [Fast Forward](#fast-forward)
-- [Installing Emacs 24](#installing-emacs-24)
+- [Installing Emacs](#installing-emacs)
 - [Installation](#installation)
     - [Automated](#automated)
         - [Via Curl](#via-curl)
@@ -53,7 +59,7 @@ advised to always run Prelude with the latest Emacs - currently
     - [Problems with flyspell-mode](#problems-with-flyspell-mode)
     - [Ugly colors in the terminal Emacs version](#ugly-colors-in-the-terminal-emacs-version)
     - [MELPA error on initial startup](#melpa-error-on-initial-startup)
-    - [Warnings on arrow navigation in editor buffers](#warnings-on-navigation-in-editor-buffers)
+    - [Warnings on arrow navigation in editor buffers](#warnings-on-arrow-navigation-in-editor-buffers)
     - [Customized C-a behavior](#customized-c-a-behavior)
     - [Poor ido matching performance on large datasets](#poor-ido-matching-performance-on-large-datasets)
     - [Windows compatibility](#windows-compatibility)
@@ -65,7 +71,7 @@ advised to always run Prelude with the latest Emacs - currently
 ## Fast Forward
 
 Assuming you're using an Unix-like OS (`*BSD`, `GNU/Linux`, `OS X`, `Solaris`,
-etc), you already have Emacs 24 installed, as well as `git` & `curl` you
+etc), you already have Emacs 24.4+ installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
 
@@ -98,10 +104,12 @@ or back up your existing `.emacs.d` directory manually.
 Don't forget to adjust your `prelude-modules.el` file once the installation is done.
 By default most of the modules that ship with Prelude are not loaded.
 
-## Installing Emacs 24
+## Installing Emacs
 
-Obviously to use the Emacs Prelude you have to install Emacs 24
-first. Have a look at the [WikEmacs articles on installing Emacs](http://wikemacs.org/index.php/Installing_Emacs).
+Obviously to use the Emacs Prelude you have to install Emacs
+first. Have a look at
+the
+[WikEmacs articles on installing Emacs](http://wikemacs.org/index.php/Installing_Emacs).
 
 ## Installation
 
@@ -127,6 +135,8 @@ wget --no-check-certificate https://github.com/bbatsov/prelude/raw/master/utils/
 ```
 
 ### Manual
+
+Make sure you do not have any `~/.emacs` file present.
 
 ```bash
 git clone git://github.com/bbatsov/prelude.git path/to/local/repo
@@ -290,7 +300,7 @@ Keybinding         | Description
 <kbd>C-x M-g</kbd> | Open Magit's popup of popups.
 <kbd>M-Z</kbd>     | Zap up to char.
 <kbd>C-=</kbd>     | Run `expand-region` (incremental text selection).
-<kbd>C-a</kbd>     | Run `prelude-move-beginning-of-line`. Read [this](http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/) for details.
+<kbd>C-a</kbd>     | Run `crux-move-beginning-of-line`. Read [this](http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/) for details.
 
 #### Prelude Mode
 
@@ -378,7 +388,7 @@ Keybinding         | Description
 <kbd>C-c p e</kbd> | Shows a list of recently visited project files.
 <kbd>C-c p s a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
 <kbd>C-c p s s</kbd> | Runs `ag` on the project. Requires the presence of `ag.el`.
-<kbd>C-c p a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
+<kbd>C-c p a</kbd> | Switch between files with the same name but different extensions.
 <kbd>C-c p c</kbd> | Runs a standard compilation command for your type of project.
 <kbd>C-c p P</kbd> | Runs a standard test command for your type of project.
 <kbd>C-c p z</kbd> | Adds the currently visited to the cache.
@@ -480,17 +490,17 @@ You can, of course, install anything you wish manually as well.
 
 ### Color Themes
 
-Emacs 24 ships with a new theming facility that effectively renders
-the old color-theme package obsolete. Emacs 24 provides a dozen of
+Emacs provides a dozen of
 built-in themes you can use out-of-the-box by invoking the `M-x
 load-theme` command.
 
-[Zenburn](https://github.com/bbatsov/zenburn-emacs) is the default color theme in Prelude, but you can change it
-at your discretion. Why Zenburn? I (and lots of hackers around the
-world) find it pretty neat for some reason. Personally I find the
-default theme pretty tiresome for the eyes, that's why I took that
-"controversial" decision to replace it. You can, of course, easily go
-back to the default (or select another theme entirely).
+[Zenburn](https://github.com/bbatsov/zenburn-emacs) is the default
+color theme in Prelude, but you can change it at your discretion. Why
+Zenburn? I (and lots of hackers around the world) find it pretty neat
+for some reason. Personally I find the default theme pretty tiresome
+for the eyes, that's why I took that "controversial" decision to
+replace it. You can, of course, easily go back to the default (or
+select another theme entirely).
 
 To disable Zenburn just put in your personal config the following
 line:
@@ -672,7 +682,7 @@ You can always disable the improved sorting algorithm all together like this:
 ### Windows compatibility
 
 While everything in Prelude should work fine in Windows, I test it only
-with Linux & OSX, so there are Windows related problems from time to
+with Linux & OS X, so there are Windows related problems from time to
 time. This situation will probably improve over time.
 
 ## Known issues
