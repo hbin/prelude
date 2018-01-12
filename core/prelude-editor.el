@@ -254,6 +254,7 @@ The body of the advice is in BODY."
 
 ;; projectile is a project management mode
 (require 'projectile)
+(setq projectile-enable-caching t)
 (setq projectile-cache-file (expand-file-name  "projectile.cache" prelude-savefile-dir))
 (projectile-global-mode t)
 
