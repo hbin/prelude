@@ -31,6 +31,8 @@
 
   (linum-mode 1)
 
+  (prelude-prog-mode-defaults)
+
   (local-set-key (kbd "C-M-h") 'backward-kill-word)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
   (local-set-key (kbd "C-c C-c") 'comment-or-uncomment-region))
