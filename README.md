@@ -1,5 +1,6 @@
 [![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
-[![Gratipay Team](https://img.shields.io/gratipay/team/prelude.svg?maxAge=2592000)](https://gratipay.com/prelude/)
+[![Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/bbatsov/donate)
+[![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/bbatsov)
 
 Emacs Prelude
 =============
@@ -18,10 +19,12 @@ advised to always run Prelude with the latest Emacs - currently
 **25.2**.
 
 You can support the development of Prelude via
-[Salt](https://bountysource.com/teams/prelude) and
-[Gratipay](https://www.gratipay.com/prelude).
+[Salt](https://bountysource.com/teams/prelude),
+[Patreon](https://www.patreon.com/bbatsov) and
+[Liberapay](https://liberapay.com/bbatsov/donate).
 
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.1.3/dist/gratipay.png)](https://gratipay.com/prelude)
+[![Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/bbatsov/donate)
+[![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/bbatsov)
 
 **Table of Contents**
 
@@ -44,7 +47,7 @@ You can support the development of Prelude via
     - [Keymap](#keymap)
         - [Global](#global)
         - [Prelude Mode](#prelude-mode)
-        - [OSX modifier keys](#osx-modifier-keys)
+        - [macOS modifier keys](#macos-modifier-keys)
         - [Projectile](#projectile)
         - [Helm](#helm)
         - [Key-chords](#key-chords)
@@ -70,7 +73,7 @@ You can support the development of Prelude via
 
 ## Fast Forward
 
-Assuming you're using an Unix-like OS (`*BSD`, `GNU/Linux`, `OS X`, `Solaris`,
+Assuming you're using an Unix-like OS (`*BSD`, `GNU/Linux`, `macOS`, `Solaris`,
 etc), you already have Emacs 24.4+ installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
@@ -256,7 +259,7 @@ alias vi='emacsclient -t'
 The last two aliases are helpful if you're used to editing files from
 the command line using `vi(m)`.
 
-Also you can open a file with cursor on choosen line:
+You can also open a file with the cursor positioned directly on a specific line:
 
 ```bash
 emacsclient somefile:1234
@@ -354,7 +357,7 @@ Keybinding         | Description
 **Note**: For various arithmetic operations, the prefix `C-c .` only needs to be pressed once for the first operation.
 For subsequent operations, only the appropriate operations (i.e. `+`, `-`, `*`, `/`... needs to be pressed).
 
-#### OSX modifier keys
+#### macOS modifier keys
 
 Prelude does not mess by default with the standard mapping of `Command` (to `Super`) and `Option` (to `Meta`).
 
@@ -367,6 +370,11 @@ If you want to swap them add this to your personal config:
 
 You can also temporarily swap them with `C-c w` (`M-x prelude-swap-meta-and-super`).
 
+**Note**: I'd highly recommend to all macOS users to consider
+[remapping Return to
+Control](http://emacsredux.com/blog/2013/11/12/a-crazy-productivity-boost-remap-return-to-control/)
+instead. That's an epic productivity boost and it's not as crazy as it sounds!
+
 #### Projectile
 
 Here's a list of functionality provided by [Projectile](https://github.com/bbatsov/projectile):
@@ -377,6 +385,7 @@ Keybinding         | Description
 <kbd>C-c p d</kbd> | Display a list of all directories in the project. With a prefix argument it will clear the cache first.
 <kbd>C-c p T</kbd> | Display a list of all test files(specs, features, etc) in the project.
 <kbd>C-c p s g</kbd> | Run grep on the files in the project.
+<kbd>C-c p s s</kbd> | Runs `ag` on the project. Requires the presence of `ag.el`.
 <kbd>M-- C-c p s g</kbd> | Run grep on `projectile-grep-default-files` in the project.
 <kbd>C-c p b</kbd> | Display a list of all project buffers currently open.
 <kbd>C-c p o</kbd> | Runs `multi-occur` on all project buffers currently open.
@@ -386,8 +395,6 @@ Keybinding         | Description
 <kbd>C-c p k</kbd> | Kills all project buffers.
 <kbd>C-c p D</kbd> | Opens the root of the project in `dired`.
 <kbd>C-c p e</kbd> | Shows a list of recently visited project files.
-<kbd>C-c p s a</kbd> | Runs `ack` on the project. Requires the presence of `ack-and-a-half`.
-<kbd>C-c p s s</kbd> | Runs `ag` on the project. Requires the presence of `ag.el`.
 <kbd>C-c p a</kbd> | Switch between files with the same name but different extensions.
 <kbd>C-c p c</kbd> | Runs a standard compilation command for your type of project.
 <kbd>C-c p P</kbd> | Runs a standard test command for your type of project.
@@ -395,7 +402,9 @@ Keybinding         | Description
 <kbd>C-c p p</kbd> | Display a list of known projects you can switch to.
 
 Prelude adds an extra keymap prefix `S-p` (`S` stands for
-`Super`), so you can use `S-p` instead of `C-c p`.
+`Super`), so you can use `S-p` instead of `C-c p`. By default on Windows keyboard
+`Super` is mapped to the `Windows` key and on macOS keyboards `Super` is mapped
+to the `Command` key.
 
 If you ever forget any of Projectile's keybindings just do a:
 
@@ -512,12 +521,15 @@ line:
 Or you can use another theme altogether by adding something in `personal/preload` like:
 
 ```lisp
+(prelude-require-package 'solarized)
 (setq prelude-theme 'solarized-dark)
 ```
 
-**P.S.** Solarized is not available by default - you'll have to
-  install it from MELPA first (`M-x package-install RET
-  solarized-theme`).
+**Note** [Solarized](https://github.com/bbatsov/zenburn-emacs) is not
+available by default - you'll have to install it from MELPA first,
+therefore the need for `prelude-require-package`.  Alternatively you
+can manually install the package like this - `M-x package-install RET
+solarized-theme`.
 
 Finally, if you don't want any theme at all, you can add this to your
 `personal/preload`:
@@ -528,8 +540,10 @@ Finally, if you don't want any theme at all, you can add this to your
 
 ### Personalizing
 
-Fork the official Prelude repo and add your own touch to it. You're advised to avoid changing stuff outside of the
-personal folder to avoid having to deal with git merge conflicts in the future.
+**Fork** (instead of cloning) the official Prelude repo and add your
+own touch to it. You're advised to **avoid changing stuff outside of
+the personal folder** to avoid having to deal with git merge conflicts
+in the future.
 
 If you'd like to add some auto installation of packages in your
 personal config use the following code:
@@ -552,7 +566,7 @@ Prelude, except a few variables like `prelude-dir`, etc (since nothing is yet lo
 
 #### Disabling whitespace-mode
 
-Although `whitespace-mode` is awesome some people might find it too
+Although `whitespace-mode` is awesome, some people might find it too
 intrusive. You can disable it in your
 personal config with the following bit of code:
 
@@ -560,17 +574,17 @@ personal config with the following bit of code:
 (setq prelude-whitespace nil)
 ```
 
-If you like `whitespace-mode` but prefer it to not automatically
+If you like `whitespace-mode`, but prefer it to not automatically
 cleanup your file on save, you can disable that behavior by setting
-prelude-clean-whitespace-on-save to nil in your config file with:
+`prelude-clean-whitespace-on-save` to `nil` in your config file with:
 
 ```lisp
 (setq prelude-clean-whitespace-on-save nil)
 ```
 
-The prelude-clean-whitespace-on-save setting can also be set on a
+The `prelude-clean-whitespace-on-save` setting can also be set on a
 per-file or directory basis by using a file variable or a
-.dir-locals.el file.
+`.dir-locals.el` file.
 
 
 #### Disable flyspell-mode
@@ -694,10 +708,12 @@ and send me a pull request. :-)
 
 ## Support
 
-Support is available via the Prelude Google Group <emacs-prelude@googlegroups.com>.
+Support is available via several channels:
 
-There's also a Freenode channel you can visit - `#prelude-emacs`.
-
+* Prelude's Google Group <emacs-prelude@googlegroups.com>
+* Prelude's Freenode channel (`#prelude-emacs`)
+* [Gitter](https://gitter.im/bbatsov/prelude)
+.
 ## Contributors
 
 Here's a [list](https://github.com/bbatsov/prelude/contributors) of all the people who have contributed to the
