@@ -13,7 +13,7 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin whole-line-or-region hl-anything key-chord projectile ag))
+ '(popwin whole-line-or-region hl-anything key-chord projectile ag dimmer))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
@@ -98,6 +98,10 @@
 (require 'smartparens)
 (setq sp-highlight-pair-overlay nil)     ; Do not highlight autoinserted pairs
 (diminish 'smartparens-mode)
+
+;;; Dimmer
+(require 'dimmer)
+(dimmer-mode 1)
 
 ;;; Ignore '/'
 (require 'ffap)
