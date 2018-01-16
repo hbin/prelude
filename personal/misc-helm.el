@@ -13,6 +13,8 @@
 
 ;;; Code:
 
+(prelude-require-packages '(helm-swoop))
+
 (helm-autoresize-mode 1)
 
 (setq grep-find-ignored-files
@@ -29,7 +31,16 @@
                       '(helm-ag-use-grep-ignore-list t)
                       '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
                       '(helm-ag-command-option "--all-text")
-                      '(helm-ag-insert-at-point 'symbol))
+                      '(helm-ag-insert-at-point 'symbol)
+                      '(helm-swoop-split-with-multiple-windows t))
+
+(require 'helm-swoop)
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-multi-swoop-projectile)
+(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+(define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
 (global-set-key (kbd "M-z") 'helm-resume)
 
