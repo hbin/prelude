@@ -58,7 +58,8 @@
        (whitespace-turn-off)
 
        ;; flycheck
-       (setq-local flycheck-checkers '(go-golint))
+       (setq-local flycheck-checkers '(go-golint go-vet))
+       (setq flycheck-go-vet-shadow t) ;; check for shadowed variables
 
        ;; CamelCase aware editing operations
        (subword-mode +1))
