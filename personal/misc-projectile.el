@@ -22,7 +22,7 @@
 ;;; Customizes
 (custom-set-variables
  '(projectile-enable-idle-timer t)
- '(projectile-idle-timer-hook nil)      ; Empty default hook
+ ;; '(projectile-idle-timer-hook nil)      ; Empty default hook
  '(projectile-ignored-projects '("/usr/local/")))
 
 ;;; Keybindings
@@ -38,7 +38,7 @@
 (define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
 (define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
 (define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
-(define-key projectile-mode-map (kbd "C-x C-i") 'projectile-find-tag)
+;; (define-key projectile-mode-map (kbd "C-x C-i") 'projectile-find-tag)
 (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-switch-project)
 
 (defun projectile-completing-read (prompt choices &optional initial-input)

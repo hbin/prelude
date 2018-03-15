@@ -37,6 +37,7 @@
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-multi-swoop-projectile)
+(global-set-key (kbd "C-x C-i") 'helm-imenu)
 (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
 (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
 (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
