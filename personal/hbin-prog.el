@@ -18,8 +18,7 @@
 (add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
 
 (require 'yasnippet)
-(setq yas-snippet-dirs (concat user-emacs-directory "snippets")
-      yas-prompt-functions '(yas-dropdown-prompt
+(setq yas-prompt-functions '(yas-dropdown-prompt
                              yas-ido-prompt
                              yas-completing-prompt))
 (yas-global-mode 1)
@@ -40,6 +39,7 @@
 (add-hook 'prog-mode-hook 'hbin-prog-mode-init)
 (add-hook 'scss-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'yaml-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+(add-hook 'protobuf-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
 (require 'dash-at-point)
 (global-set-key (kbd "s-.") 'dash-at-point)
