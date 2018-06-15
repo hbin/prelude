@@ -1,6 +1,6 @@
 ;;; prelude-editor.el --- Emacs Prelude: enhanced core editing experience.
 ;;
-;; Copyright © 2011-2017 Bozhidar Batsov
+;; Copyright © 2011-2018 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
@@ -138,9 +138,9 @@
 (defun prelude-recentf-exclude-p (file)
   "A predicate to decide whether to exclude FILE from recentf."
   (let ((file-dir (file-truename (file-name-directory file))))
-    (-any-p (lambda (dir)
-              (string-prefix-p dir file-dir))
-            (mapcar 'file-truename (list prelude-savefile-dir package-user-dir)))))
+    (cl-some (lambda (dir)
+               (string-prefix-p dir file-dir))
+             (mapcar 'file-truename (list prelude-savefile-dir package-user-dir)))))
 
 (add-to-list 'recentf-exclude 'prelude-recentf-exclude-p)
 

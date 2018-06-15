@@ -1,6 +1,6 @@
 ;;; prelude-latex.el --- Emacs Prelude: Sane setup for LaTeX writers.
 ;;
-;; Copyright © 2011-2017 Bozhidar Batsov
+;; Copyright © 2011-2018 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
@@ -62,7 +62,7 @@
 ;; use pdflatex
 (setq TeX-PDF-mode t)
 
-;; sensible defaults for OS X, other OSes should be covered out-of-the-box
+;; sensible defaults for macOS, other OSes should be covered out-of-the-box
 (when (eq system-type 'darwin)
   (setq TeX-view-program-selection
         '((output-dvi "DVI Viewer")

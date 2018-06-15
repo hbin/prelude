@@ -1,6 +1,6 @@
 ;;; prelude-company.el --- company-mode setup
 ;;
-;; Copyright © 2011-2017 Bozhidar Batsov
+;; Copyright © 2011-2018 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
@@ -36,6 +36,7 @@
 (require 'company)
 
 (setq company-idle-delay 0.5)
+(setq company-show-numbers t)
 (setq company-tooltip-limit 10)
 (setq company-minimum-prefix-length 2)
 ;; invert the navigation direction if the the completion popup-isearch-match
