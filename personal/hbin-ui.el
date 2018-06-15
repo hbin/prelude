@@ -21,7 +21,7 @@
 
 (defun hbin-frame-init (frame)
   "Custom behaviours for FRAME."
-  (set-frame-font "Monaco:pixelsize=18")
+  (set-frame-font "Monaco:pixelsize=16")
   (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=16")
 
   ;; UI
@@ -40,22 +40,22 @@
 ;; and later
 (add-hook 'after-make-frame-functions 'hbin-frame-init)
 
-(defconst preldue-themes-dir (expand-file-name "themes/" user-emacs-directory)
-  "This directory houses themes.")
+;; (defconst preldue-themes-dir (expand-file-name "themes/" user-emacs-directory)
+;;   "This directory houses themes.")
 
-(defun add-subfolders-to-theme-load-path (parent-dir)
-  "Add subfolders of the PARENT-DIR to theme load path."
-  (dolist (f (directory-files parent-dir))
-    (let ((name (concat parent-dir f)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list 'custom-theme-load-path name)))))
+;; (defun add-subfolders-to-theme-load-path (parent-dir)
+;;   "Add subfolders of the PARENT-DIR to theme load path."
+;;   (dolist (f (directory-files parent-dir))
+;;     (let ((name (concat parent-dir f)))
+;;       (when (and (file-directory-p name)
+;;                  (not (equal f ".."))
+;;                  (not (equal f ".")))
+;;         (add-to-list 'custom-theme-load-path name)))))
 
 ;; Add themes to load path
-(add-subfolders-to-theme-load-path preldue-themes-dir)
+;; (add-subfolders-to-theme-load-path preldue-themes-dir)
 
-(load-theme 'molokai)
+;; (load-theme 'molokai)
 
 (provide 'hbin-ui)
 ;;; hbin-ui.el ends here
