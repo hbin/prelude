@@ -19,7 +19,7 @@
 (require 'neotree)
 (setq neo-banner-message "\" Press ? for help.")
 (setq neo-smart-open t)
-(setq neo-window-width 28)
+(setq neo-window-width 30)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (add-to-list 'neo-hidden-regexp-list "TAGS\\|GPATH\\|GRTAGS\\|GTAGS")
 
@@ -67,7 +67,8 @@
 
 (add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
 
-(global-set-key (kbd "C-x C-j") 'neotree-projectile-file)
+(global-set-key (kbd "C-x C-l") 'neotree-projectile-file)
+(global-set-key (kbd "C-x C-j") 'neo-global--select-window)
 
 (provide 'misc-neotree)
 ;;; misc-neotree.el ends here
