@@ -10,10 +10,14 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(projectile helm-gtags))
+(prelude-require-packages '(projectile etags helm-gtags))
+
+(require 'etags)
+(custom-set-variables
+ '(tags-add-tables nil)
+ '(tags-revert-without-query t))
 
 (require 'helm-gtags)
-
 (custom-set-variables
  '(helm-gtags-auto-update t)
  '(helm-gtags-mode-name " Gtags"))
@@ -24,11 +28,6 @@
      (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-pop-stack)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
      (define-key helm-gtags-mode-map (kbd "C-x C-i") 'helm-gtags-parse-file)))
-
-(add-hook 'projectile-idle-timer-hook
-          (lambda ()
-            (when helm-gtags-mode
-              (helm-gtags-update-tags))))
 
 ;;; Custom stuff
 (setenv "GTAGSLABEL" "ctags")

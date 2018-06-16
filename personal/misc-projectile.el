@@ -22,7 +22,6 @@
 ;;; Customizes
 (custom-set-variables
  '(projectile-enable-idle-timer t)
- ;; '(projectile-idle-timer-hook nil)      ; Empty default hook
  '(projectile-ignored-projects '("/usr/local/")))
 
 ;;; Keybindings
