@@ -27,6 +27,9 @@
 ;;; Whitespace
 (diminish 'whitespace-mode)
 
+;; auto-revert-mode
+(add-hook 'after-revert-hook (lambda) () (run-hooks 'projectile-invalidate-cache))
+
 ;;; iSpell
 (require 'ispell)
 (setq ispell-dictionary "english")
