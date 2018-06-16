@@ -51,6 +51,7 @@
 (push '(compilation-mode :noselect t :height 20) popwin:special-display-config)
 (push '("*Warnings*" :noselect t :dedicated :height 20) popwin:special-display-config)
 (push '("*rspec-compilation*" :noselect t :height 20) popwin:special-display-config)
+(push '("*go-guru-output*" :noselect t :height 15) popwin:special-display-config)
 
 ;; (setq display-buffer-function 'popwin:display-buffer)
 
