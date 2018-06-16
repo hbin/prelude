@@ -26,7 +26,7 @@
 (require 'linum)
 (setq linum-format "%4d ")               ; 自定义行号格式
 (global-linum-mode -1)                   ; 不显示 Linum 行号
-(global-hl-line-mode 1)                  ; 高亮当前行
+(global-hl-line-mode -1)                 ; 高亮当前行
 
 (toggle-indicate-empty-lines 1)
 

@@ -13,7 +13,7 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin whole-line-or-region hl-anything key-chord projectile ag dimmer))
+ '(popwin whole-line-or-region key-chord projectile ag dimmer))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
@@ -53,34 +53,34 @@
 (push '("*rspec-compilation*" :noselect t :height 20) popwin:special-display-config)
 (push '("*go-guru-output*" :noselect t :height 15) popwin:special-display-config)
 
-;; (setq display-buffer-function 'popwin:display-buffer)
+;; ;;; Highlight symbols
+;; (custom-set-variables
+;;  ;; '(hl-highlight-flexible-match t)
+;;  '(hl-highlight-foreground-colors
+;;    '("black" "snow" "snow" "snow" "black" "snow"
+;;      "snow" "snow" "black" "snow" "snow" "snow"))
+;;  '(hl-highlight-background-colors
+;;    '( "gold" "DeepPink" "firebrick" "Orange" "green1" "DeepSkyBlue1"
+;;       "dark blue" "blue violet" "gray90" "gray60" "gray30" "OliveDrab"))
+;;  '(hl-highlight-save-file
+;;    (expand-file-name "hl-save" prelude-savefile-dir)))
 
-;;; Highlight symbols
-(custom-set-variables
- '(hl-highlight-flexible-match nil)
- '(hl-highlight-foreground-colors
-   '("black" "snow" "snow" "snow" "black" "snow"
-     "snow" "snow" "black" "snow" "snow" "snow"))
- '(hl-highlight-background-colors
-   '( "gold" "DeepPink" "firebrick" "Orange" "green1" "DeepSkyBlue1"
-      "dark blue" "blue violet" "gray90" "gray60" "gray30" "OliveDrab"))
- '(hl-highlight-save-file
-   (expand-file-name "hl-save" prelude-savefile-dir)))
-
-(require 'hl-anything)
+;; (require 'hl-anything)
 
 ;; Overriden
-(defun hl-highlight-fontify (&optional current-line?)
-  (unless (equal (buffer-name) " *NeoTree*")
-    (save-excursion
-      (if current-line?
-          (font-lock-fontify-region (line-beginning-position) (line-end-position))
-        (font-lock-fontify-region (point-min) (point-max))))))
+;; (defun hl-highlight-fontify (&optional current-line?)
+;;   (unless (equal (buffer-name) " *NeoTree*")
+;;     (save-excursion
+;;       (if current-line?
+;;           (font-lock-fontify-region (line-beginning-position) (line-end-position))
+;;         (font-lock-fontify-region (point-min) (point-max))))))
 
-(hl-highlight-mode +1)
-(diminish 'hl-highlight-mode)
-(global-set-key (kbd "M-m") 'hl-highlight-thingatpt-local)
-(global-set-key (kbd "M-M") 'hl-unhighlight-all-local)
+;; (hl-highlight-mode +1)
+;; (diminish 'hl-highlight-mode)
+;; (global-set-key (kbd "M-m") 'hl-highlight-thingatpt-local)
+;; (global-set-key (kbd "M-M") 'hl-unhighlight-all-local)
+(global-set-key (kbd "M-m") 'highlight-symbol)
+(global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
 
 ;;; key chord mode
 (require 'key-chord)
