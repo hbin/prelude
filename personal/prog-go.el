@@ -44,6 +44,7 @@
          (define-key newmap (kbd "C-c , b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
          (define-key newmap (kbd "M-.") 'godef-jump)
+         (define-key newmap (kbd "s-.") 'go-guru-implements)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
          (define-key newmap (kbd "M-R") 'go-rename)
          (make-local-variable 'minor-mode-overriding-map-alist)
@@ -58,7 +59,8 @@
        (whitespace-turn-off)
 
        ;; flycheck
-       (setq-local flycheck-checkers '(go-golint go-vet))
+       (setq-local flycheck-checkers '(;; go-golint
+                                       go-vet))
        (setq flycheck-go-vet-shadow t) ;; check for shadowed variables
 
        ;; CamelCase aware editing operations
@@ -66,6 +68,23 @@
 
      (setq hbin-go-mode-hook 'hbin-go-mode-defaults)
      (add-hook 'go-mode-hook (lambda () (run-hooks 'hbin-go-mode-hook)))))
+
+(require 'protobuf-mode)
+
+(defconst my-protobuf-style
+  '((c-basic-offset . 2)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
+(eval-after-load 'protobuf-mode
+  '(progn
+     (defun hbin-protobuf-mode-defaults ()
+       (flycheck-mode -1))
+
+     (setq hbin-protobuf-mode-hook 'hbin-protobuf-mode-defaults)
+     (add-hook 'protobuf-mode-hook (lambda () (run-hooks 'hbin-protobuf-mode-hook)))))
 
 (provide 'prog-go)
 ;;; prog-go.el ends here
