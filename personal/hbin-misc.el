@@ -27,10 +27,6 @@
 ;;; Whitespace
 (diminish 'whitespace-mode)
 
-;; Sesible undo
-(require 'undo-tree)
-(setq undo-tree-enable-undo-in-region nil)
-
 ;;; iSpell
 (require 'ispell)
 (setq ispell-dictionary "english")
