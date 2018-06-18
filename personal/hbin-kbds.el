@@ -67,10 +67,13 @@
 (define-key prelude-mode-map (kbd "M-1") 'delete-other-windows)
 (define-key prelude-mode-map (kbd "M-2") 'split-window-vertically)
 (define-key prelude-mode-map (kbd "M-3") 'split-window-horizontally)
-(define-key prelude-mode-map (kbd "M-o") 'other-window)
-(define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "M-k") 'kill-this-buffer)
 (define-key prelude-mode-map (kbd "s-0") 'balance-windows)
+
+;; Jump between window
+(global-set-key [remap other-window] 'other-window)
+(define-key prelude-mode-map (kbd "M-o") 'other-window)
+(define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
 
 ;; Use regex searches by default.
