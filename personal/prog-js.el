@@ -18,10 +18,6 @@
  '(js2-mode-show-strict-warnings nil))
 
 (defun hbin-js-mode-init ()
-  "Modify the js syntax."
-
-  (ruby-tools-mode +1)
-
   (modify-syntax-entry ?- "w"))
 
 (add-hook 'js-mode-hook  'hbin-js-mode-init)

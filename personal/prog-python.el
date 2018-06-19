@@ -16,9 +16,6 @@
 (eval-after-load 'python-mode
   '(progn
      (defun hbin-python-mode-defaults ()
-       "Settings for `python-mode'."
-       (ruby-tools-mode +1)
-
        (local-set-key (kbd "C-j") 'newline-and-indent)
 
        ;; Code navigation for Python.

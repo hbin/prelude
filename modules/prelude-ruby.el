@@ -44,9 +44,6 @@
      (defun prelude-ruby-mode-defaults ()
        (inf-ruby-minor-mode +1)
 
-       (ruby-tools-mode +1)
-       (diminish 'ruby-tools-mode)
-
        ;; CamelCase aware editing operations
        (subword-mode +1)
        (diminish 'subword-mode))

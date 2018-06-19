@@ -68,8 +68,6 @@
        (require 'zencoding-mode)
        (zencoding-mode 1)
 
-       (ruby-tools-mode +1)
-
        ;; erb
        (modify-syntax-entry ?$ "w")
        (modify-syntax-entry ?@ "w")
