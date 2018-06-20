@@ -12,7 +12,6 @@
 ;;; Code:
 
 (prelude-require-packages '(elixir-mode alchemist))
-(add-to-list 'elixir-mode-hook (alchemist-mode +1))
 
 (provide 'prog-elixir)
 ;;; prog-elixir.el ends here
