@@ -26,6 +26,7 @@
 ;; invert the navigation direction if the the completion popup-isearch-match
 ;; is displayed on top (happens near the bottom of windows)
 (setq company-tooltip-flip-when-above nil)
+(setq company-dabbrev-downcase nil) ; make company-dabbrev case-sensitive
 
 ;;override
 (defun company-complete-common-or-cycle-dwim (&optional arg)
