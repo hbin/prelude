@@ -43,6 +43,8 @@
          (define-key newmap (kbd "C-c , a") 'go-test-current-project)
          (define-key newmap (kbd "C-c , b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
+         (define-key newmap (kbd "C-x C-i") 'helm-imenu)
+         (define-key newmap (kbd "C-c C-i") 'helm-imenu-anywhere)
          (define-key newmap (kbd "M-.") 'godef-jump)
          (define-key newmap (kbd "s-.") 'go-guru-implements)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
