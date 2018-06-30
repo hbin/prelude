@@ -11,7 +11,11 @@
 
 ;;; Code:
 
+(require 'prelude-programming)
+
 (prelude-require-packages '(elixir-mode alchemist))
+
+(require 'elixir-mode)
 
 (provide 'prog-elixir)
 ;;; prog-elixir.el ends here

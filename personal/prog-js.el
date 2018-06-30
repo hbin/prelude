@@ -11,7 +11,11 @@
 
 ;;; Code:
 
+(require 'prelude-programming)
+
 (prelude-require-packages '(js2-mode tern))
+
+(require 'js2-mode)
 
 (custom-set-variables
  '(js2-mode-show-parse-errors nil)

@@ -11,7 +11,11 @@
 
 ;;; Code:
 
+(require 'prelude-programming)
+
 (prelude-require-packages '(bundler robe ruby-hash-syntax projectile-rails))
+
+(require 'ruby-mode)
 
 (eval-after-load 'ruby-mode
   '(progn

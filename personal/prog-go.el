@@ -10,10 +10,12 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
+
+(require 'prelude-programming)
+
 (prelude-require-packages '(go-mode go-eldoc go-projectile gotest))
 
-(defvar gofmt-command nil)
-(defvar hbin-go-mode-hook nil)
+(require 'go-mode)
 
 (eval-after-load 'go-mode
   '(progn
