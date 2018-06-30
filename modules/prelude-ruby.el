@@ -45,8 +45,7 @@
        (inf-ruby-minor-mode +1)
 
        ;; CamelCase aware editing operations
-       (subword-mode +1)
-       (diminish 'subword-mode))
+       (subword-mode +1))
 
      (setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
 
