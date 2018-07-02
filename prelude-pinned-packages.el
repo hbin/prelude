@@ -129,7 +129,7 @@
         (which-key . "melpa-stable")
         (with-editor . "melpa-stable")
         (yaml-mode . "melpa-stable")
-        (yasnippet . "melpa-stable")
+        (yasnippet . "melpa")
         (zenburn-theme . "melpa-stable")
         (zop-to-char . "melpa-stable")
         ))
