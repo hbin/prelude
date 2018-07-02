@@ -12,7 +12,6 @@
 ;;; Code:
 (prelude-require-packages '(rainbow-delimiters
                             dash-at-point
-                            docker
                             yasnippet))
 
 (add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
@@ -43,10 +42,6 @@
 
 (require 'dash-at-point)
 (global-set-key (kbd "s-.") 'dash-at-point)
-
-(require 'docker)
-(docker-global-mode)
-(diminish 'docker-mode)
 
 (provide 'hbin-prog)
 ;;; hbin-prog.el ends here
