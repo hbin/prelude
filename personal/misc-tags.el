@@ -10,15 +10,12 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(projectile etags helm-gtags))
-
-(require 'etags)
-(custom-set-variables
- '(tags-add-tables nil)
- '(tags-revert-without-query t))
+(prelude-require-packages '(projectile helm-gtags))
 
 (require 'helm-gtags)
 (custom-set-variables
+ '(tags-add-tables nil)
+ '(tags-revert-without-query t)
  '(helm-gtags-auto-update t)
  '(helm-gtags-mode-name " Gtags"))
 
