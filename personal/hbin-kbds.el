@@ -44,6 +44,7 @@
 (global-unset-key (kbd "C-x 1"))        ; used to delete-other-windows
 (global-unset-key (kbd "C-x 2"))        ; used to split-window-vertically
 (global-unset-key (kbd "C-x 3"))        ; used to split-window-horizontally
+(global-unset-key (kbd "C-x C-l"))      ; used to lowercase the buffer/region
 (global-unset-key (kbd "s-n"))
 (global-unset-key (kbd "s-p"))
 

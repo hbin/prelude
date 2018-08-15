@@ -67,7 +67,7 @@
 
 (add-hook 'neotree-mode-hook (lambda () (hl-line-mode 1)))
 
-(global-set-key (kbd "C-x C-l") 'neotree-projectile-file)
+(global-set-key (kbd "C-x C-n") 'neotree-projectile-file)
 (global-set-key (kbd "C-x C-j") 'neo-global--select-window)
 
 (provide 'misc-neotree)
