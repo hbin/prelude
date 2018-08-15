@@ -63,8 +63,7 @@
        (whitespace-turn-off)
 
        ;; flycheck
-       ;; (setq-local flycheck-checkers '(go-golint go-vet))
-       ;; (setq flycheck-go-vet-shadow t) ;; check for shadowed variables
+       (setq-local flycheck-checkers '(go-golint go-vet))
        (flycheck-mode -1)
        (flyspell-mode -1)
 

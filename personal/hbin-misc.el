@@ -38,6 +38,7 @@
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (add-hook 'message-mode-hook 'turn-on-flyspell)
 ;; (add-hook 'text-mode-hook 'turn-on-flyspell)
+(diminish 'flyspell-mode)
 
 ;;; Popwin
 (require 'popwin)

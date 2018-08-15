@@ -81,7 +81,6 @@
 (if (fboundp 'global-flycheck-mode)
     (global-flycheck-mode +1)
   (add-hook 'prog-mode-hook 'flycheck-mode))
-(diminish 'flycheck-mode)
 
 (provide 'prelude-programming)
 ;;; prelude-programming.el ends here
