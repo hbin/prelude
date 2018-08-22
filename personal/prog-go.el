@@ -17,6 +17,10 @@
 
 (require 'go-mode)
 
+(custom-set-variables
+ '(go-fontify-function-calls nil)
+ '(gofmt-show-errors 'echo))
+
 (eval-after-load 'go-mode
   '(progn
      (require 'go-projectile)
@@ -66,6 +70,9 @@
        (setq-local flycheck-checkers '(go-golint go-vet))
        (flycheck-mode -1)
        (flyspell-mode -1)
+
+       ;; gofmt on save
+       (add-hook 'before-save-hook 'gofmt-before-save nil t)
 
        ;; CamelCase aware editing operations
        (subword-mode +1))
