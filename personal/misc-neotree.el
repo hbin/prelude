@@ -23,19 +23,6 @@
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (add-to-list 'neo-hidden-regexp-list "TAGS\\|GPATH\\|GRTAGS\\|GTAGS")
 
-(defun neotree-folder-toggle ()
-  "Toggle a folder."
-  (interactive)
-  (let ((btn-full-path (neo-buffer--get-filename-current-line)))
-    (unless (null btn-full-path)
-      (if (file-directory-p btn-full-path)
-          (progn
-            (let ((new-state (neo-buffer--toggle-expand btn-full-path)))
-              (neo-buffer--refresh t)
-              (when neo-auto-indent-point
-                (when new-state (forward-line))
-                (neo-point-auto-indent))))))))
-
 (defun neotree-projectile-file ()
   (interactive)
   (cond
