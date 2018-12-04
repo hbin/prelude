@@ -17,5 +17,14 @@
 
 (require 'elixir-mode)
 
+(eval-after-load 'elixir-mode
+  '(progn
+     (defun hbin-elixir-mode-defaults ()
+       (show-paren-mode -1)
+       )
+
+     (setq hbin-elixir-mode-hook 'hbin-elixir-mode-defaults)
+     (add-hook 'elixir-mode-hook (lambda () (run-hooks 'hbin-elixir-mode-hook)))))
+
 (provide 'prog-elixir)
 ;;; prog-elixir.el ends here
