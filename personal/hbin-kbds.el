@@ -98,6 +98,10 @@
 
 ;;; Highlight symbols
 (require 'highlight-symbol)
+(setq highlight-symbol-colors
+      '("Yellow" "YellowGreen" "pink" "Purple" "PeachPuff" "RoyalBlue" "LightBlue" "SlateBlue" "SteelBlue"
+        "violet" "cyan" "SeaGreen" "#A0522D" "SpringGreen" "LimeGreen" "LightSeaGreen" "MistyRose" "Magenta"
+        "orange" "PaleVioletRed" "#FF6347" "grey" "brown" "RosyBrown" "SandyBrown"))
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
