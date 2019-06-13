@@ -87,7 +87,7 @@
 (global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
 
 (prelude-require-packages
- '(crux expand-region highlight-symbol multiple-cursors smart-shift))
+ '(crux expand-region highlight-symbol multiple-cursors smart-shift find-file-in-project))
 
 (require 'crux)
 (crux-with-region-or-line comment-or-uncomment-region)
@@ -117,6 +117,9 @@
 (require 'smart-shift)
 (global-set-key (kbd "M-[") 'smart-shift-left)
 (global-set-key (kbd "M-]") 'smart-shift-right)
+
+(require 'find-file-in-project)
+(define-key prelude-mode-map (kbd "M-T") 'find-file-in-project)
 
 ;; Goto line
 (global-set-key (kbd "s-l") 'goto-line)
