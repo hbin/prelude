@@ -80,8 +80,10 @@
 ;; (diminish 'hl-highlight-mode)
 ;; (global-set-key (kbd "M-m") 'hl-highlight-thingatpt-local)
 ;; (global-set-key (kbd "M-M") 'hl-unhighlight-all-local)
+(global-set-key (kbd "M-'") 'highlight-symbol)
 (global-set-key (kbd "M-m") 'highlight-symbol)
 (global-set-key (kbd "M-M") 'highlight-symbol-remove-all)
+(global-set-key (kbd "C-c '") 'highlight-symbol-remove-all)
 
 ;;; key chord mode
 (require 'key-chord)

@@ -124,6 +124,9 @@
 ;; Goto line
 (global-set-key (kbd "s-l") 'goto-line)
 
+(global-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
+(global-set-key (kbd "C-S-J") 'crux-top-join-line)
+
 ;;; Winner Mode
 (winner-mode 1)
 (global-set-key (kbd "C-x <left>") 'winner-undo)
