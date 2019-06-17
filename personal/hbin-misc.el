@@ -13,16 +13,11 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin whole-line-or-region key-chord projectile ag dimmer))
+ '(popwin key-chord projectile ag dimmer))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
 (setq prelude-guru nil)
-
-;;; Whole line or region
-(require 'whole-line-or-region)
-(whole-line-or-region-global-mode)
-(diminish 'whole-line-or-region-local-mode)
 
 ;;; Whitespace
 (diminish 'whitespace-mode)

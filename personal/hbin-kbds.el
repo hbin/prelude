@@ -56,8 +56,14 @@
 
 ;; Back killing
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-M-h") 'backward-kill-word)
+(global-set-key (kbd "C-w") 'backward-kill-word-or-region)
 (define-key key-translation-map [?\C-h] [?\C-?])
+
+(defun backward-kill-word-or-region ()
+  (interactive)
+  (if mark-active
+      (kill-region (region-beginning) (region-end))
+    (backward-kill-word 1)))
 
 ;; Vim like open previous/next line
 (global-set-key (kbd "C-o") 'crux-smart-open-line)
