@@ -157,8 +157,6 @@ that can occur between two notifications.  The default is
   (when prelude-new-irc-persp
     (persp-kill "IRC")))
 
-(setq erc-autojoin-channels-alist '(("freenode.net" "#prelude-emacs" "#projectile")))
-
 (provide 'prelude-erc)
 
 ;;; prelude-erc.el ends here

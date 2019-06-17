@@ -45,8 +45,7 @@
                                 (other-window -1))) ;; back one
 
 ;; Indentation help
-(global-set-key (kbd "C-J") 'crux-top-join-line)
-
+(global-set-key (kbd "C-^") 'crux-top-join-line)
 ;; Start proced in a similar manner to dired
 (unless (eq system-type 'darwin)
     (global-set-key (kbd "C-x p") 'proced))
@@ -104,7 +103,7 @@
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 

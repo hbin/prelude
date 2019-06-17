@@ -1,17 +1,16 @@
-;;; prelude-haskell.el --- Emacs Prelude: Nice config for Haskell programming.
+;;; prelude-ts.el --- Emacs Prelude: Typescript programming support.
 ;;
-;; Copyright © 2011-2018 Bozhidar Batsov
+;; Copyright © 2011-2018 LEE Dongjun
 ;;
-;; Author: Bozhidar Batsov <bozhidar@batsov.com>
-;; URL: https://github.com/bbatsov/prelude
+;; Author: LEE Dongjun <redongjun@gmail.com>
 ;; Version: 1.0.0
-;; Keywords: convenience
+;; Keywords: convenience typescript
 
 ;; This file is not part of GNU Emacs.
 
 ;;; Commentary:
 
-;; Nice config for Haskell programming.
+;; Some basic configuration for Typescript development.
 
 ;;; License:
 
@@ -33,20 +32,28 @@
 ;;; Code:
 
 (require 'prelude-programming)
-(prelude-require-packages '(haskell-mode))
+(prelude-require-packages '(tide))
 
-(with-eval-after-load 'haskell-mode
-  (defun prelude-haskell-mode-defaults ()
-    (subword-mode +1)
+(require 'typescript-mode)
+
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
+(with-eval-after-load 'typescript-mode
+  (defun prelude-ts-mode-defaults ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
     (eldoc-mode +1)
-    (haskell-indentation-mode +1)
-    (interactive-haskell-mode +1))
+    (tide-hl-identifier-mode +1))
 
-  (setq prelude-haskell-mode-hook 'prelude-haskell-mode-defaults)
+  ;; formats the buffer before saving
+  (add-hook 'before-save-hook 'tide-format-before-save)
 
-  (add-hook 'haskell-mode-hook (lambda ()
-                                 (run-hooks 'prelude-haskell-mode-hook))))
+  (setq prelude-ts-mode-hook 'prelude-ts-mode-defaults)
 
-(provide 'prelude-haskell)
+  (add-hook 'typescript-mode-hook (lambda () (run-hooks 'prelude-ts-mode-hook))))
 
-;;; prelude-haskell.el ends here
+(provide 'prelude-ts)
+
+;;; prelude-ts.el ends here

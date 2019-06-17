@@ -74,12 +74,6 @@
 (when prelude-theme
   (load-theme prelude-theme t))
 
-(require 'smart-mode-line)
-(setq sml/no-confirm-load-theme t)
-;; delegate theming to the currently active theme
-(setq sml/theme nil)
-(add-hook 'after-init-hook #'sml/setup)
-
 ;; show the cursor when moving after big movements in the window
 (require 'beacon)
 (beacon-mode +1)
@@ -87,7 +81,6 @@
 ;; show available keybindings after you start typing
 (require 'which-key)
 (which-key-mode +1)
-(diminish 'which-key-mode)
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here
