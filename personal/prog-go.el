@@ -13,7 +13,7 @@
 
 (require 'prelude-programming)
 
-(prelude-require-packages '(go-mode go-eldoc go-projectile gotest))
+(prelude-require-packages '(go-mode go-eldoc go-projectile gotest protobuf-mode))
 
 (require 'go-mode)
 
