@@ -2,5 +2,3 @@
 (defvar ido-cur-item nil)
 (defvar ido-default-item nil)
 (defvar ido-cur-list nil)
-
-(setq prelude-theme 'gruvbox-dark-soft)
