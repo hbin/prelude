@@ -31,7 +31,7 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(prelude-require-packages '(flx-ido ido-completing-read+ smex))
+(prelude-require-packages '(flx-ido ido-completing-read+))
 
 (require 'ido)
 (require 'ido-completing-read+)
@@ -52,13 +52,6 @@
 (flx-ido-mode +1)
 ;; disable ido faces to see flx highlights
 (setq ido-use-faces nil)
-
-;;; smex, remember recently and most frequently used commands
-(require 'smex)
-(setq smex-save-file (expand-file-name ".smex-items" prelude-savefile-dir))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 (provide 'prelude-ido)
 ;;; prelude-ido.el ends here
