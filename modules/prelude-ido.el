@@ -52,6 +52,8 @@
 (flx-ido-mode +1)
 ;; disable ido faces to see flx highlights
 (setq ido-use-faces nil)
+(define-key ido-file-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)
+(define-key ido-file-completion-map (kbd "C-M-h") 'ido-delete-backward-word-updir)
 
 (provide 'prelude-ido)
 ;;; prelude-ido.el ends here
