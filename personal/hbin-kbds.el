@@ -74,7 +74,7 @@
 (define-key prelude-mode-map (kbd "M-1") 'delete-other-windows)
 (define-key prelude-mode-map (kbd "M-2") 'split-window-vertically)
 (define-key prelude-mode-map (kbd "M-3") 'split-window-horizontally)
-(define-key prelude-mode-map (kbd "M-k") 'kill-this-buffer)
+(define-key prelude-mode-map (kbd "C-c k") 'kill-this-buffer)
 (define-key prelude-mode-map (kbd "s-0") 'balance-windows)
 
 ;; Jump between window
