@@ -36,6 +36,8 @@
   (prelude-prog-mode-defaults)
 
   (local-set-key (kbd "C-w") 'backward-kill-word-or-region)
+  (local-set-key (kbd "s-<backspace>") 'backward-kill-word-or-region)
+  (local-set-key (kbd "M-<backspace>") 'crux-kill-whole-line)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
   (local-set-key (kbd "C-S-J") 'crux-top-join-line)
   (local-set-key (kbd "C-c C-c") 'comment-or-uncomment-region))

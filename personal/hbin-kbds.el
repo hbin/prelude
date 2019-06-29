@@ -33,6 +33,7 @@
   (define-key ido-file-dir-completion-map [(meta ?f)] 'forward-word)
   (define-key ido-file-dir-completion-map "\C-x\C-f" nil)
   (define-key ido-common-completion-map "\C-a" 'crux-move-beginning-of-line)
+  (define-key ido-common-completion-map "\C-w" 'backward-kill-word-or-region)
   (define-key ido-common-completion-map "\C-e" 'move-end-of-line)
   (define-key ido-common-completion-map "\C-f" 'forward-char))
 (add-hook 'ido-setup-hook 'ido-my-keys)
@@ -57,6 +58,8 @@
 ;; Back killing
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-w") 'backward-kill-word-or-region)
+(global-set-key (kbd "s-<backspace>") 'backward-kill-word-or-region)
+(global-set-key (kbd "M-<backspace>") 'crux-kill-whole-line)
 (define-key key-translation-map [?\C-h] [?\C-?])
 
 (defun backward-kill-word-or-region ()
@@ -74,7 +77,7 @@
 (define-key prelude-mode-map (kbd "M-1") 'delete-other-windows)
 (define-key prelude-mode-map (kbd "M-2") 'split-window-vertically)
 (define-key prelude-mode-map (kbd "M-3") 'split-window-horizontally)
-(define-key prelude-mode-map (kbd "C-c k") 'kill-this-buffer)
+(define-key prelude-mode-map (kbd "M-k") 'kill-this-buffer)
 (define-key prelude-mode-map (kbd "s-0") 'balance-windows)
 
 ;; Jump between window
@@ -82,15 +85,15 @@
 (define-key prelude-mode-map (kbd "M-o") 'other-window)
 (define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
+(define-key prelude-mode-map (kbd "M-e") 'helm-mini)
 
 ;; Use regex searches by default.
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-(global-set-key (kbd "M-%") 'query-replace-regexp)
-(global-set-key (kbd "C-M-%") 'query-replace)
-(global-set-key (kbd "M-r") 'highlight-symbol-query-replace)
+(global-set-key (kbd "M-%") 'anzu-query-replace-at-cursor)
+(global-set-key (kbd "C-M-%") 'projectile-replace-regexp)
 
 (prelude-require-packages
  '(crux expand-region highlight-symbol multiple-cursors smart-shift find-file-in-project))
@@ -110,6 +113,8 @@
         "orange" "PaleVioletRed" "#FF6347" "grey" "brown" "RosyBrown" "SandyBrown"))
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
+(global-set-key (kbd "C-s-<down>") 'highlight-symbol-next)
+(global-set-key (kbd "C-s-<up>") 'highlight-symbol-prev)
 
 ;;; Multiple Cursors
 (require 'multiple-cursors)
@@ -121,8 +126,8 @@
 (global-set-key (kbd "C->") 'mc/mark-next-symbol-like-this)
 
 (require 'smart-shift)
-(global-set-key (kbd "M-[") 'smart-shift-left)
-(global-set-key (kbd "M-]") 'smart-shift-right)
+(global-set-key (kbd "C-c [") 'smart-shift-left)
+(global-set-key (kbd "C-c ]") 'smart-shift-right)
 
 (require 'find-file-in-project)
 (define-key prelude-mode-map (kbd "M-T") 'find-file-in-project)
@@ -132,6 +137,9 @@
 
 (global-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
 (global-set-key (kbd "C-S-J") 'crux-top-join-line)
+
+(global-set-key (kbd "M-m") 'bookmark-save)
+(global-set-key (kbd "M-M") 'helm-bookmarks)
 
 ;;; Winner Mode
 (winner-mode 1)
