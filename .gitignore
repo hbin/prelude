@@ -22,6 +22,7 @@ projectile-bookmarks.eld
 session*
 .cask
 tramp
+transient/
 /var/pcache
 abbrev_defs
 .emacs.desktop
