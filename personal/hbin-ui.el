@@ -41,6 +41,14 @@
 ;; and later
 (add-hook 'after-make-frame-functions 'hbin-frame-init)
 
+;; (custom-theme-set-faces
+;;  'doom-solarized-dark
+;;  `(linum ((t (:foreground "#657b83" :background "#073642")))))
+
+(custom-theme-set-faces
+ 'doom-molokai
+ `(cursor ((t (:background "#e8e8e8" :foreground "#1b1d1e")))))
+
 ;; (defconst preldue-themes-dir (expand-file-name "themes/" user-emacs-directory)
 ;;   "This directory houses themes.")
 
