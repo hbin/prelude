@@ -48,7 +48,6 @@
         (flx . "melpa-stable")
         (flx-ido . "melpa-stable")
         (flycheck . "melpa-stable")
-        (flycheck-ocaml . "melpa-stable")
         (geiser . "melpa-stable")
         (gh . "melpa-stable")
         (gist . "melpa-stable")
