@@ -85,7 +85,9 @@
 (define-key prelude-mode-map (kbd "M-o") 'other-window)
 (define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
-(define-key prelude-mode-map (kbd "M-e") 'helm-mini)
+(define-key prelude-mode-map (kbd "C-x o") 'ace-swap-window)
+(define-key prelude-mode-map (kbd "M-e") 'projectile-recentf)
+(define-key prelude-mode-map (kbd "C-M-v") 'scroll-down)
 
 ;; Use regex searches by default.
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -104,6 +106,7 @@
 ;; Expand region
 (require 'expand-region)
 (global-set-key (kbd "M-h") 'er/expand-region)
+(global-set-key (kbd "C-s-w") 'er/expand-region)
 
 ;;; Highlight symbols
 (require 'highlight-symbol)

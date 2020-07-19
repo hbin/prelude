@@ -93,7 +93,8 @@
 
      ;;; Defaults
      (defun hbin-ruby-mode-defaults ()
-       "Modify the Ruby syntax."
+       (setq-local whitespace-line-column 120)
+
        (helm-gtags-mode +1)
        (diminish 'helm-gtags-mode)
 

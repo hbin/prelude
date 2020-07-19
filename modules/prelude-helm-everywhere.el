@@ -37,7 +37,7 @@
 (prelude-require-packages '(helm-descbinds helm-ag))
 (require 'helm-eshell)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-m") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
