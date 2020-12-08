@@ -15,6 +15,9 @@
 ;;; Code:
 (setq inhibit-startup-screen t)
 
+(prelude-require-packages
+ '(doom-themes))
+
 ;; Set frame
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -41,14 +44,6 @@
 ;; and later
 (add-hook 'after-make-frame-functions 'hbin-frame-init)
 
-;; (custom-theme-set-faces
-;;  'doom-solarized-dark
-;;  `(linum ((t (:foreground "#657b83" :background "#073642")))))
-
-(custom-theme-set-faces
- 'doom-molokai
- `(cursor ((t (:background "#e8e8e8" :foreground "#1b1d1e")))))
-
 ;; (defconst preldue-themes-dir (expand-file-name "themes/" user-emacs-directory)
 ;;   "This directory houses themes.")
 
@@ -64,7 +59,17 @@
 ;; Add themes to load path
 ;; (add-subfolders-to-theme-load-path preldue-themes-dir)
 
-;; (load-theme 'molokai)
+(load-theme 'doom-molokai)
+
+(custom-theme-set-faces
+ 'doom-molokai
+ `(cursor ((t (:background "#e8e8e8" :foreground "#1b1d1e")))))
+
+(enable-theme 'doom-molokai)
+
+;; (custom-theme-set-faces
+;;  'doom-solarized-dark
+;;  `(linum ((t (:foreground "#657b83" :background "#073642")))))
 
 (provide 'hbin-ui)
 ;;; hbin-ui.el ends here

@@ -6,4 +6,5 @@
 (setq exec-path-from-shell-check-startup-files nil
       exec-path-from-shell-variables '("PATH" "GOPATH"))
 
-(setq prelude-theme 'doom-molokai)
+;; (setq prelude-theme 'doom-molokai)
+(setq prelude-theme nil)

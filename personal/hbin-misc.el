@@ -13,7 +13,7 @@
 
 ;; Miscellaneous Packages
 (prelude-require-packages
- '(popwin key-chord projectile ag dimmer doom-themes))
+ '(popwin key-chord projectile ag dimmer))
 
 ;;; Disable guru-mode completely
 (require 'guru-mode)
