@@ -84,6 +84,10 @@
      (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
 
      (let ((map projectile-rails-mode-map))
+       ;; Neotree
+       (define-key map (kbd "C-c C-f") 'neotree-projectile-file)
+       (define-key map (kbd "C-c C-s") 'neo-global--select-window)
+
        (define-key map (kbd "s-<return>") 'projectile-rails-goto-file-at-point)
        (define-key map (kbd "C-c ; r") 'projectile-rails-find-spec)
        (define-key map (kbd "C-c ; R") 'projectile-rails-find-current-spec)
