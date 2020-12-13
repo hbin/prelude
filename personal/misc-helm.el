@@ -47,7 +47,7 @@
 (global-set-key (kbd "M-I") 'helm-multi-swoop-projectile)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-c C-i") 'helm-imenu-anywhere)
-(global-set-key (kbd "M-g") 'helm-projectile-ag)
+(global-set-key (kbd "M-g") 'helm-projectile-rg)
 (global-set-key (kbd "M-G") 'helm-do-ag-this-file)
 
 (define-key helm-map (kbd "C-w") 'backward-kill-word-or-region)
