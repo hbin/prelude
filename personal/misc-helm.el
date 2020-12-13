@@ -17,10 +17,6 @@
 
 (helm-autoresize-mode 1)
 
-(setq grep-find-ignored-files
-      (append grep-find-ignored-files
-              '("*.svg")))
-
 (custom-set-variables '(helm-completion-style 'emacs)
                       '(helm-buffers-fuzzy-matching t)
                       '(helm-recentf-fuzzy-match t)
@@ -33,6 +29,18 @@
                       '(helm-ag-command-option "--all-text")
                       '(helm-ag-insert-at-point 'symbol)
                       '(helm-swoop-split-with-multiple-windows t))
+
+;; See: https://github.com/emacsorphanage/helm-ag/issues/283
+(defun helm-projectile-ag (&optional options)
+  "Helm version of projectile-ag."
+  (interactive (if current-prefix-arg (list (read-string "option: " "" 'helm-ag--extra-options-history))))
+  (if (require 'helm-ag nil  'noerror)
+      (if (projectile-project-p)
+          (let ((helm-ag-command-option options)
+                (current-prefix-arg nil))
+            (helm-do-ag (projectile-project-root) (car (projectile-parse-dirconfig-file))))
+        (error "You're not in a project"))
+    (error "helm-ag not available")))
 
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
