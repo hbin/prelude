@@ -74,8 +74,8 @@
 ;; (hl-highlight-mode +1)
 ;; (diminish 'hl-highlight-mode)
 (global-set-key (kbd "M-'") 'highlight-symbol)
-(global-set-key (kbd "C-'") 'highlight-symbol)
-(global-set-key (kbd "C-\"") 'highlight-symbol-remove-all)
+;; (global-set-key (kbd "C-'") 'highlight-symbol)
+;; (global-set-key (kbd "C-\"") 'highlight-symbol-remove-all)
 
 ;;; key chord mode
 (require 'key-chord)

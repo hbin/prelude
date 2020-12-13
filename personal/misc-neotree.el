@@ -57,5 +57,8 @@
 (global-set-key (kbd "C-c C-f") 'neotree-projectile-file)
 (global-set-key (kbd "C-c C-s") 'neo-global--select-window)
 
+(define-key projectile-mode-map (kbd "C-c C-f")  'neotree-projectile-file)
+(define-key projectile-mode-map (kbd "C-c C-s") 'neo-global--select-window)
+
 (provide 'misc-neotree)
 ;;; misc-neotree.el ends here

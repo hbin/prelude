@@ -85,7 +85,7 @@
 (define-key prelude-mode-map (kbd "M-o") 'other-window)
 (define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
-(define-key prelude-mode-map (kbd "C-x o") 'ace-swap-window)
+(define-key prelude-mode-map (kbd "C-c o") 'ace-swap-window)
 (define-key prelude-mode-map (kbd "M-e") 'projectile-recentf)
 (define-key prelude-mode-map (kbd "C-M-v") 'scroll-down)
 
