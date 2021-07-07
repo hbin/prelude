@@ -39,8 +39,8 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-;; It's all in the Meta
-(setq ns-function-modifier 'hyper)
+;; Set fn key as nil to compatible with Varmilo Miya68 keybard.
+(setq ns-function-modifier nil)
 
 (defun prelude-swap-meta-and-super ()
   "Swap the mapping of Meta and Super.
