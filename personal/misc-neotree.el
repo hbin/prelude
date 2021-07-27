@@ -49,6 +49,7 @@
 (define-key neotree-mode-map (kbd "I") 'neotree-hidden-file-toggle)
 (define-key neotree-mode-map (kbd "C") 'neotree-change-root)
 (define-key neotree-mode-map (kbd "m a") 'neotree-create-node)
+(define-key neotree-mode-map (kbd "m c") 'neotree-copy-node)
 (define-key neotree-mode-map (kbd "m d") 'neotree-delete-node)
 (define-key neotree-mode-map (kbd "m m") 'neotree-rename-node)
 
