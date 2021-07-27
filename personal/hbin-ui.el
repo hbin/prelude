@@ -34,7 +34,6 @@
   (tool-bar-mode -1)           ; 不需要工具栏
   (scroll-bar-mode -1)         ; 不需要滚动条
   (set-fringe-mode '(1 . 1))   ; 小的 fringe 边距
-  (beacon-mode -1)
   (blink-cursor-mode -1)       ; 光标不闪
   (mouse-wheel-mode t))
 
