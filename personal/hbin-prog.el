@@ -31,7 +31,7 @@
   "Common settings for programming."
   (rainbow-delimiters-mode 1)
 
-  (linum-mode 1)
+  (display-line-numbers-mode 1)
 
   (prelude-prog-mode-defaults)
 

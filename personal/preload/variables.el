@@ -3,6 +3,8 @@
 (defvar ido-default-item nil)
 (defvar ido-cur-list nil)
 
+(setq prelude-minimalistic-ui t)
+
 (setq exec-path-from-shell-check-startup-files nil
       exec-path-from-shell-variables '("PATH" "GOPATH"))
 
