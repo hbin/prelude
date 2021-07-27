@@ -1,10 +1,8 @@
 ;;; prelude-ts.el --- Emacs Prelude: Typescript programming support.
 ;;
-;; Copyright © 2011-2020 LEE Dongjun
+;; Copyright © 2011-2021 LEE Dongjun
 ;;
 ;; Author: LEE Dongjun <redongjun@gmail.com>
-;; Version: 1.0.0
-;; Keywords: convenience typescript
 
 ;; This file is not part of GNU Emacs.
 

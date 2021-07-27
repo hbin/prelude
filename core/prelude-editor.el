@@ -1,11 +1,9 @@
 ;;; prelude-editor.el --- Emacs Prelude: enhanced core editing experience.
 ;;
-;; Copyright © 2011-2020 Bozhidar Batsov
+;; Copyright © 2011-2021 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/prelude
-;; Version: 1.0.0
-;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
 
@@ -56,11 +54,6 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-;; autosave the undo-tree history
-(setq undo-tree-history-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq undo-tree-auto-save-history t)
 
 ;; revert buffers automatically when underlying files are changed externally
 (global-auto-revert-mode t)
@@ -153,6 +146,7 @@
 ;; add integration with ace-window
 (add-to-list 'super-save-triggers 'ace-window)
 (super-save-mode +1)
+(diminish 'super-save-mode)
 
 (defadvice set-buffer-major-mode (after set-major-mode activate compile)
   "Set buffer major mode according to `auto-mode-alist'."
@@ -314,6 +308,7 @@ indent yanked text (with prefix arg don't indent)."
 
 ;; abbrev config
 (add-hook 'text-mode-hook 'abbrev-mode)
+(diminish 'abbrev-mode)
 
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
@@ -362,7 +357,12 @@ indent yanked text (with prefix arg don't indent)."
 ;; enable Prelude's keybindings
 (prelude-mode t)
 
-;; sensible undo
+;; supercharge your undo/redo with undo-tree
+(require 'undo-tree)
+;; autosave the undo-tree history
+(setq undo-tree-history-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq undo-tree-auto-save-history t)
 (global-undo-tree-mode)
 (diminish 'undo-tree-mode)
 
@@ -417,6 +417,7 @@ and file 'filename' will be opened and cursor set on line 'linenumber'"
 ;; use settings from .editorconfig file when present
 (require 'editorconfig)
 (editorconfig-mode 1)
+(diminish 'editorconfig-mode)
 
 (provide 'prelude-editor)
 
