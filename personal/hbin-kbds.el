@@ -103,11 +103,6 @@
 (require 'crux)
 (crux-with-region-or-line comment-or-uncomment-region)
 
-;; Expand region
-(require 'expand-region)
-(global-set-key (kbd "M-h") 'er/expand-region)
-(global-set-key (kbd "C-s-w") 'er/expand-region)
-
 ;;; Highlight symbols
 (require 'highlight-symbol)
 (setq highlight-symbol-colors
