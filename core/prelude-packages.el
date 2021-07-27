@@ -83,7 +83,7 @@
     super-save
     undo-tree
     volatile-highlights
-    which-key
+    ; which-key
     zenburn-theme
     zop-to-char)
   "A list of packages to ensure are installed at launch.")
