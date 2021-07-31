@@ -10,15 +10,11 @@
 ;; This file is not part of GNU Emacs.
 
 ;;; Code:
-(prelude-require-packages '(exec-path-from-shell
-                            rainbow-delimiters
+(prelude-require-packages '(rainbow-delimiters
                             dash-at-point
                             yasnippet))
 
 (add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
-
-(require 'exec-path-from-shell)
-(exec-path-from-shell-initialize)
 
 (require 'yasnippet)
 (setq yas-prompt-functions '(yas-dropdown-prompt

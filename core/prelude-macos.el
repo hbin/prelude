@@ -37,9 +37,6 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-;; Set fn key as nil to compatible with Varmilo Miya68 keybard.
-(setq ns-function-modifier nil)
-
 (defun prelude-swap-meta-and-super ()
   "Swap the mapping of Meta and Super.
 Very useful for people using their Mac with a
