@@ -51,6 +51,8 @@ With ARG, move by that many elements."
 (define-key company-active-map (kbd "M-/") 'company-complete-common-or-cycle)
 (define-key company-active-map (kbd "C-n") 'company-select-next)
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
+(define-key company-active-map (kbd "C-v") 'company-next-page)
+(define-key company-active-map (kbd "M-v") 'company-previous-page)
 
 (eval-after-load 'company
   '(progn

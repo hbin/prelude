@@ -32,4 +32,4 @@
 ;; (global-set-key (kbd "C-x C-j") 'treemacs-add-and-display-current-project)
 
 (provide 'misc-tree)
-;;; misc-otree.el ends here
+;;; misc-tree.el ends here

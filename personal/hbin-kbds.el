@@ -87,7 +87,6 @@
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)
 (define-key prelude-mode-map (kbd "C-c o") 'ace-swap-window)
 (define-key prelude-mode-map (kbd "M-e") 'projectile-recentf)
-(define-key prelude-mode-map (kbd "C-M-v") 'scroll-down)
 
 ;; Use regex searches by default.
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
