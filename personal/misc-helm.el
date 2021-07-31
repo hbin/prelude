@@ -18,6 +18,7 @@
 (helm-autoresize-mode 1)
 
 (custom-set-variables '(helm-completion-style 'emacs)
+                      '(completion-styles '(flex)) ; For fuzzy completion
                       '(helm-buffers-fuzzy-matching t)
                       '(helm-recentf-fuzzy-match t)
                       '(helm-semantic-fuzzy-match t)
@@ -58,6 +59,7 @@
 (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
 (global-set-key (kbd "M-z") 'helm-resume)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; https://www.reddit.com/r/emacs/comments/345vtl/make_helm_window_at_the_bottom_without_using_any/
 (add-to-list 'display-buffer-alist
