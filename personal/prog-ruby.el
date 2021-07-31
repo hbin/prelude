@@ -13,7 +13,7 @@
 
 (require 'prelude-programming)
 
-(prelude-require-packages '(bundler robe ruby-hash-syntax projectile-rails))
+(prelude-require-packages '(bundler ruby-hash-syntax projectile-rails))
 
 (require 'ruby-mode)
 
@@ -50,27 +50,7 @@
        "Get commonly used gems' paths."
        (-filter 'stringp (-map 'bundle-gem-location
                                bundle-commonly-used-gems)))
-
-     (defun bundle-gtags ()
-       "Generate gtags for every commonly used gems."
-       (interactive)
-       (let ((bundler-stdout
-              (shell-command-to-string "bundle check")))
-         (unless (string-match "Could not locate Gemfile" bundler-stdout)
-           (let ((gem-paths (bundle-commonly-used-gem-paths)))
-             (if gem-paths
-                 (progn
-                   (-each gem-paths
-                     (lambda (path)
-                       (helm-gtags-create-tags path nil)))
-                   (setenv "GTAGSLIBPATH" (s-join ":" gem-paths))))))))
      ;;; Bundler configuration ends}}}
-
-     ;;; Robe
-     (require 'robe)
-     (define-key ruby-mode-map (kbd "s-.") 'robe-jump)
-     (define-key ruby-mode-map (kbd "s-,") 'pop-tag-mark)
-     (setq inf-ruby-console-environment "development")
 
      ;;; Rails start {{{
      (custom-set-variables
@@ -81,7 +61,6 @@
      (require 'projectile-rails)
      (projectile-rails-global-mode)
      (diminish 'projectile-rails-mode)
-     (add-hook 'projectile-rails-mode-hook 'helm-gtags-mode)
 
      (let ((map projectile-rails-mode-map))
        (define-key map (kbd "s-<return>") 'projectile-rails-goto-file-at-point)
@@ -94,9 +73,6 @@
      ;;; Defaults
      (defun hbin-ruby-mode-defaults ()
        (setq-local whitespace-line-column 120)
-
-       (helm-gtags-mode +1)
-       (diminish 'helm-gtags-mode)
 
        ;; Words prefixed with $ are global variables,
        ;; prefixed with @ are instance variables.

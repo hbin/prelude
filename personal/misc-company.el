@@ -13,9 +13,10 @@
 
 ;;; Code:
 (prelude-require-packages '(company
-                            company-anaconda ; Python - https://github.com/proofit404/anaconda-mode
-                            company-tern     ; Javascript - http://ternjs.net/
-                            company-go))     ; Go - https://github.com/nsf/gocode
+                            ;; company-anaconda ; Python - https://github.com/proofit404/anaconda-mode
+                            ;; company-tern     ; Javascript - http://ternjs.net/
+                            ;; company-go       ; Go - https://github.com/nsf/gocode
+                            ))
 
 (require 'company)
 
@@ -56,21 +57,22 @@ With ARG, move by that many elements."
 
 (eval-after-load 'company
   '(progn
-     (add-hook 'python-mode-hook
-               (lambda ()
-                 (let ((origin-backends company-backends))
-                   (set (make-local-variable 'company-backends)
-                        (add-to-list 'origin-backends '(company-anaconda :with company-capf))))))
-     (add-hook 'go-mode-hook
-               (lambda ()
-                 (let ((origin-backends company-backends))
-                   (set (make-local-variable 'company-backends)
-                        (add-to-list 'origin-backends 'company-go)))))
-     (add-hook 'js2-mode-hook
-               (lambda ()
-                 (let ((origin-backends company-backends))
-                   (set (make-local-variable 'company-backends)
-                        (add-to-list 'origin-backends 'company-tern)))))))
+     ;; (add-hook 'python-mode-hook
+     ;;           (lambda ()
+     ;;             (let ((origin-backends company-backends))
+     ;;               (set (make-local-variable 'company-backends)
+     ;;                    (add-to-list 'origin-backends '(company-anaconda :with company-capf))))))
+     ;; (add-hook 'go-mode-hook
+     ;;           (lambda ()
+     ;;             (let ((origin-backends company-backends))
+     ;;               (set (make-local-variable 'company-backends)
+     ;;                    (add-to-list 'origin-backends 'company-go)))))
+     ;; (add-hook 'js2-mode-hook
+     ;;           (lambda ()
+     ;;             (let ((origin-backends company-backends))
+     ;;               (set (make-local-variable 'company-backends)
+     ;;                    (add-to-list 'origin-backends 'company-tern)))))
+     ))
 
 
 (global-company-mode 1)

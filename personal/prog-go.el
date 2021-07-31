@@ -28,9 +28,10 @@
      ;; Ignore go test -c output files
      (add-to-list 'completion-ignored-extensions ".test")
 
-     ;; GOPATH
      (when (memq window-system '(mac ns))
-       (exec-path-from-shell-copy-env "GOPATH"))
+       (exec-path-from-shell-copy-env "GOROOT")
+       (exec-path-from-shell-copy-env "GOPATH")
+       (exec-path-from-shell-copy-env "GOBIN"))
 
      (defun hbin-go-mode-defaults ()
        (setq-local tab-width 4)
@@ -48,8 +49,8 @@
          (define-key newmap (kbd "C-c , a") 'go-test-current-project)
          (define-key newmap (kbd "C-c , b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
-         (define-key newmap (kbd "C-x C-i") 'helm-imenu)
-         (define-key newmap (kbd "C-c C-i") 'helm-imenu-anywhere)
+         (define-key newmap (kbd "C-x C-i") 'lsp-treemacs-call-hierarchy)
+         (define-key newmap (kbd "C-c C-i") 'lsp-treemacs-symbols)
          (define-key newmap (kbd "M-.") 'godef-jump)
          (define-key newmap (kbd "s-.") 'go-guru-implements)
          (define-key newmap (kbd "M-*") 'pop-tag-mark)
@@ -67,7 +68,7 @@
 
        ;; flycheck
        (setq-local flycheck-checkers '(go-golint go-vet))
-       (flycheck-mode -1)
+       (flycheck-mode t)
        (flyspell-mode -1)
 
        ;; gofmt on save
