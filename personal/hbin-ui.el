@@ -22,12 +22,12 @@
 ;; Set frame
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(font . "Monaco-18"))
+(add-to-list 'default-frame-alist '(font . "Monaco-20"))
 
 (defun hbin-frame-init (frame)
   "Custom behaviours for FRAME."
-  (set-frame-font "Monaco:pixelsize=18")
-  (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=16")
+  (set-frame-font "Monaco:pixelsize=20")
+  (set-fontset-font "fontset-default" 'chinese-gbk "Hei:pixelsize=20")
 
   ;; UI
   (tooltip-mode -1)            ; 不要 tooltip
@@ -59,14 +59,24 @@
 ;; Add themes to load path
 ;; (add-subfolders-to-theme-load-path preldue-themes-dir)
 
-(load-theme 'doom-molokai)
+;; doom-molokai
+;;
+;; (load-theme 'doom-molokai)
+;; (custom-theme-set-faces
+;;  'doom-molokai
+;;  `(cursor ((t (:background "#e8e8e8" :foreground "#1b1d1e")))))
+;; (enable-theme 'doom-molokai)
 
+;; doom-monokai-pro
+;;
+(load-theme 'doom-monokai-pro)
 (custom-theme-set-faces
- 'doom-molokai
- `(cursor ((t (:background "#e8e8e8" :foreground "#1b1d1e")))))
+ 'doom-monokai-pro
+ `(line-number ((t (:foreground "#939293")))))
+(enable-theme 'doom-monokai-pro)
 
-(enable-theme 'doom-molokai)
-
+;; doom-solarized-dark
+;;
 ;; (custom-theme-set-faces
 ;;  'doom-solarized-dark
 ;;  `(linum ((t (:foreground "#657b83" :background "#073642")))))

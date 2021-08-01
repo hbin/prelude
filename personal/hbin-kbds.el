@@ -92,6 +92,7 @@
       '("Yellow" "YellowGreen" "pink" "Purple" "PeachPuff" "RoyalBlue" "LightBlue" "SlateBlue" "SteelBlue"
         "violet" "cyan" "SeaGreen" "#A0522D" "SpringGreen" "LimeGreen" "LightSeaGreen" "MistyRose" "Magenta"
         "orange" "PaleVioletRed" "#FF6347" "grey" "brown" "RosyBrown" "SandyBrown"))
+(global-set-key (kbd "M-'") 'highlight-symbol)
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
@@ -125,6 +126,8 @@
 (define-key prelude-mode-map (kbd "M-2") 'split-window-vertically)
 (define-key prelude-mode-map (kbd "M-3") 'split-window-horizontally)
 (define-key prelude-mode-map (kbd "M-k") 'kill-this-buffer)
+
+(global-set-key [remap other-window] 'other-window) ; To fix always binding to ace
 (define-key prelude-mode-map (kbd "M-o") 'other-window)
 (define-key prelude-mode-map (kbd "M-O") (lambda () (interactive) (other-window -1)))
 (define-key prelude-mode-map (kbd "C-x o") 'ace-window)

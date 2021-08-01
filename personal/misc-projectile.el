@@ -33,6 +33,10 @@
 (define-key projectile-mode-map (kbd "C-c D") 'projectile-dired)
 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-switch-project)
 
+;; Neotree integration
+(define-key projectile-mode-map (kbd "C-c C-f")  'neotree-projectile-file)
+(define-key projectile-mode-map (kbd "C-c C-n") 'neo-global--select-window)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'misc-projectile)

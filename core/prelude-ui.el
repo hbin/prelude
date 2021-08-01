@@ -79,12 +79,8 @@
                                           "%b"))))
 
 ;; use zenburn as the default theme
-(when prelude-theme
-  (load-theme prelude-theme t))
-
-;; show available keybindings after you start typing
-;; (require 'which-key)
-;; (which-key-mode +1)
+;; (when prelude-theme
+;;   (load-theme prelude-theme t))
 
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here

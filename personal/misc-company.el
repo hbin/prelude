@@ -46,7 +46,7 @@ With ARG, move by that many elements."
               (company-complete-selection)
             (company-select-next)))))))
 
-(global-set-key (kbd "TAB") 'company-indent-or-complete-common)
+(global-set-key (kbd "TAB") 'hippie-expand)
 (global-set-key (kbd "M-/") 'company-complete-common)
 (define-key company-active-map [tab] 'company-complete-common-or-cycle-dwim)
 (define-key company-active-map (kbd "M-/") 'company-complete-common-or-cycle)
@@ -54,6 +54,7 @@ With ARG, move by that many elements."
 (define-key company-active-map (kbd "C-p") 'company-select-previous)
 (define-key company-active-map (kbd "C-v") 'company-next-page)
 (define-key company-active-map (kbd "M-v") 'company-previous-page)
+(define-key company-active-map (kbd "C-M-v") nil)
 
 (eval-after-load 'company
   '(progn

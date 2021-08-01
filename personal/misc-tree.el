@@ -28,7 +28,7 @@
     (treemacs-create-icon :icon "+ " :extensions (dir-closed))
     (treemacs-create-icon :icon "- " :extensions (dir-open))))
 
-;; (global-set-key (kbd "C-x C-n") 'treemacs)
+;; (global-set-key (kbd "C-c C-n") 'treemacs)
 ;; (global-set-key (kbd "C-x C-j") 'treemacs-add-and-display-current-project)
 
 (provide 'misc-tree)

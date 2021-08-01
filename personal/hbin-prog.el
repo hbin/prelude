@@ -22,6 +22,9 @@
                              yas-completing-prompt))
 (yas-global-mode 1)
 
+(require 'dash-at-point)
+(global-set-key (kbd "s-.") 'dash-at-point)
+
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
   (prelude-prog-mode-defaults)
@@ -46,9 +49,6 @@
 (add-hook 'scss-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'yaml-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 (add-hook 'protobuf-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
-
-(require 'dash-at-point)
-(global-set-key (kbd "s-.") 'dash-at-point)
 
 (provide 'hbin-prog)
 ;;; hbin-prog.el ends here

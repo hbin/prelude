@@ -52,6 +52,7 @@
 (define-key helm-map (kbd "C-v") 'helm-next-page)
 (define-key helm-map (kbd "M-v") 'helm-previous-page)
 (define-key helm-map (kbd "C-w") 'backward-kill-word)
+(define-key helm-map (kbd "C-M-v") nil)
 
 ;; https://www.reddit.com/r/emacs/comments/345vtl/make_helm_window_at_the_bottom_without_using_any/
 (add-to-list 'display-buffer-alist
