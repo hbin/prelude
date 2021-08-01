@@ -49,12 +49,7 @@
          (define-key newmap (kbd "C-c , a") 'go-test-current-project)
          (define-key newmap (kbd "C-c , b") 'go-test-current-benchmark)
          (define-key newmap (kbd "C-c n") 'gofmt)
-         (define-key newmap (kbd "C-x C-i") 'lsp-treemacs-call-hierarchy)
-         (define-key newmap (kbd "C-c C-i") 'lsp-treemacs-symbols)
-         (define-key newmap (kbd "M-.") 'godef-jump)
-         (define-key newmap (kbd "s-.") 'go-guru-implements)
-         (define-key newmap (kbd "M-*") 'pop-tag-mark)
-         (define-key newmap (kbd "M-R") 'go-rename)
+
          (make-local-variable 'minor-mode-overriding-map-alist)
          (push `(prelude-mode . ,newmap) minor-mode-overriding-map-alist))
 
@@ -69,7 +64,6 @@
        ;; flycheck
        (setq-local flycheck-checkers '(go-golint go-vet))
        (flycheck-mode t)
-       (flyspell-mode -1)
 
        ;; gofmt on save
        (add-hook 'before-save-hook 'gofmt-before-save nil t)

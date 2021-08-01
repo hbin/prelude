@@ -21,18 +21,22 @@
                              yas-ido-prompt
                              yas-completing-prompt))
 (yas-global-mode 1)
-(diminish 'yas-minor-mode)
 
 (defun hbin-prog-mode-init ()
   "Common settings for programming."
-  (rainbow-delimiters-mode 1)
-
-  (display-line-numbers-mode 1)
-
   (prelude-prog-mode-defaults)
 
+  (rainbow-delimiters-mode 1)
+  (display-line-numbers-mode 1)
+
+  ;; Language Server Protocol Support for Emacs yyds
+  (lsp-mode 1)
+
+  ;; Disableflycheck
+  (flyspell-mode -1)
+
+  ;; A few common keybinding
   (local-set-key (kbd "C-w") 'backward-kill-word-or-region)
-  (local-set-key (kbd "s-<backspace>") 'backward-kill-word-or-region)
   (local-set-key (kbd "M-<backspace>") 'crux-kill-whole-line)
   (local-set-key (kbd "C-j") 'reindent-then-newline-and-indent)
   (local-set-key (kbd "C-S-J") 'crux-top-join-line)

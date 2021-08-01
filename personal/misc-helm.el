@@ -13,7 +13,7 @@
 
 ;;; Code:
 
-(prelude-require-packages '(helm-swoop))
+(prelude-require-packages '(helm helm-projectile))
 
 (helm-autoresize-mode 1)
 
@@ -28,8 +28,7 @@
                       '(helm-ag-use-grep-ignore-list t)
                       '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
                       '(helm-ag-command-option "--all-text")
-                      '(helm-ag-insert-at-point 'symbol)
-                      '(helm-swoop-split-with-multiple-windows t))
+                      '(helm-ag-insert-at-point 'symbol))
 
 ;; See: https://github.com/emacsorphanage/helm-ag/issues/283
 (defun helm-projectile-ag (&optional options)
@@ -43,22 +42,16 @@
         (error "You're not in a project"))
     (error "helm-ag not available")))
 
-(require 'helm-swoop)
-(global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "M-I") 'helm-multi-swoop-projectile)
-(global-set-key (kbd "C-x C-i") 'helm-imenu)
-(global-set-key (kbd "M-g") 'helm-projectile-rg)
-(global-set-key (kbd "M-G") 'helm-do-ag-this-file)
-
-(define-key helm-map (kbd "C-v") 'helm-next-page)
-(define-key helm-map (kbd "M-v") 'helm-previous-page)
-(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-(define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-(define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+;; Search
+(global-set-key (kbd "M-g") 'helm-do-ag-this-file)
+(global-set-key (kbd "M-G") 'helm-projectile-rg)
 
 (global-set-key (kbd "M-z") 'helm-resume)
 (global-set-key (kbd "M-x") 'helm-M-x)
+
+(define-key helm-map (kbd "C-v") 'helm-next-page)
+(define-key helm-map (kbd "M-v") 'helm-previous-page)
+(define-key helm-map (kbd "C-w") 'backward-kill-word)
 
 ;; https://www.reddit.com/r/emacs/comments/345vtl/make_helm_window_at_the_bottom_without_using_any/
 (add-to-list 'display-buffer-alist

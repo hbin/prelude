@@ -14,7 +14,6 @@
 ;;; Code:
 
 ;; VARS---------------------
-(defvar prelude-mode-map nil)
 (defvar projectile-mode-map nil)
 
 (prelude-require-packages '(projectile))
@@ -26,17 +25,13 @@
 (remove-hook 'projectile-idle-timer-hook 'projectile-regenerate-tags) ;; No need to regenerate the project's [e|g]tags.
 
 ;;; Keybindings
-(define-key prelude-mode-map [?\s-d] nil)
-(define-key prelude-mode-map [?\s-p] nil)
-(define-key prelude-mode-map [?\s-f] nil)
-(define-key prelude-mode-map [?\s-g] nil)
-
+(define-key projectile-mode-map (kbd "M-e") 'projectile-recentf)
 (define-key projectile-mode-map (kbd "M-t") 'projectile-find-file)
 (define-key projectile-mode-map (kbd "M-T") 'projectile-find-file-other-window)
 (define-key projectile-mode-map (kbd "M-R") 'projectile-replace)
-(define-key projectile-mode-map (kbd "C-x d") 'projectile-find-dir)
-(define-key projectile-mode-map (kbd "C-x D") 'projectile-dired)
-(define-key projectile-mode-map (kbd "C-x C-p") 'projectile-switch-project)
+(define-key projectile-mode-map (kbd "C-c d") 'projectile-find-dir)
+(define-key projectile-mode-map (kbd "C-c D") 'projectile-dired)
+(define-key projectile-mode-map (kbd "C-c C-p") 'projectile-switch-project)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 

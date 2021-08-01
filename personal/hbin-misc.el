@@ -48,6 +48,7 @@
 (push '("*Warnings*" :noselect t :dedicated :height 20) popwin:special-display-config)
 (push '("*rspec-compilation*" :noselect t :height 20) popwin:special-display-config)
 (push '("*go-guru-output*" :noselect t :height 15) popwin:special-display-config)
+(push '("*xref*" :noselect t :height 15) popwin:special-display-config)
 
 ;; ;;; Highlight symbols
 ;; (custom-set-variables
