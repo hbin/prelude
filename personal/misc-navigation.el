@@ -43,9 +43,6 @@
   (call-interactively 'pop-global-mark)
   (setq global-mark-ring (nreverse global-mark-ring)))
 
-(global-set-key (kbd "M-[") (quote backward-global-mark))
-(global-set-key (kbd "M-]") (quote forward-global-mark))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'misc-navigation)
