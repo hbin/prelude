@@ -16,7 +16,8 @@
 (setq inhibit-startup-screen t)
 
 (prelude-require-packages
- '(doom-themes))
+ '(doom-themes
+   doom-modeline))
 
 ;; Set frame
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
@@ -69,6 +70,9 @@
 ;; (custom-theme-set-faces
 ;;  'doom-solarized-dark
 ;;  `(linum ((t (:foreground "#657b83" :background "#073642")))))
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
 
 (provide 'hbin-ui)
 ;;; hbin-ui.el ends here
