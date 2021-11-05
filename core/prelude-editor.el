@@ -142,11 +142,11 @@
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
-(require 'super-save)
+;; (require 'super-save)
 ;; add integration with ace-window
-(add-to-list 'super-save-triggers 'ace-window)
-(super-save-mode +1)
-(diminish 'super-save-mode)
+;; (add-to-list 'super-save-triggers 'ace-window)
+;; (super-save-mode +1)
+;; (diminish 'super-save-mode)
 
 (defadvice set-buffer-major-mode (after set-major-mode activate compile)
   "Set buffer major mode according to `auto-mode-alist'."
