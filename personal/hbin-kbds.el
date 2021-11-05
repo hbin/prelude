@@ -86,6 +86,9 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-r") 'anzu-query-replace-at-cursor)
 
+(require 'expand-region)
+(global-set-key (kbd "M-h") 'er/expand-region)
+
 ;;; Highlight symbols
 (require 'highlight-symbol)
 (setq highlight-symbol-colors

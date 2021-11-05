@@ -33,6 +33,7 @@
   (rainbow-delimiters-mode 1)
   (display-line-numbers-mode 1)
   (highlight-numbers-mode 1)
+  ;; (hl-line-mode 1)
 
   ;; Language Server Protocol Support for Emacs yyds
   (lsp-mode 1)

@@ -16,7 +16,6 @@
 (require 'lsp-mode)
 (setq lsp-enable-symbol-highlighting nil)
 
-(define-key lsp-mode-map (kbd "C-c C-i") 'lsp-treemacs-symbols)
 (define-key lsp-mode-map (kbd "M-.") 'xref-find-definitions) ; lsp-find-definition
 (define-key lsp-mode-map (kbd "M-s-.") 'lsp-find-implementation)
 (define-key lsp-mode-map (kbd "M-?") 'lsp-find-references)
