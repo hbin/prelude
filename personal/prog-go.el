@@ -34,9 +34,13 @@
      (add-to-list 'completion-ignored-extensions ".test")
 
      (when (memq window-system '(mac ns))
+       (exec-path-from-shell-copy-env "GOENV_DISABLE_GOPATH") ; Disables management of GOPATH
+       (exec-path-from-shell-copy-env "GOENV_ROOT")
+
        (exec-path-from-shell-copy-env "GOROOT")
        (exec-path-from-shell-copy-env "GOPATH")
        (exec-path-from-shell-copy-env "GOBIN")
+
        (exec-path-from-shell-copy-env "GO111MODULE"))
 
      (defun hbin-go-mode-defaults ()
